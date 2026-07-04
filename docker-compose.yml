@@ -1,0 +1,54 @@
+###############################################################################
+# Alternative la plus simple : tout démarrer avec Docker
+#
+#   docker compose up
+#
+# (ne nécessite ni Python, ni Node, ni MongoDB installés localement)
+# Frontend -> http://localhost:3000   |   Backend -> http://localhost:8001/api/
+###############################################################################
+services:
+  mongo:
+    image: mongo:7
+    container_name: smq-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    image: python:3.11-slim
+    container_name: smq-backend
+    working_dir: /app
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://mongo:27017"
+      DB_NAME: "smq_local"
+      CORS_ORIGINS: "*"
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./backend:/app
+    command: >
+      bash -c "pip install --no-cache-dir -r requirements.txt &&
+               uvicorn server:app --host 0.0.0.0 --port 8001 --reload"
+
+  frontend:
+    image: node:20
+    container_name: smq-frontend
+    working_dir: /app
+    depends_on:
+      - backend
+    environment:
+      VITE_BACKEND_URL: "http://localhost:8001"
+    ports:
+      - "3000:3000"
+    volumes:
+     - ./frontend:/app
+    command: >
+      bash -c "corepack enable && yarn install && yarn start"
+
+
+
+volumes:
+  mongo-data:
