@@ -1,13 +1,32 @@
 <script setup>
+/* Decris la fenetre ou creer ou modifier un non conformtié*/
+
+/* les librairie 
+reactive()  Rend un objet "réactif".
+    Cela signifie que dès qu'une valeur change,
+    Vue met automatiquement à jour l'écran.
+
+watch() Permet de surveiller une variable.
+    Dès que cette variable change,
+    une fonction est exécutée automatiquement.
+
+Ces composants sont simplement des icônes SVG :
+
+<X>         -> croix de fermeture
+<Plus>      -> ajouter une action corrective
+<Trash2>    -> supprimer une action
+*/
 import { reactive, watch } from "vue";
 import { X, Plus, Trash2 } from "lucide-vue-next";
 
+/* Constantes utilisées dans les listes déroulantes*/
 const SOURCES = ["Audit interne", "Client", "Fournisseur", "Réclamation", "Interne"];
 const SERVICES = ["Management", "Production", "Qualité", "Achats", "Logistique", "RH", "Commercial"];
 const GRAVITES = ["Mineure", "Majeure", "Critique"];
 const STATUTS = ["Ouverte", "En cours", "Clôturée"];
-
 const ACTION_STATUTS = ["À faire", "En cours", "Abandonnée", "Reportée"];
+
+
 
 const props = defineProps({
   modelValue: { type: Boolean, default: false },
@@ -17,10 +36,12 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue", "submit"]);
 
+/* Cette fonction fabrique une nouvelle action corrective vide*/
 function emptyAction() {
   return { description: "", pilote: "", date_cloture: "", statut: "À faire" };
 }
 
+/*Cette fonction crée un formulaire totalement vide. */
 function emptyForm() {
   return {
     date: new Date().toISOString().slice(0, 10),
@@ -79,6 +100,7 @@ function handleSubmit() {
 }
 </script>
 
+<!--forme du formulaire-->
 <template>
   <div
     v-if="modelValue"
@@ -94,7 +116,7 @@ function handleSubmit() {
           <X class="w-5 h-5" />
         </button>
       </div>
-
+<!-- Formulaire de saisie pour créer ou modifier la non conformité-->
       <form class="space-y-5" @submit.prevent="handleSubmit">
         <p
           v-if="error"
@@ -200,7 +222,7 @@ function handleSubmit() {
           <p v-if="form.actions_correctives.length === 0" class="text-sm text-slate-400 italic">
             Aucune action corrective pour l'instant.
           </p>
-
+<!-- Formulaire secondaire contenu de la non conformité-->
           <div
             v-for="(action, index) in form.actions_correctives"
             :key="index"

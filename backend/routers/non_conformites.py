@@ -62,6 +62,10 @@ async def list_non_conformites(
             {"numero_ref": {"$regex": search, "$options": "i"}},
             {"description": {"$regex": search, "$options": "i"}},
             {"service_impacte": {"$regex": search, "$options": "i"}},
+            {"source": {"$regex": search, "$options": "i"}},
+            {"pilote": {"$regex": search, "$options": "i"}},
+            {"actions_correctives.pilote": {"$regex": search, "$options": "i"}},
+            {"actions_correctives.statut": {"$regex": search, "$options": "i"}},
         ]
 
     cursor = non_conformites_collection.find(query).sort("created_at", -1)

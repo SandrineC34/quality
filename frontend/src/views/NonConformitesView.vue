@@ -74,6 +74,7 @@ function onSearchInput() {
     </div>
     <p class="text-slate-500 text-sm mb-6">Saisie, suivi et traitement des non-conformités du SMQ</p>
 
+    <!--Barre de recherche rattache à backens/routers/Non_conformity.py-->
     <div class="flex gap-4 mb-4">
       <div class="relative flex-1">
         <Search class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
