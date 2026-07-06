@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardView from "../views/DashboardView.vue";
 import NonConformitesView from "../views/NonConformitesView.vue";
 import ModelesTableauxView from "../views/ModelesTableauxView.vue";
+import IndicateursView from "../views/IndicateursView.vue";
 
 
 const router = createRouter({
@@ -10,6 +11,7 @@ const router = createRouter({
     { path: "/", redirect: "/non-conformites" },
     { path: "/tableau-de-bord", name: "dashboard", component: DashboardView },
     { path: "/non-conformites", name: "non-conformites", component: NonConformitesView },
+    { path: "/indicateurs", name: "indicateurs", component: IndicateursView },
     { path: "/modeles", name: "modeles", component: ModelesTableauxView },
    
   ],

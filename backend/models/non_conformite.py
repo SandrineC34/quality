@@ -100,10 +100,16 @@ class ActionCorrective(BaseModel):
     description: Optional[str] = None
 
     # Responsable de cette action
-    pilote: Optional[str] = None
+    # pilote: Optional[str] = None
 
-    # Date prévue ou réelle de clôture
+    # Date prévue  clôture
+    date_objectif: Optional[date] = None
+
+    # Date réelle de clôture
     date_cloture: Optional[date] = None
+
+    # Efficacité de l"action
+    Efficacité: Optional[str] = None
 
     # Etat de l'action
     statut: str = "À faire"
@@ -137,7 +143,7 @@ class NonConformiteBase(BaseModel):
     service_impacte: str
 
     # Responsable de suivi
-    pilote: Optional[str] = None
+    # pilote: Optional[str] = None
 
     # Description de la non-conformité
     description: str
@@ -163,6 +169,10 @@ class NonConformiteBase(BaseModel):
 
     # Date de clôture globale
     date_cloture: Optional[date] = None
+
+
+    # Preuves/commentaires
+    preuves: Optional[str] = None
 
 
 # ==============================================================================

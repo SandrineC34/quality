@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import { ChevronDown, ChevronRight } from "lucide-vue-next";
 import StatusBadge from "./StatusBadge.vue";
+import { UI } from "../../constants/ui";
+import { NC_TABLE_COLUMNS } from "../../constants/nonConformites";
+import { formatDate } from "../../utils";
+import { getActionStatutClass } from "../../utils/nonConformites";
 
 defineProps({
   items: { type: Array, default: () => [] },
@@ -19,41 +23,15 @@ function toggleExpand(id, event) {
   else next.add(id);
   expanded.value = next;
 }
-
-const columns = [
-  "N° réf",
-  "Date",
-  "Origine",
-  "Service impacté",
-  "Description",
-  "Gravité",
-  "Analyse des causes",
-  "Actions correctives",
-  "Responsable",
-  "Statut",
-  "Date clôture",
-];
-
-const actionStatutStyles = {
-  "À faire": "bg-slate-100 text-slate-700",
-  "En cours": "bg-blue-100 text-blue-700",
-  "Abandonnée": "bg-red-100 text-red-700",
-  "Reportée": "bg-amber-100 text-amber-700",
-};
-
-function formatDate(value) {
-  if (!value) return "-";
-  return new Date(value).toLocaleDateString("fr-FR");
-}
 </script>
 
 <template>
-  <div class="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+  <div :class="[UI.card, 'overflow-x-auto']">
     <table class="w-full text-sm">
       <thead>
         <tr class="border-b border-slate-200">
           <th
-            v-for="col in columns"
+            v-for="col in NC_TABLE_COLUMNS"
             :key="col"
             class="text-left px-4 py-3 font-semibold text-slate-500 uppercase text-xs tracking-wide whitespace-nowrap"
           >
@@ -63,12 +41,12 @@ function formatDate(value) {
       </thead>
       <tbody>
         <tr v-if="loading">
-          <td :colspan="columns.length" class="text-center px-4 py-10 text-slate-400">
+          <td :colspan="NC_TABLE_COLUMNS.length" class="text-center px-4 py-10 text-slate-400">
             Chargement…
           </td>
         </tr>
         <tr v-else-if="items.length === 0">
-          <td :colspan="columns.length" class="text-center px-4 py-10 text-slate-400">
+          <td :colspan="NC_TABLE_COLUMNS.length" class="text-center px-4 py-10 text-slate-400">
             Aucune non-conformité. Cliquez sur « Ajouter une NC ».
           </td>
         </tr>
@@ -95,17 +73,19 @@ function formatDate(value) {
               </button>
               <span v-else class="text-slate-400">-</span>
             </td>
-            <td class="px-4 py-3 whitespace-nowrap">{{ item.pilote || "-" }}</td>
+            <!--<td class="px-4 py-3 whitespace-nowrap">{{ item.pilote || "-" }}</td>-->
             <td class="px-4 py-3 whitespace-nowrap"><StatusBadge :statut="item.statut" /></td>
             <td class="px-4 py-3 whitespace-nowrap">{{ formatDate(item.date_cloture) }}</td>
           </tr>
           <tr v-if="expanded.has(item._id)" class="bg-slate-50">
-            <td :colspan="columns.length" class="px-4 py-3">
+            <td :colspan="NC_TABLE_COLUMNS.length" class="px-4 py-3">
               <table class="w-full text-sm bg-white border border-slate-200 rounded-lg overflow-hidden">
                 <thead>
                   <tr class="bg-slate-100 border-b border-slate-200">
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Descriptif de la NC</th>
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Pilote de l'action</th>
+                    <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Date Objectif clôture</th>
+                    <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Vérification de l'efficacité</th>
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Date de clôture</th>
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Statut</th>
                   </tr>
@@ -118,12 +98,11 @@ function formatDate(value) {
                   >
                     <td class="px-3 py-2 max-w-md">{{ action.description || item.description }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">{{ action.pilote || "-" }}</td>
+                    <td class="px-3 py-2 whitespace-nowrap">{{ formatDate(action.date_objectif) }}</td>
+                    <td class="px-3 py-2 max-w-md">{{ action.efficacité || item.efficacité }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">{{ formatDate(action.date_cloture) }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">
-                      <span
-                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
-                        :class="actionStatutStyles[action.statut] || 'bg-slate-100 text-slate-700'"
-                      >
+                      <span :class="[UI.badge, getActionStatutClass(action.statut)]">
                         {{ action.statut }}
                       </span>
                     </td>

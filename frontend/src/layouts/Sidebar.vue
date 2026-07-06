@@ -1,8 +1,9 @@
 <script setup>
-import { LayoutGrid, ShieldAlert, Table2, Shield } from "lucide-vue-next";
+import { LayoutGrid, ShieldAlert, Table2, Shield, LineChart } from "lucide-vue-next";
 
 const navItems = [
   { to: "/tableau-de-bord", label: "Tableau de bord", icon: LayoutGrid },
+  { to: "/indicateurs", label: "Indicateurs qualité", icon: LineChart },
   { to: "/non-conformites", label: "Non-conformités", icon: ShieldAlert },
   { to: "/modeles", label: "Modèles de tableaux", icon: Table2 },
 ];
