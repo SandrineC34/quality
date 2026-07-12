@@ -1,10 +1,12 @@
 <script setup>
-import { LayoutGrid, ShieldAlert, Table2, Shield, LineChart } from "lucide-vue-next";
+import { LayoutGrid, ShieldAlert, Table2, Shield, LineChart, ListChecks, ClipboardList } from "lucide-vue-next";
 
 const navItems = [
   { to: "/tableau-de-bord", label: "Tableau de bord", icon: LayoutGrid },
   { to: "/indicateurs", label: "Indicateurs qualité", icon: LineChart },
   { to: "/non-conformites", label: "Non-conformités", icon: ShieldAlert },
+  { to: "/actions", label: "Suivi des actions", icon: ListChecks },
+  { to: "/audits", label: "Audits internes", icon: ClipboardList },
   { to: "/modeles", label: "Modèles de tableaux", icon: Table2 },
 ];
 </script>
