@@ -2,8 +2,8 @@
 import { onMounted, ref } from "vue";
 import { Plus, Search } from "lucide-vue-next";
 import { useIndicateursStore } from "../stores/indicateurs";
-import IndicateurTable from "../components/indicateurTable.vue";
-import IndicateurFormModal from "../components/indicateurFormModal.vue";
+import IndicateurTable from "../components/IndicateurTable.vue";
+import IndicateurFormModal from "../components/IndicateurFormModal.vue";
 import { UI, SEARCH_DEBOUNCE_MS } from "../../dashboard/components/ui";
 import { STATUT_FILTER_OPTIONS } from "../constants/indicateurs";
 import { debounce, extractApiErrorMessage } from "../../../utils";

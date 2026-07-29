@@ -1,9 +1,6 @@
 ###############################################################################
-# Alternative la plus simple : tout démarrer avec Docker
+# Dev environment — démarrer avec : docker compose up
 #
-#   docker compose up
-#
-# (ne nécessite ni Python, ni Node, ni MongoDB installés localement)
 # Frontend -> http://localhost:3000   |   Backend -> http://localhost:8001/api/
 ###############################################################################
 services:
@@ -34,19 +31,20 @@ services:
                uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload"
 
   frontend:
-    image: node:20
+    image: node:20-alpine
     container_name: smq-frontend
     working_dir: /app
     depends_on:
       - backend
     environment:
-      VITE_BACKEND_URL: "http://backend:8001"
+      VITE_BACKEND_URL: "http://localhost:8001"
     ports:
       - "3000:3000"
     volumes:
       - ./frontend:/app
+      - /app/node_modules
     command: >
-      bash -c "corepack enable && yarn install && yarn start"
+      sh -c "corepack enable && yarn install && yarn start"
 
 
 

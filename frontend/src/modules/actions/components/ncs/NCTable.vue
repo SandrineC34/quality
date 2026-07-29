@@ -86,7 +86,6 @@ function toggleExpand(id, event) {
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Descriptif de l'action corrective</th>
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Pilote</th>                   
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Échéance</th>                    
-                    <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Efficacité</th>
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Date de clôture</th>
                     <th class="text-left px-3 py-2 font-semibold text-slate-500 uppercase text-xs">Statut</th>
                   </tr>
@@ -100,7 +99,6 @@ function toggleExpand(id, event) {
                     <td class="px-3 py-2 max-w-md">{{ action.description || "-" }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">{{ action.pilote || "-" }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">{{ formatDate(action.date_objectif) }}</td>
-                    <td class="px-3 py-2 max-w-md">{{ action.efficacite || "-" }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">{{ formatDate(action.date_cloture) }}</td>
                     <td class="px-3 py-2 whitespace-nowrap">
                       <span :class="[UI.badge, getActionStatutClass(action.statut)]">

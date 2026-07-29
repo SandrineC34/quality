@@ -108,9 +108,6 @@ class ActionCorrective(BaseModel):
     # Date réelle de clôture
     date_cloture: Optional[date] = None
 
-    # Efficacité de l'action
-    efficacite: Optional[str] = None
-
     # Etat de l'action
     statut: str = "À faire"
 

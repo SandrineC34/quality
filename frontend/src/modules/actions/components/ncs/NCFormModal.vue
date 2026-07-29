@@ -35,7 +35,6 @@ watch(
         pilote: a.pilote || "",
         date_objectif: a.date_objectif || "",
         date_cloture: a.date_cloture || "",
-        efficacite: a.efficacite || a.Efficacité || "",
         statut: a.statut || "À faire",
       }));
       Object.assign(form, source);
@@ -204,10 +203,6 @@ function handleSubmit() {
               <select v-model="action.statut" :class="UI.select">
                 <option v-for="s in ACTION_STATUTS" :key="s" :value="s">{{ s }}</option>
               </select>
-            </div>
-            <div class="col-span-2">
-              <label :class="UI.labelSm">Évaluation de l'efficacité</label>
-              <input v-model="action.efficacite" type="text" placeholder="Ex: Efficace, À réévaluer..." :class="UI.input" />
             </div>
             <div>
               <label :class="UI.labelSm">Date de clôture</label>
