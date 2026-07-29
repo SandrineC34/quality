@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import non_conformites
+from app.actions.routers import non_conformites
 
 app = FastAPI(title="SMQ Qualité API")
 

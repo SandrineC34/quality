@@ -31,7 +31,7 @@ services:
       - ./backend:/app
     command: >
       bash -c "pip install --no-cache-dir -r requirements.txt &&
-               uvicorn server:app --host 0.0.0.0 --port 8001 --reload"
+               uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload"
 
   frontend:
     image: node:20
@@ -40,11 +40,11 @@ services:
     depends_on:
       - backend
     environment:
-      VITE_BACKEND_URL: "http://localhost:8001"
+      VITE_BACKEND_URL: "http://backend:8001"
     ports:
       - "3000:3000"
     volumes:
-     - ./frontend:/app
+      - ./frontend:/app
     command: >
       bash -c "corepack enable && yarn install && yarn start"
 
