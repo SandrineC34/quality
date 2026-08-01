@@ -22,18 +22,16 @@ export function emptyAction() {
 /** Nouveau formulaire de non-conformité vide */
 export function emptyNCForm() {
   return {
-    date : new Date().toISOString().slice(0, 10),
+    date: new Date().toISOString().slice(0, 10),
     source: "",
-    service_impacte: "",  
+    service_impacte: "",
     description: "",
     gravite: "",
-    statut: "",
+    statut: "Ouverte",
     action_curative: "",
     date_action_curative: "",
     analyse_causes: "",
     actions_correctives: [],
-    index_actions_correctives:[],
     date_cloture: "",
-    
   };
 }

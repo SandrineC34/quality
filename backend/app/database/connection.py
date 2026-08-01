@@ -9,7 +9,7 @@ client = AsyncIOMotorClient(MONGO_URL)
 db = client[DB_NAME]
 
 non_conformites_collection = db["non_conformites"]
-actions_collection = db["actions"]
+suivi_actions_collection = db["suivi_actions"]
 audits_collection = db["audits"]
 indicators_collection = db["indicators"]
 counters_collection = db["counters"]

@@ -1,7 +1,7 @@
 <script setup>
 import { UI } from "../../dashboard/components/ui";
 import { AUDITS_TABLE_COLUMNS } from "../constants/audits";
-import { formatDate } from "../../../utils/";
+import { formatDate } from "../../../utils/index.js";
 import { getAuditStatutClass } from "../utils/audits";
 
 defineProps({

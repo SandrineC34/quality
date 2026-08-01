@@ -3,7 +3,9 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.actions.routers import non_conformites
+from app.actions.routers import non_conformites, suivi_actions
+from app.indicators.routers import indicateurs
+from app.audits.routers import audits
 
 app = FastAPI(title="SMQ Qualité API")
 
@@ -22,6 +24,9 @@ app.add_middleware(
 )
 
 app.include_router(non_conformites.router, prefix="/api")
+app.include_router(suivi_actions.router, prefix="/api")
+app.include_router(indicateurs.router, prefix="/api")
+app.include_router(audits.router, prefix="/api")
 
 
 @app.get("/api/health")

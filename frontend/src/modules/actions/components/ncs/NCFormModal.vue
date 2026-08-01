@@ -35,6 +35,7 @@ watch(
         pilote: a.pilote || "",
         date_objectif: a.date_objectif || "",
         date_cloture: a.date_cloture || "",
+        efficacite: a.efficacite || "",
         statut: a.statut || "À faire",
       }));
       Object.assign(form, source);
@@ -56,6 +57,7 @@ function close() {
 
 function handleSubmit() {
   const payload = { ...form };
+  if (!payload.date) payload.date = new Date().toISOString().slice(0, 10);
   if (!payload.date_cloture) payload.date_cloture = null;
   if (!payload.date_action_curative) payload.date_action_curative = null;
   payload.actions_correctives = form.actions_correctives.map((a) => ({

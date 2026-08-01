@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { ChevronDown, ChevronRight } from "lucide-vue-next";
 import { UI } from "../../../dashboard/components/ui";
 import { ACTIONS_TABLE_COLUMNS } from "../../constants/suiviActions";
-import { formatDate } from "../../../../utils/";
+import { formatDate } from "../../../../utils/index.js";
 import {
   getActionSuiviStatutClass,
   getEfficaciteClass,
