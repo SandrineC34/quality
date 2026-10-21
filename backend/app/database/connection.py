@@ -12,6 +12,8 @@ non_conformites_collection = db["non_conformites"]
 suivi_actions_collection = db["suivi_actions"]
 audits_collection = db["audits"]
 indicators_collection = db["indicators"]
+
+swot_collection = db["swot"]
 counters_collection = db["counters"]
 
 

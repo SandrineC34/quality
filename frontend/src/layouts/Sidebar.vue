@@ -30,7 +30,8 @@ const navItems = [
     icon: Compass,
     children: [
       { to: "/pilotage/contexte", label: "Contexte de l'organisme" },
-      { to: "/pilotage/swot", label: "Analyse SWOT" },
+      { to: "/pilotage/parties", label: "Parties intéressées" },
+      { to: "/pilotage/swot", label: "Analyse SWOT" },      
       { to: "/pilotage/tows", label: "Analyse TOWS" },
       { to: "/pilotage/politique", label: "Politique qualité" },
       { to: "/pilotage/objectifs", label: "Objectifs qualité" },

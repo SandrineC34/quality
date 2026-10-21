@@ -2,6 +2,326 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================
+   VARIABLES CSS : COULEURS OPENSILEX ET MISTEA
+   ========================================================= */
+
+:root {
+  /* Couleur primaire : Vert OpenSILEX */
+  --primary-color: #5ebc7e;
+  --primary-dark: #4a9d63;
+  --primary-darker: #3d8654;
+  --primary-darkest: #2f6b42;
+  --primary-light: #7cd39a;
+  --primary-lighter: #a9dfbf;
+  --primary-lightest: #d5f4e6;
+  --primary-ultralight: #e8f8f0;
+
+  /* OpenSILEX */
+  --opensilex-green: #5ebc7e;
+  --opensilex-lime: #82c325;
+  --opensilex-turquoise: #00a3a6;
+  --opensilex-turquoise-dark: #008a8c;
+  --opensilex-ardoise: #275662;
+  --opensilex-accent: #66c1bf;
+  --opensilex-blue: #0096d6;
+  --opensilex-yellow: #f2c94c;
+
+  /* MISTEA */
+  --mistea-yellow: #f2b200;
+  --mistea-lime: #82c325;
+  --mistea-green: #00a389;
+  --mistea-dark-green: #0a423c;
+
+  /* Dégradé MISTEA */
+  --mistea-gradient: linear-gradient(
+    135deg,
+    #f2b200 0%,
+    #82c325 35%,
+    #00a389 70%,
+    #0a423c 100%
+  );
+
+  /* Couleurs générales de l'application */
+  --background-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-color: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+
+  /* États */
+  --success-color: #5ebc7e;
+  --warning-color: #f2c94c;
+  --danger-color: #dc3545;
+  --info-color: #0096d6;
+}
+
+/* =========================================================
+   STYLE GÉNÉRAL
+   ========================================================= */
+
 body {
   @apply bg-slate-50 text-slate-900;
+
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Modèle de dimensionnement */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Liens */
+a {
+  color: var(--opensilex-turquoise-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--opensilex-ardoise);
+}
+
+/* Champs de formulaire */
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--opensilex-accent);
+  outline-offset: 1px;
+}
+
+/* =========================================================
+   BOUTON PRINCIPAL : AJOUTER
+   ========================================================= */
+
+@layer components {
+  .btn-add {
+    background-color: var(--opensilex-green);
+    color: #ffffff;
+
+    @apply px-2 py-1 rounded text-sm transition-colors duration-200;
+  }
+
+  .btn-add:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .btn-add:focus-visible {
+    outline: 2px solid var(--primary-darkest);
+    outline-offset: 2px;
+  }
+
+  .btn-add:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* =======================================================
+     BOUTON SECONDAIRE : MODIFIER
+     ======================================================= */
+
+  .btn-edit {
+    background-color: var(--opensilex-yellow);
+    color: var(--opensilex-ardoise);
+
+    @apply px-1 py-1 rounded text-xs transition-colors duration-200;
+  }
+
+  .btn-edit:hover {
+    background-color: var(--mistea-yellow);
+  }
+
+  .btn-edit:focus-visible {
+    outline: 2px solid var(--opensilex-ardoise);
+    outline-offset: 2px;
+  }
+
+  .btn-edit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* =======================================================
+     BOUTON DE SUPPRESSION : SUPPRIMER
+     ======================================================= */
+
+  .btn-delete {
+    background-color: var(--opensilex-turquoise-dark);
+    color: #ffffff;
+
+    @apply px-1 py-1 rounded text-xs transition-colors duration-200;
+  }
+
+  .btn-delete:hover {
+    background-color: var(--opensilex-ardoise);
+  }
+
+  .btn-delete:focus-visible {
+    outline: 2px solid var(--opensilex-ardoise);
+    outline-offset: 2px;
+  }
+
+  .btn-delete:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* =======================================================
+     BOUTON OPENSILEX : BLEU
+     ======================================================= */
+
+  .btn-blue {
+    background-color: var(--opensilex-blue);
+    color: #ffffff;
+
+    @apply px-3 py-2 rounded transition-colors duration-200;
+  }
+
+  .btn-blue:hover {
+    background-color: var(--opensilex-ardoise);
+  }
+
+  /* =======================================================
+     BOUTON OPENSILEX : TURQUOISE
+     ======================================================= */
+
+  .btn-turquoise {
+    background-color: var(--opensilex-turquoise);
+    color: #ffffff;
+
+    @apply px-3 py-2 rounded transition-colors duration-200;
+  }
+
+  .btn-turquoise:hover {
+    background-color: var(--opensilex-turquoise-dark);
+  }
+
+  /* =======================================================
+     BOUTON MISTEA : VERT
+     ======================================================= */
+
+  .btn-mistea {
+    background-color: var(--mistea-green);
+    color: #ffffff;
+
+    @apply px-3 py-2 rounded transition-colors duration-200;
+  }
+
+  .btn-mistea:hover {
+    background-color: var(--mistea-dark-green);
+  }
+}
+
+/* =========================================================
+   CARTES ET CONTENEURS
+   ========================================================= */
+
+.card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
+}
+
+/* =========================================================
+   TITRES
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--opensilex-ardoise);
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge-success {
+  display: inline-block;
+  background-color: var(--primary-lightest);
+  color: var(--primary-darkest);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-warning {
+  display: inline-block;
+  background-color: #fff4cc;
+  color: #805b00;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-danger {
+  display: inline-block;
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-info {
+  display: inline-block;
+  background-color: #dbeafe;
+  color: #1e40af;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   TABLEAUX
+   ========================================================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: var(--primary-ultralight);
+  color: var(--opensilex-ardoise);
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:hover {
+  background-color: var(--primary-ultralight);
+}
+
+/* =========================================================
+   SÉLECTION DU TEXTE
+   ========================================================= */
+
+::selection {
+  background-color: var(--primary-lighter);
+  color: var(--opensilex-ardoise);
 }
