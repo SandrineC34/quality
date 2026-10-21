@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planning de mise en place du SMQ – Cellule OpenSILEX</title>
+    <link rel="stylesheet" href="../../../css/charte.css">
+     <link rel="stylesheet" href="../../../css/common.css">
+    <link rel="stylesheet" href="../../../css/planning/labellisation/planning-new.css">
+    <link rel="stylesheet" href="../../../css/planning/labellisation/Print.css">
+ 
+</head>
+<body>
+<div class="container">
+
+  <button class="print-button" onclick="window.print()">🖨 Imprimer le planning</button>
+
+  <div class="cartouche">
+    <h1>Planning de mise en place du SMQ</h1>
+    <p>Système de Management de la Qualité — Cellule OpenSILEX</p>
+  </div>
+
+  <div class="legend">
+    <b>Légende :</b>
+    <span class="tag realise">Réalisé</span>
+    <span class="tag en-cours">En cours</span>
+    <span class="tag en-retard">En retard</span>
+    <span class="tag a-venir">À venir</span>
+    <span class="tag a-planifier">À planifier</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:95px">Phase</th>      
+        <th style="width:110px">Période cible</th>
+        <th>Action</th>
+        <th style="width:14%">Responsable</th>
+        <th style="width:18%">Livrable / preuve</th>
+          <th style="width:90px">Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ══ PHASE 1 ══ -->
+      <tr>
+        <td class="col-phase ph1" rowspan="7">Phase 1<br>Demarrage de la mise en place <br>SMQ<br>(T4 2025)</td>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Fin déc. 2025</td>
+        <td class="done-item">✔ Créer la <b>cartographie des processus</b> (management, métier, support).</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable done-item">✔ Cartographie des processus (GitLab).</td>
+      </tr>
+      <tr>
+        <td class="col-periode">Fin déc. 2025</td>
+        <td class="done-item">✔ Valider la liste des processus avec le Management.</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable late-item">✘ Politique qualité — à produire</td>
+        
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Fin déc. 2025</td>
+        <td class="done-item">✔ Valider la planification et la démarche par le Service Qualité Central.</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable late-item">✘ Organigramme qualité — à produire</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Fin déc. 2025 <span class="moved-item">→ mars 2026</span></td>
+        <td class="late-item">✘ Définir la politique qualité et les objectifs stratégiques.</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable">—</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Fin déc. 2025 <span class="moved-item">→ mars 2026</span></td>
+        <td class="late-item">✘ Nommer les pilotes de processus.</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable">—</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Mars 2026</td>
+        <td class="done-item">✔ Définir la <b>politique qualité</b> et les objectifs stratégiques.</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable done-item">✔ Politique qualité validée.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Mars 2026</td>
+        <td class="done-item">✔ Nommer les pilotes de processus.</td>
+        <td class="col-resp">Management</td>
+        <td class="col-livrable late-item">✔ Organigramme qualité <span class="moved-item">→ reporté août 2026</span><br>✔ Validation QA Central <span class="moved-item">→ reporté juillet (rdv Cathy)</span></td>
+      </tr>
+
+      <!-- ══ PHASE 2 ══ -->
+      <tr>
+        <td class="col-phase ph2" rowspan="12">Phase 2<br>Cartes<br>d'identité<br>de processus</td>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Oct.–Déc. 2025</td>
+        <td class="done-item">✔ Définir le modèle standard de carte d'identité (HTML / GitLab Wiki).</td>
+        <td class="col-resp">Pilote Management, Pilote Qualité</td>
+        <td class="col-livrable done-item">✔ Modèle de fiche processus validé.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Oct.–Déc. 2025</td>
+        <td class="done-item">✔ Valider la structure minimale : finalité, périmètre, pilote, parties prenantes, entrées/sorties, activités clés, risques, indicateurs.</td>
+        <td class="col-resp">Pilote Management, Pilote Qualité</td>
+        <td class="col-livrable done-item">✔ Compte rendu de réunion.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Oct.–Déc. 2025</td>
+        <td class="done-item">✔ Sensibiliser les pilotes de processus à la démarche.</td>
+        <td class="col-resp">Pilote Management, Pilote Qualité</td>
+        <td class="col-livrable">—</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Jan.–Fév. 2026</td>
+        <td class="done-item">✔ Créer les cartes d'identité des processus principaux (Management, Qualité, Métier, Support).</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable done-item">✔ Cartes d'identité publiées dans GitLab / HTML.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Jan.–Fév. 2026</td>
+        <td class="done-item">✔ Aligner avec la cartographie existante (P1-01, P1-02, P2-xx, P3-xx).</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">—</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Jan.–Fév. 2026 <span class="moved-item">→ sept. 2026</span></td>
+        <td class="late-item">✘ Renseigner les liens vers les documents associés dans chaque carte d'identité.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable late-item">✘ Liens documentaires — à compléter sept. 2026</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag realise">Réalisé</span></td>
+        <td class="col-periode">Mars 2026</td>
+        <td class="done-item">✔ Finalisation des cartes d'identité (Management, Qualité, Métier, Support).</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable done-item">✔ Cartes publiées dans GitLab / HTML.<br>✔ Validation formalisée en Copil.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mars 2026 <span class="moved-item">→ août 2026</span></td>
+        <td class="col-action"><span class="note-cell">⚠ Logigrammes de processus reportés à août 2026.</span></td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">—</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Avril 2026</td>
+        <td class="late-item">✔ Rédiger et valider le Plan de Reprise d'Activité (PRA) — scénarios, responsabilités, délais.</td>
+        <td class="col-resp">Pilote Qualité, Direction</td>
+        <td class="col-livrable">PRA rédigé et validé. Document publié sur GitLab / Drive.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Intégrer une analyse de risques par processus (top 3–5 risques prioritaires) et associer un indicateur à chaque risque.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus, Direction</td>
+        <td class="col-livrable">Cartes d'identité incluant risques et KPI.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Réaliser les logigrammes de processus <span class="moved-item">(reportés du 30 mars)</span>.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Logigrammes publiés.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Valider les cartes complètes (risques, KPI, logigrammes) en Comité Qualité / Copil.</td>
+        <td class="col-resp">Pilote Qualité, Direction</td>
+        <td class="col-livrable">Validation formalisée (CR Copil).</td>
+      </tr>
+
+      <!-- ══ PHASE 3 ══ -->
+      <tr>
+        <td class="col-phase ph3" rowspan="11">Phase 3<br>Gestion<br>documentaire<br>&amp; indicateurs<br>(T1–T3 2026)</td>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Structurer l'arborescence documentaire GitLab / Google Drive.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Guide de gestion documentaire.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Rédiger le manuel qualité (V0 puis V1).</td>
+        <td class="col-resp">Pilote Qualité</td>
+        <td class="col-livrable">Manuel qualité V1.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Définir le référentiel des indicateurs (KPI par processus).</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Tableau de référentiel des indicateurs.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag en-retard">En retard</span></td>
+        <td class="col-periode">Mai 2026</td>
+        <td class="late-item">✔ Définir les règles de gestion documentaire (versionning, validation).</td>
+        <td class="col-resp">Pilote Qualité</td>
+        <td class="col-livrable">Guide de gestion documentaire.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juin–Juil. 2026</td>
+        <td>Rédiger les procédures et modes opératoires critiques (priorité label).</td>
+        <td class="col-resp">Pilote Qualité, Chefs de projet</td>
+        <td class="col-livrable">Procédures publiées sur GitLab.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juin–Juil. 2026</td>
+        <td>Créer les premiers tableaux de bord (KPI clés) dans GitLab / Sheets.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Tableaux de bord qualité alimentés.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juin–Juil. 2026</td>
+        <td>Lancer la collecte régulière des indicateurs et organiser les premières réunions qualité trimestrielles.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">CR de réunions qualité.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juin 2026</td>
+        <td class="new-task">➕ Consolider et finaliser les tableaux Excel de suivi qualité (KPI, plans d'actions) — valider en Copil avant collecte stable.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Tableaux Excel finalisés et validés.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Août–Sept. 2026</td>
+        <td>Compléter la documentation manquante pour les processus majeurs.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Mise à jour du référentiel d'indicateurs.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Août–Sept. 2026</td>
+        <td>Stabiliser la collecte des KPI (taux ≥ 95 %) et ajuster les indicateurs non pertinents.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Historique de données KPI sur plusieurs mois.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Septembre 2026</td>
+        <td class="moved-item">➕ Renseigner les liens vers les documents associés (procédures, modèles, tableaux de bord) dans chaque carte d'identité.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Cartes d'identité complètes avec liens dans GitLab / HTML.</td>
+      </tr>
+
+      <!-- ══ PHASE 4 ══ -->
+      <tr>
+        <td class="col-phase ph4" rowspan="5">Phase 4<br>Non-conformités<br>&amp; revue de<br>processus<br>(T2–T3 2026)</td>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juillet 2026</td>
+        <td>Rédiger la procédure de traitement des non-conformités.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Procédure NC validée.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juillet 2026</td>
+        <td>Créer les modèles d'Issues GitLab pour NC et actions correctives.</td>
+        <td class="col-resp">Pilote Qualité</td>
+        <td class="col-livrable">Templates GitLab opérationnels.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Juillet 2026</td>
+        <td>Former les équipes au signalement des NC et suggestions d'amélioration.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Premières fiches NC enregistrées.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Août–Sept. 2026</td>
+        <td>Mettre en place un suivi trimestriel des actions d'amélioration et suivre le taux de clôture.</td>
+        <td class="col-resp">Pilote Qualité, Direction</td>
+        <td class="col-livrable">Indicateur de taux de clôture des actions.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Août–Sept. 2026</td>
+        <td>Tenir des revues de processus (analyse KPI, NC, actions correctives).</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus, Direction</td>
+        <td class="col-livrable">CR de revues de processus.</td>
+      </tr>
+
+      <!-- ══ PHASE 5 ══ -->
+      <tr>
+        <td class="col-phase ph5" rowspan="6">Phase 5<br>Audits internes<br>&amp; préparation<br>label<br>(T3–T4 2026)</td>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Sept.–Oct. 2026</td>
+        <td>Rédiger la procédure d'audit interne et élaborer les grilles d'audit par processus.</td>
+        <td class="col-resp">Pilote Qualité, Auditeurs internes</td>
+        <td class="col-livrable">Procédure d'audit interne et grilles d'audit.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Sept.–Oct. 2026</td>
+        <td>Réaliser au moins un cycle d'audits internes ciblés label.</td>
+        <td class="col-resp">Pilote Qualité, Auditeurs internes</td>
+        <td class="col-livrable">Rapports d'audit interne.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Sept.–Oct. 2026</td>
+        <td>Mettre en œuvre et suivre les actions correctives issues des audits.</td>
+        <td class="col-resp">Pilote Qualité, Pilotes de processus</td>
+        <td class="col-livrable">Plan d'actions suite aux audits.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-venir">À venir</span></td>
+        <td class="col-periode">Sept.–Oct. 2026</td>
+        <td>Préparer la revue de direction (synthèse globale SMQ).</td>
+        <td class="col-resp">Direction, Pilote Qualité</td>
+        <td class="col-livrable">CR de revue de direction.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-planifier">À planifier</span></td>
+        <td class="col-periode">Août–Sept. 2026</td>
+        <td>Vérifier la complétude documentaire (manuel, processus, procédures) et la disponibilité des preuves (KPI, CR, NC, audits).</td>
+        <td class="col-resp">Pilote Qualité, Direction</td>
+        <td class="col-livrable">Check-list audit blanc.</td>
+      </tr>
+      <tr>
+        <td class="col-statut"><span class="tag a-planifier">À planifier</span></td>
+        <td class="col-periode">Août–Sept. 2026</td>
+        <td>Organiser une « répétition générale » de l'audit (revue de conformité interne).</td>
+        <td class="col-resp">Pilote Qualité, Direction, Pilotes de processus</td>
+        <td class="col-livrable">CR de répétition générale.</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <span contenteditable="true">Version 1.2</span> |
+    <span contenteditable="true">Mise à jour : 26/06/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

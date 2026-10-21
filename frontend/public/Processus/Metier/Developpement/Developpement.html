@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processus Développement P2-02 - OpenSILEX - OpenSILEX</title>
+    <!-- Charte existante -->
+    <link rel="stylesheet" href="../../../../css/charte.css">
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/table.css">
+    <link rel="stylesheet" href="../../../../css/logigramme/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus-modern.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+</head>
+
+<body class="modern-layout" data-process-id="P2-02">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/images/Logo.svg" target="_blank">
+                <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+        <nav id="navMenuWrap"></nav>
+
+        <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+</header>
+
+<!-- ══ HERO DU PROCESSUS ══ -->
+<div class="proc-hero">
+    <div class="proc-hero-inner">
+        <div>
+            <span class="proc-id-tag">P2-02 Développement</span>
+            <h1>Développement</h1>
+            <div class="proc-hero-sub">
+                <span class="h-sp1">SP1 – SP1 Cycle de développement</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LAYOUT SIDEBAR + CONTENU ══ -->
+<div class="modern-page-layout">
+
+    <!-- ─ SIDEBAR (remplie par js/sidebar.js) ─ -->
+    <aside class="modern-sidebar"></aside>
+
+    <!-- ─ CONTENU ─ -->
+    <main class="modern-content">
+
+        <!-- INFORMATIONS GÉNÉRALES -->
+        <section class="section" id="general">
+            <h2>Informations générales</h2>
+            <div class="info-grid-modern">
+                <div class="info-card-modern">
+                    <span class="ic-label">Pilotage</span>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Pilote :</strong>&nbsp;Responsable de l'équipe de développement</div>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Participants :</strong>&nbsp;Développeurs, Testeurs</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Périmètre</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>SP1 Cycle de développement : conception (phase conditionnelle), développement, tests, corrections de bugs, scripts, release</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Mode de pilotage</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Réunions Agile/Scrum : mêlée quotidienne, planification, rétrospective</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Tableau de suivi JIRA (backlog, sprints, bugs)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Revues de conception formelles avant démarrage du développement (si phase Conception activée)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINALITÉ -->
+        <section class="section" id="finalite">
+            <h2>Finalité du processus</h2>
+            <div class="finalite-box">
+                Concevoir, produire et faire évoluer les solutions logicielles (OpenSILEX, SilexExplorer) et les outils de traitement de données associés, en garantissant la qualité, la sécurité, la maintenabilité du code et la conformité aux besoins fonctionnels et techniques.
+            </div>
+        </section>
+
+        <!-- PARTIES PRENANTES -->
+        <section class="section" id="parties">
+            <h2>Parties prenantes</h2>
+            <div class="stakeholder-pills">
+                <span class="s-pill">Équipe de développement</span>
+                <span class="s-pill">Équipe d'exploitation (P2-01)</span>
+                <span class="s-pill">Déploiement applicatif (P2-04)</span>
+                <span class="s-pill">Management (P1-01)</span>
+                <span class="s-pill">Utilisateurs finaux</span>
+                <span class="s-pill">Utilisateurs métiers (si phase Conception activée)</span>
+            </div>
+        </section>
+
+        <!-- INTERACTIONS IO -->
+        <section class="section" id="io">
+            <h2>Interactions — Données d'entrée et de sortie</h2>
+            <div style="overflow-x:auto">
+            <table class="io-table">
+                <thead>
+                    <tr><th style="width:18%">Interlocuteur</th><th style="width:10%">Rôle</th><th style="width:36%">Entrées</th><th style="width:36%">Sorties</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Management (P1-01)</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Cartes JIRA priorisées, roadmap et allocation des ressources</li><li><span class="sp-tag sp1">SP1</span>Décisions de validation ou rejet des demandes</li><li><span class="sp-tag sp1">SP1</span>Plan de gestion des données (PGD), PGL</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Demandes d'arbitrage, plannings de sprint</li><li><span class="sp-tag sp1">SP1</span>KPI développement (avancement, qualité, bugs)</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Exploitation (P2-01)</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Cartes JIRA priorisées (bugs qualifiés, fonctionnalités, améliorations)</li><li><span class="sp-tag sp1">SP1</span>Contexte utilisateur, contraintes métier</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Cartes JIRA mises à jour (avancement, correction)</li><li><span class="sp-tag sp1">SP1</span>Outils de scripting</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Déploiement applicatif (P2-04)</td>
+                        <td><span class="role-badge">Aval</span></td>
+                        <td></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Nouvelle version / hotfix / release (artefacts de déploiement, tag Git, changelog)</li></ul></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- DOCUMENTATIONS -->
+        <section class="section" id="docs">
+            <h2>Documentations associées</h2>
+            <div class="doc-grid-modern">
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Guide de rédaction des user stories</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Standards de codage OpenSILEX</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Procédure de merge request</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Guide d'utilisation de Git et de la forge INRAE</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Grille de tests d'intégration</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Procédure de versionnement (semantic versioning)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Documentation technique (API, architecture)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Procédure de correction de bug</div></div>
+                <div class="doc-item-modern"><div>SP1 (Conception): Guide de conception UX/UI</div></div>
+                <div class="doc-item-modern"><div>SP1 (Conception): Modèles de maquettes</div></div>
+                <div class="doc-item-modern"><div>SP1 (Conception): Grille d'analyse de faisabilité et d'estimation de charge</div></div>
+                <div class="doc-item-modern"><div>SP1 (Conception): Templates de spécifications fonctionnelles et techniques</div></div>
+            </div>
+        </section>
+
+        <!-- RESSOURCES -->
+        <section class="section" id="ressources">
+            <h2>Ressources</h2>
+            <div class="resource-grid-modern">
+                <div class="resource-card-modern"><strong>Humaines</strong>Responsable équipe développement, développeurs, testeurs</div>
+                <div class="resource-card-modern"><strong>Outils</strong>JIRA (backlog, sprints, bugs), Git / forge INRAE (versionnement), IDE, outils d'analyse statique du code</div>
+                <div class="resource-card-modern"><strong>Environnements</strong>Développement, préproduction, production (géré par Infrastructure P2-03)</div>
+                <div class="resource-card-modern"><strong>Conception</strong>Outils de maquettage UX/UI, templates de spécifications</div>
+            </div>
+        </section>
+
+        <!-- ACTIVITÉS -->
+        <section class="section flow-section" id="activites">
+            <h2>Activités principales</h2>
+
+            <hr class="phase-sep" data-label="SP1 – SP1 Cycle de développement">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A1</div>
+                <div>
+                    <div class="flow-title-modern">C1. Analyse des besoins et conception fonctionnelle</div>
+                    <p class="flow-desc-modern">*Déclencheur : carte JIRA complexe (nouveau domaine fonctionnel, impact architectural, demande utilisateur significative).* Formalisation des besoins en exigences fonctionnelles (contraintes, rétrocompatibilité, interopérabilité), conception des maquettes UX/UI et présentation à l'Exploitation. La validation formelle conditionne le passage à C2 ; tout refus donne lieu à une itération documentée.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A2</div>
+                <div>
+                    <div class="flow-title-modern">C2. Conception technique</div>
+                    <p class="flow-desc-modern">Étude comparative des solutions, vérification de la cohérence avec l'architecture existante d'OpenSILEX et SilexExplorer, identification des composants et dépendances. Validation par le Management si impact stratégique, puis entrée en cycle de développement.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A3</div>
+                <div>
+                    <div class="flow-title-modern">D1. Planification du sprint</div>
+                    <p class="flow-desc-modern">Sélection des cartes JIRA (nouvelles fonctionnalités, bugs, scripts) ou des spécifications issues de la phase Conception, estimation de la charge, répartition des tâches et définition des objectifs du sprint. Temporalité : toutes les 3–4 semaines.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A4</div>
+                <div>
+                    <div class="flow-title-modern">D2. Développement, corrections de bugs et scripts</div>
+                    <p class="flow-desc-modern">Implémentation du code (OpenSILEX, SilexExplorer) selon les spécifications ou la demande directe, respect des standards de codage, rédaction et exécution des tests unitaires automatiques, corrections de bugs en préproduction et production, développement des outils de scripting à la demande, versionnement Git. Temporalité : boucle de sprint.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A5</div>
+                <div>
+                    <div class="flow-title-modern">D3. Documentation technique</div>
+                    <p class="flow-desc-modern">Documentation du code (commentaires, javadoc), mise à jour de la documentation de l'architecture si nécessaire, rédaction des notes techniques pour les évolutions majeures et documentation des API modifiées ou créées. Temporalité : pour chaque développement.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A6</div>
+                <div>
+                    <div class="flow-title-modern">D4. Revue de code</div>
+                    <p class="flow-desc-modern">Création d'une merge request, revue par un pair, vérification de la qualité et des bonnes pratiques, corrections des remarques, validation et fusion dans la branche de développement. Temporalité : pour chaque développement.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A7</div>
+                <div>
+                    <div class="flow-title-modern">D5. Tests d'intégration</div>
+                    <p class="flow-desc-modern">Exécution des tests d'intégration automatisés et des tests fonctionnels manuels sur la branche intégrée. En cas d'échec, retour en D2 avec corrections documentées. Temporalité : pour chaque développement.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A8</div>
+                <div>
+                    <div class="flow-title-modern">D6. Préparation Release ou Hotfix</div>
+                    <p class="flow-desc-modern">Création du tag Git, génération des artefacts de déploiement et rédaction des notes de version (changelog). Transmission au processus Déploiement applicatif (P2-04) pour mise en production ou correctif urgent (hotfix). Temporalité : à chaque hotfix ou release.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERFORMANCE -->
+        <section class="section" id="perf">
+            <h2>Performance</h2>
+
+            <h3>Objectifs</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>N°</th><th>Description de l'objectif</th><th>Lien avec la politique</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj1">Obj1</span></td>
+                        <td>Produire un logiciel (OpenSILEX, SilexExplorer) conforme aux spécifications fonctionnelles et techniques, en garantissant la qualité, la maintenabilité et la sécurité du code livré. Corriger les bugs identifiés en préproduction et production dans les délais.</td>
+                        <td><span class="politique satisfaction"></span> <span class="politique risque"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj2">Obj2</span></td>
+                        <td>Garantir la mise à disposition des outils de scripting de traitement des données à la demande.</td>
+                        <td><span class="politique satisfaction"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj3">Obj3</span></td>
+                        <td>Traduire les besoins qualifiés par l'Exploitation en spécifications fonctionnelles et techniques exploitables. Concevoir les maquettes UX/UI et l'architecture applicative pour les demandes complexes, afin de réduire les allers-retours coûteux en développement.</td>
+                        <td><span class="politique satisfaction"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KPI)</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'atteinte d'un résultat attendu. Ils répondent à la question : « Est-ce qu'on atteint nos objectifs ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Objectif</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Délai moyen de correction de bugs</strong></td><td class="kpi-target">≤ 3 jours</td><td>Par sprint</td><td>Moyenne du temps entre signalement et correction d'un bug. Source : JIRA / Mantis.</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Délai moyen de mise à disposition d'un outil de scripting</strong></td><td class="kpi-target">≤ 15 jours ouvrés</td><td>Semestriel</td><td>Moyenne du nombre de jours ouvrés entre la validation de la demande (carte JIRA) et la mise à disposition de l'outil au demandeur. Source : JIRA / suivi interne.</td><td><span class="badge-obj2">Obj2</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux d'évolutions significatives livrées sans retour en conception</strong></td><td class="kpi-target">≥ 85 %</td><td>Trimestriel</td><td>(Nb d'évolutions significatives livrées sans remise en cause des spécifications pendant le développement / Nb total d'évolutions significatives livrées) × 100 — mesuré uniquement si phase Conception activée. Source : JIRA.</td><td><span class="badge-obj3">Obj3</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs de fonctionnement</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'activité courante. Ils répondent à la question : « Que s'est-il passé ? Combien ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Définition / mode de calcul</th><th>Fréquence</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de cartes JIRA traitées</td><td>Décompte des cartes passées au statut « terminé » dans le mois. Source : JIRA.</td><td>Par sprint</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de merge requests validées</td><td>Décompte des merge requests approuvées et fusionnées. Source : forge INRAE / GitLab.</td><td>Par sprint</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de releases publiées</td><td>Décompte des tags de version créés (release). Source : GitLab.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de hotfixes publiés</td><td>Décompte des correctifs urgents déployés hors cycle de release. Source : Git / JIRA.</td><td>Par sprint</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre d'outils de scripting mis à disposition</td><td>Décompte des outils de scripting livrés à la demande. Source : suivi interne.</td><td>Semestriel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Revue de processus</td><td>Réalisation de la revue de processus annuelle</td><td>Annuel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de phases Conception activées</td><td>Décompte des demandes ayant déclenché la phase Conception (C1/C2). Source : JIRA.</td><td>Trimestriel</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <!-- RISQUES -->
+        <section class="section" id="risques">
+            <h2>Analyse des Risques</h2>
+            <h3>Risques</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Risque</th><th>Description</th><th>Actions de maîtrise / Mesures préventives</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R1</span></td><td><strong>Accumulation de la dette technique et manque de documentation</strong></td><td>Code mal structuré, non maintenu ou documenté de manière obsolète, ralentissant l'évolution des logiciels et la transmission des compétences.</td><td>Allocation systématique de 10 à 15 % du temps de sprint au refactoring et à la mise à jour de la documentation ; contrôle automatisé SonarQube.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R2</span></td><td><strong>Problèmes de performance</strong></td><td>Lenteur détectée par l'utilisateur, impactant l'expérience d'utilisation d'OpenSILEX ou SilexExplorer.</td><td>Mise en place de tests de charge avant chaque release majeure.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R3</span></td><td><strong>Non-qualité logicielle (régressions et bugs en production)</strong></td><td>Défauts et régressions non détectés en phase de test, impactant la stabilité et la confiance des utilisateurs.</td><td>Obligation de couverture de tests unitaires, revue de code par les pairs avant merge, intégration continue automatisée.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R4</span></td><td><strong>Mauvaise planification des sprints ou mauvaise priorisation</strong></td><td>Les objectifs de sprint ne sont pas atteints dans les délais, désorganisant la planification globale.</td><td>Planification entre développeurs puis validation par l'exploitation ; allocation de 5 à 10 % de temps de sprint pour les urgences.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R5</span></td><td><strong>Introduction de failles de sécurité dans le code</strong></td><td>Utilisation de dépendances à risques ou obsolescence de celles-ci.</td><td>Veille technologique, analyse des dépendances.</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KRI)</h3>
+            <span class="desc-note">Ces indicateurs sont un signal d'alerte. Ils répondent à la question : « Y a-t-il un signal qui annonce un problème à venir ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Risque</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux des MR de fonctionnalités qui induisent l'ajout ou la mise à jour de la documentation</strong></td><td class="kpi-target">≥ 80 %</td><td>Trimestriel</td><td>(Nb de merges avec mise à jour / Nb total de merges) × 100</td><td><span class="risk-id sub-process-1">R1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Temps de réponse moyen des services</strong></td><td class="kpi-target">≤ 2 s</td><td>Mensuel</td><td>Temps moyen de réponse des requêtes principales mesuré en production (outil de monitoring)</td><td><span class="risk-id sub-process-1">R2</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Couverture de code par les tests</strong></td><td class="kpi-target">≥ 70 %</td><td>Version majeure/mineure</td><td>% de code couvert par les tests unitaires</td><td><span class="risk-id sub-process-1">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de régressions détectées après déploiement</strong></td><td class="kpi-target">≤ 5 % des livraisons</td><td>Version majeure</td><td>(Nb de livraisons ayant généré une régression en production / Nb total de livraisons) × 100</td><td><span class="risk-id sub-process-1">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Nombre de bugs remontés en production</strong></td><td class="kpi-target">≤ 5 / mois</td><td>Mensuel</td><td>Nombre de bugs remontés en production après déploiement. Source : JIRA / Mantis.</td><td><span class="risk-id sub-process-1">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de complétion des sprints</strong></td><td class="kpi-target">≥ 85 %</td><td>Par sprint</td><td>(Nb de user stories complétées / Nb de user stories planifiées) × 100</td><td><span class="risk-id sub-process-1">R4</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de dépendances qui présentent des failles de sécurité connues</strong></td><td class="kpi-target">À définir</td><td>Par sprint</td><td>(Nb de dépendances à risques / Nb total de dépendances) × 100</td><td><span class="risk-id sub-process-1">R5</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- LOGIGRAMMES -->
+        <svg width="0" height="0" style="position:absolute"><defs>
+            <marker id="arr-head-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6b7280"/></marker>
+            <marker id="arr-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2937"/></marker>
+        </defs></svg>
+
+        <section class="section logigramme-section" id="logi-sp1">
+            <h2>Logigramme — SP1 · SP1 Cycle de développement</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 1066" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP1 — SP1 Cycle de développement</title>
+                <rect class="frame-sp1" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#1e40af;">SP1 — SP1 Cycle de développement</text>
+                <rect class="node-term" x="172" y="36" width="357" height="30" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Carte JIRA validée (bug, fonctionnalité, script)</text>
+                <line class="arr" x1="350" y1="66" x2="350" y2="92" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,92 438,118 350,144 262,118"/>
+                <text class="lbl-aside" x="350" y="115" text-anchor="middle">Phase Conception</text>
+                <text class="lbl-aside" x="350" y="129" text-anchor="middle">activée ?</text>
+                <line class="arr" x1="438" y1="118" x2="490" y2="118" marker-end="url(#arr-head)"/>
+                <text class="yes" x="448" y="112">Critere : complexite, nouveau domaine, impact architectural</text>
+                <rect class="node-refus" x="490" y="96" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="113" text-anchor="middle"></text>
+                <text class="no" x="355" y="160">Non</text>
+                <line class="arr" x1="350" y1="144" x2="350" y2="170" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="170" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="189" text-anchor="middle">C1 — Analyse des besoins &amp; conception fonctionnelle</text>
+                <text class="lbl-sub" x="350" y="206" text-anchor="middle">Exigences · maquettes UX/UI · présentation Exploitation · collecte retours</text>
+                <line class="arr" x1="350" y1="222" x2="350" y2="248" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,248 438,274 350,300 262,274"/>
+                <text class="lbl-aside" x="350" y="271" text-anchor="middle">Validation</text>
+                <text class="lbl-aside" x="350" y="285" text-anchor="middle">fonctionnelle ?</text>
+                <line class="arr" x1="438" y1="274" x2="490" y2="274" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="268">Non</text>
+                <rect class="node-refus" x="490" y="252" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="269" text-anchor="middle">Itération documentée</text>
+                <text class="lbl-sub" x="580" y="285" text-anchor="middle">retour C1</text>
+                <text class="yes" x="355" y="316">Oui</text>
+                <line class="arr" x1="350" y1="300" x2="350" y2="326" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="326" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="345" text-anchor="middle">C2 — Conception technique</text>
+                <text class="lbl-sub" x="350" y="362" text-anchor="middle">Solutions techniques · architecture · dépendances · validation Management si</text>
+                <text class="lbl-sub" x="350" y="376" text-anchor="middle">impact stratégique</text>
+                <line class="arr" x1="350" y1="392" x2="350" y2="418" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="165" y="418" width="370" height="46" rx="16"/>
+                <text class="lbl-title" x="350" y="439" text-anchor="middle">phase: Spécifications fonctionnelles · maquettes ·</text>
+                <text class="lbl-title" x="350" y="453" text-anchor="middle">architecture validée → D1</text>
+                <line class="arr" x1="350" y1="464" x2="350" y2="490" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="490" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="509" text-anchor="middle">D1 — Planification du sprint</text>
+                <text class="lbl-sub" x="350" y="526" text-anchor="middle">Sélection cartes JIRA · estimation charge · répartition tâches · objectifs</text>
+                <text class="lbl-sub" x="350" y="540" text-anchor="middle">sprint</text>
+                <line class="arr" x1="350" y1="556" x2="350" y2="582" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="582" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="601" text-anchor="middle">D2 — D2 — Développement &amp; tests unitaires</text>
+                <text class="lbl-sub" x="350" y="618" text-anchor="middle">Implémentation · standards codage · tests auto · correction bugs · scripts · Git</text>
+                <line class="arr" x1="350" y1="634" x2="350" y2="660" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="660" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="679" text-anchor="middle">D3 — Documentation technique</text>
+                <text class="lbl-sub" x="350" y="696" text-anchor="middle">Commentaires code · javadoc · notes techniques · API modifiées ou créées</text>
+                <line class="arr" x1="350" y1="712" x2="350" y2="738" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="738" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="757" text-anchor="middle">D4 — Revue de code</text>
+                <text class="lbl-sub" x="350" y="774" text-anchor="middle">Merge request · revue pair · vérification bonnes pratiques · corrections ·</text>
+                <text class="lbl-sub" x="350" y="788" text-anchor="middle">validation</text>
+                <line class="arr" x1="350" y1="804" x2="350" y2="830" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,830 438,863 350,896 262,863"/>
+                <text class="lbl-aside" x="350" y="853" text-anchor="middle">Tests</text>
+                <text class="lbl-aside" x="350" y="867" text-anchor="middle">d'intégration OK</text>
+                <text class="lbl-aside" x="350" y="881" text-anchor="middle">?</text>
+                <line class="arr" x1="438" y1="863" x2="490" y2="863" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="857">Non</text>
+                <rect class="node-refus" x="490" y="841" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="858" text-anchor="middle">Correction</text>
+                <text class="lbl-sub" x="580" y="874" text-anchor="middle">↻ retour D2</text>
+                <text class="yes" x="355" y="912">Oui</text>
+                <line class="arr" x1="350" y1="896" x2="350" y2="922" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="922" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="941" text-anchor="middle">D6 — Préparation Release ou Hotfix</text>
+                <text class="lbl-sub" x="350" y="958" text-anchor="middle">Tag Git · artefacts de déploiement · changelog · notes de version</text>
+                <line class="arr" x1="350" y1="974" x2="350" y2="1000" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="165" y="1000" width="370" height="46" rx="16"/>
+                <text class="lbl-title" x="350" y="1021" text-anchor="middle">Artefact · tag Git · changelog → P2-04 Déploiement</text>
+                <text class="lbl-title" x="350" y="1035" text-anchor="middle">applicatif</text>
+            </svg>
+            </div>
+        </section>
+
+        <!-- PIED DE PAGE DOC -->
+        <section class="section">
+            <div class="footer" style="text-align:right;font-size:.75rem;color:#547068;border-top:1px solid #D0E8DF;padding-top:10px">
+                <span contenteditable="true">Version 3.0</span> |
+                <span contenteditable="true">Mise à jour : /10/2026</span>
+            </div>
+        </section>
+
+    </main><!-- /modern-content -->
+</div><!-- /modern-page-layout -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/sidebar.js"></script>
+
+</body>
+</html>

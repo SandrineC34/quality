@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuel Bonnes Pratiques Qualité – DOC-QUAL-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/charte.css">
+    <link rel="stylesheet" href="../../css/documentation/MBPQ.css">
+    <link rel="stylesheet" href="../../css/processus/print.css">
+</head>
+<body>
+
+<button class="print-button" onclick="window.print()">🖨 Imprimer</button>
+
+<main class="page-wrapper">
+
+  <!-- LÉGENDE -->
+  <div class="legend-bar">
+    <span class="legend-title">Légende :</span>
+    <span class="legend-item"><span class="legend-dot sp1"></span> Processus documentaire &amp; NC</span>
+    <span class="legend-item"><span class="legend-dot sp2"></span> Amélioration continue &amp; Revues</span>
+    <span class="legend-item"><span class="legend-dot sp3"></span> Communication &amp; capitalisation</span>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-content">
+      <h1>Manuel des bonnes pratiques qualité</h1>
+      <p class="subtitle">Système de Management de la Qualité · Approche Docs-as-Code · ISO 9001:2015</p>
+    </div>
+  </div>
+
+
+
+
+  <!-- ═══════════════════════════════════════════
+       CONTEXTE — DOCS-AS-CODE
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon"></span> Contexte</h2>
+
+    <p style="margin-bottom:14px">
+      Ce manuel repose sur une approche moderne appelée <strong>Docs-as-Code</strong> : la documentation qualité est rédigée, versionnée et publiée exactement comme du code logiciel, à l'aide des mêmes outils et des mêmes pratiques (Git, branches, revues de code, intégration continue).
+    </p>
+
+    <div class="info-grid" style="margin-bottom:16px">
+      <div class="info-card sub-process-1">
+        <h3>Physolophie de la Méthode</h3>
+        <div>Un seul fichier HTML remplace la collection de procédures Word/PDF dispersées.</div>
+        <div style="margin-top:6px">Chaque modification est tracée automatiquement par Git : qui, quand, quoi.</div>
+        <div style="margin-top:6px">La validation passe par une Pull Request — preuve d'approbation pour l'auditeur ISO.</div>
+      </div>
+      <div class="info-card sub-process-2">
+        <h3>Object de la méthode</h3>
+        <div>Maitrise des  modifications des informations documentées.</div>
+        <div style="margin-top:6px">L'historique Git et les tags de version garantissent cette maîtrise, sans tableau de suivi supplémentaire.</div>
+        <div style="margin-top:6px">La branche <code>main</code> protégée empêche toute modification non approuvée.</div>
+      </div>
+      <div class="info-card sub-process-3">
+        <h3>Le différentes typologie de documents</h3>
+        <div><strong>Statiques</strong> — procédures, instructions : ce fichier HTML, versionné Git.</div>
+        <div style="margin-top:6px"><strong>Vivants</strong> — registres de suivi : Google Sheets référencés ici avec leur règle de nommage.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <strong>Principe fondateur.</strong> Ce fichier HTML <em>est</em> la procédure et <em>est</em> l'enregistrement de sa propre traçabilité. Il n'existe aucun autre document qualité « officiel » parallèle.
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       OBJET ET DOMAINE D'APPLICATION
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon"></span> Objet et domaine d'application</h2>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Objet</h3>
+        <div>Ce document rassemble, en un point unique, l'ensemble des bonnes pratiques du Système de Management de la Qualité (SMQ).</div>
+      </div>
+      <div class="info-card">
+        <h3>Champ d'application</h3>
+        <div>Tous les acteurs de l'organisation impliqués dans les processus couverts par la certification ISO 9001:2015 : pilotes de processus, Direction, et toute personne amenée à traiter une non-conformité ou à participer à une revue.</div>
+      </div>
+    </div>
+<!--tag-ok pour documentation approuvé-->
+    <h2 style="font-size:15px;margin:20px 0 10px;border:none;padding:0;color:#475569">Sections couvertes par ce manuel</h2>
+    <div class="objective-grid">
+      <div class="sub-process-1">§2 · Gestion des documents et maîtrise des modifications (Docs-as-Code / Git) <span class="tag-wip">Approuvé</span></div>
+      <div class="sub-process-1">§3 · Gestion des non-conformités <span class="tag-wip">Approuvé</span></div>
+      <div class="sub-process-1">§4 · Gestion des actions correctives <span class="tag-wip">Approuvé</span></div>
+      <div class="sub-process-2">§5 · Revues de direction <span class="tag-wip">Approuvé</span></div>
+      <div class="sub-process-3">§6 · Maîtrise des outils de mesure <span class="tag-wip">En cours de rédaction</span></div>
+      <div class="sub-process-3">§7 · Satisfaction client <span class="tag-wip">En cours de rédaction</span></div>
+      <div class="sub-process-3">§8 · Audits internes <span class="tag-wip">En cours de rédaction</span></div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       HISTORIQUE DES VERSIONS
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon"></span> Historique des versions</h2>
+
+    <div class="callout callout-info">
+      <strong>Traçabilité Docs-as-Code.</strong> Ce tableau est alimenté à chaque tag Git de version (<code>git tag -a v1.x.x -m "…"</code>). L'historique complet de toutes les modifications intermédiaires est accessible via <code>git log --oneline</code> sur le dépôt.
+    </div>
+
+    <table class="gen-table" style="margin-top:14px">
+      <thead>
+        <tr>
+          <th style="width:10%">Version</th>
+          <th style="width:14%">Date</th>
+          <th style="width:20%">Auteur</th>
+          <th style="width:14%">Commit / Tag</th>
+          <th>Objet de la modification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>v1.0.0</code></td>
+          <td>Juin 2025</td>
+          <td>J. Dupont – RQ</td>
+          <td><code>tag: v1.0.0</code></td>
+          <td>Création initiale — structure du manuel</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="color:#94a3b8;font-style:italic;text-align:center;font-size:13px">— Les versions suivantes seront ajoutées ici à chaque tag Git —</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-size:15px;margin:22px 0 10px;border:none;padding:0;color:#475569">Numérotation des versions (Semantic Versioning)</h2>
+    <div class="info-grid">
+      <div class="info-card sub-process-1">
+        <h3>MAJEUR (vX.0.0)</h3>
+        <div>Refonte structurelle du document ou ajout d'une nouvelle section.</div>
+      </div>
+      <div class="info-card sub-process-2">
+        <h3>MINEUR (v1.X.0)</h3>
+        <div>Ajout ou modification significative d'un paragraphe existant, validé via Pull Request.</div>
+      </div>
+      <div class="info-card sub-process-3">
+        <h3>CORRECTIF (v1.0.X)</h3>
+        <div>Correction typographique, reformulation mineure ou mise à jour d'un lien ou d'une référence.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="page-break"></div>
+
+  <!-- ═══════════════════════════════════════════
+       §2 — GESTION DES DOCUMENTS
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon"></span> §2 · Gestion des documents et maîtrise des modifications <span class="tag-ok" style="margin-left:8px">Approuvé</span></h2>
+    <!--<p style="font-size:12px;color:#94a3b8;margin-bottom:18px">Référence normative : <span class="tag-norm">ISO 9001:2015 §7.5.3</span></p>-->
+
+    <h2 style="font-size:15px;margin:0 0 12px;border:none;padding:0;color:#1e3a5f">2.1 · Les trois exigences ISO satisfaites par Git</h2>
+
+    <table class="gen-table">
+      <thead>
+        <tr><th>Exigence ISO</th><th>Mécanisme Git</th><th>Exemple concret</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Quoi &amp; Pourquoi</strong></td>
+          <td>Message du commit (conventionnel)</td>
+          <td><code>Fix(NC): Ajout colonne Coût suite revue SMQ</code></td>
+        </tr>
+        <tr>
+          <td><strong>Qui</strong></td>
+          <td>Auteur enregistré automatiquement par Git</td>
+          <td><code>Jean Dupont &lt;j.dupont@org.fr&gt;</code></td>
+        </tr>
+        <tr>
+          <td><strong>Quand</strong></td>
+          <td>Horodatage automatique du commit</td>
+          <td><code>2025-06-15 14:32:07 +0200</code></td>
+        </tr>
+        <tr>
+          <td><strong>Indice de version</strong></td>
+          <td>Tag Git annoté</td>
+          <td><code>git tag -a v1.1.0 -m "Revue Q2-2025"</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-size:15px;margin:20px 0 10px;border:none;padding:0;color:#1e3a5f">2.2 · Convention de messages de commit</h2>
+    <div class="code-label" style="margin-bottom:4px">Format recommandé</div>
+    <div class="code-block">
+      <pre>Type(Portée): Description courte en français
+
+Fix(NC-Template): Ajout de la colonne Coût suite à la revue SMQ
+Feat(Processus): Ajout du logigramme de traitement des réclamations
+Release(v1.1.0): Version finale après revue de processus Q2-2025</pre>
+    </div>
+    <div class="objective-grid">
+      <div class="sub-process-1"><code>Fix</code> — correction d'un contenu existant</div>
+      <div class="sub-process-1"><code>Feat</code> — ajout d'un nouveau contenu ou d'une section</div>
+      <div class="sub-process-2"><code>Refactor</code> — réorganisation sans modification de fond</div>
+      <div class="sub-process-3"><code>Release</code> — validation formelle d'une version (accompagne le tag)</div>
+    </div>
+
+    <h2 style="font-size:15px;margin:20px 0 12px;border:none;padding:0;color:#1e3a5f">2.3 · Circuit d'approbation (Gitflow)</h2>
+    <div class="flow-section">
+      <div class="phase-divider"></div>
+      <div class="flow-step sub-process-1">
+        <h4>1. Création d'une branche de travail</h4>
+        <ul>
+          <li>La branche <code>main</code> est protégée en écriture directe — aucune modification directe n'est autorisée.</li>
+          <li>Toute modification débute sur une branche dédiée : <code>git checkout -b fix/description-courte</code></li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-1">
+        <h4>2. Modification du fichier HTML et commit</h4>
+        <ul>
+          <li>Le rédacteur effectue ses modifications et les enregistre avec un message structuré (§2.2).</li>
+          <li>Le statut du document est mis à jour en <em>« En cours de modification »</em> dans le footer tant que la PR n'est pas approuvée.</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-2">
+        <h4>3. Ouverture d'une Pull Request (PR) / Merge Request (MR)</h4>
+        <ul>
+          <li>La PR décrit les modifications apportées et référence la NC ou la décision de revue à l'origine de la modification.</li>
+          <li>Elle constitue le déclencheur du circuit de revue et d'approbation.</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-2">
+        <h4>4. Revue et approbation par le Responsable Qualité</h4>
+        <ul>
+          <li>Le RQ (ou le pilote délégué) examine les modifications et approuve ou demande des corrections.</li>
+          <li><strong>La PR validée et archivée dans l'outil (GitLab/GitHub) est la preuve d'approbation formelle présentable à l'auditeur ISO.</strong></li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-3">
+        <h4>5. Fusion dans <code>main</code> et tag de version</h4>
+        <ul>
+          <li>Après approbation, la branche est fusionnée dans <code>main</code> — le document est publié.</li>
+          <li>Pour les versions MAJEUR ou MINEUR, un tag annoté est apposé : <code>git tag -a v1.1.0 -m "Release Q2-2025"</code></li>
+          <li>L'historique des révisions (§ Historique) est mis à jour dans ce fichier avant fusion.</li>
+        </ul>
+      </div>
+      <div class="phase-divider"></div>
+    </div>
+
+    <div class="callout callout-success">
+      <strong>Réponse type à l'auditeur ISO 9001.</strong> « Les branches principales sont protégées en écriture directe. Toute modification passe obligatoirement par une Pull Request, soumise à la revue et à l'approbation du Responsable Qualité avant publication. La PR validée, archivée dans notre outil, constitue notre preuve d'approbation. L'historique des commits et les tags assurent la traçabilité complète du qui, du quand et du quoi — sans tableau de suivi supplémentaire. »
+    </div>
+
+    <h2 style="font-size:15px;margin:20px 0 10px;border:none;padding:0;color:#1e3a5f">2.4 · Documents vivants — Google Sheets</h2>
+    <p style="margin-bottom:10px">Les documents vivants (registres de suivi, tableaux de bord) sont des Google Sheets. Ils ne sont pas hébergés dans Git mais <strong>référencés ici</strong> avec leur règle de nommage et leur indice de révision de trame.</p>
+
+    <div class="callout callout-info" style="margin-bottom:14px">
+      <strong>Règle de nommage obligatoire :</strong> <code>[Code-Outil] – [Libellé] – Rev [N]</code><br>
+      Exemple : <code>Outil-QUAL-01 – Suivi des non-conformités – Rev 1</code>
+    </div>
+
+    <table class="gen-table">
+      <thead>
+        <tr><th>Type de modification du tableur</th><th>Effet sur l'indice</th><th>Action requise</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ajout d'une nouvelle ligne (saisie courante)</td>
+          <td>Aucun changement</td>
+          <td>Exploitation normale — rien à faire</td>
+        </tr>
+        <tr>
+          <td>Ajout ou suppression d'une colonne</td>
+          <td>Rev N → Rev N+1</td>
+          <td>Mettre à jour le registre ci-dessous + noter la date dans ce manuel (PR)</td>
+        </tr>
+        <tr>
+          <td>Modification d'une formule ou règle de calcul</td>
+          <td>Rev N → Rev N+1</td>
+          <td>Idem + informer les utilisateurs concernés</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-size:15px;margin:20px 0 10px;border:none;padding:0;color:#1e3a5f">Registre des outils vivants en vigueur</h2>
+    <table class="gen-table">
+      <thead>
+        <tr><th>Référence</th><th>Titre</th><th>Révision trame</th><th>Date dernière modif. trame</th><th>Responsable</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Outil-QUAL-01</code></td>
+          <td>Suivi des non-conformités</td>
+          <td>Rev 1</td>
+          <td>Juin 2025</td>
+          <td>J. Dupont</td>
+        </tr>
+        <tr>
+          <td><code>Outil-QUAL-02</code></td>
+          <td>Registre des actions correctives</td>
+          <td>Rev 1</td>
+          <td>Juin 2025</td>
+          <td>J. Dupont</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="color:#94a3b8;font-style:italic;text-align:center;font-size:13px">— Ajouter les outils ici via Pull Request lors de leur création —</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <div class="page-break"></div>
+
+  <!-- ═══════════════════════════════════════════
+       §3 — NON-CONFORMITÉS
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon">⚠️</span> §3 · Gestion des non-conformités <span class="tag-ok" style="margin-left:8px">Approuvé</span></h2>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:18px">Référence normative : <span class="tag-norm">ISO 9001:2015 §10.2</span></p>
+
+    <p style="margin-bottom:16px">Une non-conformité (NC) est tout écart constaté entre une exigence (client, normative, réglementaire ou interne) et la réalité observée. Toute personne de l'organisation peut et doit en déclarer une.</p>
+
+    <div class="flow-section">
+      <div class="phase-divider"></div>
+      <div class="flow-step sub-process-1">
+        <h4>1. Détection et déclaration</h4>
+        <ul>
+          <li>Saisie dans <code>Outil-QUAL-01 – Suivi des NC</code> (Google Sheet) avec : date, description factuelle, processus concerné, détecteur.</li>
+          <li>Délai de saisie : au plus tard le jour ouvré suivant la détection.</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-1">
+        <h4>2. Correction immédiate (traitement de l'effet)</h4>
+        <ul>
+          <li>Le pilote du processus concerné définit une correction dans les <strong>48 h</strong> suivant la détection.</li>
+          <li>La correction neutralise l'effet de la NC et limite son impact opérationnel ou client.</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-1">
+        <h4>3. Évaluation et classification</h4>
+        <table class="gen-table" style="margin-top:8px">
+          <thead><tr><th>Criticité</th><th>Critères</th><th>Délai AC</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Majeure</strong></td><td>Impact client direct, écart normatif, récurrence ≥ 3×</td><td>15 jours</td></tr>
+            <tr><td><strong>Mineure</strong></td><td>Impact interne, premier constat, risque limité</td><td>30 jours</td></tr>
+            <tr><td><strong>Observation</strong></td><td>Potentiel de dérive, sans impact immédiat</td><td>60 jours ou prochaine revue</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-2">
+        <h4>4. Action corrective (traitement de la cause) → voir §4</h4>
+        <ul>
+          <li>Obligatoire pour toute NC majeure ou récurrente.</li>
+          <li>Analyse de cause racine avant toute définition d'action.</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-2">
+        <h4>5. Clôture</h4>
+        <ul>
+          <li>Correction effective et vérifiée.</li>
+          <li>Action corrective déployée et efficacité vérifiée.</li>
+          <li>Clôture validée par le RQ dans <code>Outil-QUAL-01</code>.</li>
+        </ul>
+      </div>
+      <div class="phase-divider"></div>
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>Distinction essentielle.</strong> La <em>correction</em> traite l'effet constaté (immédiat). L'<em>action corrective</em> traite la cause racine pour éviter la récurrence (§4). Les deux sont obligatoires pour toute NC significative.
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       §4 — ACTIONS CORRECTIVES
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon">🔧</span> §4 · Gestion des actions correctives <span class="tag-ok" style="margin-left:8px">Approuvé</span></h2>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:18px">Référence normative : <span class="tag-norm">ISO 9001:2015 §10.2</span></p>
+
+    <p style="margin-bottom:16px">L'action corrective (AC) vise à éliminer la <strong>cause racine</strong> d'une non-conformité afin d'éviter sa récurrence. Elle s'applique aux NC significatives ou récurrentes et aux risques identifiés en revue.</p>
+
+    <h2 style="font-size:15px;margin:0 0 12px;border:none;padding:0;color:#1e3a5f">4.1 · Outils d'analyse des causes</h2>
+    <div class="info-grid" style="margin-bottom:18px">
+      <div class="info-card sub-process-1">
+        <h3>5 Pourquoi</h3>
+        <div>Pour les NC simples ou de niveau mineur. On remonte la chaîne causale en posant 5 fois la question « Pourquoi ? ».</div>
+      </div>
+      <div class="info-card sub-process-2">
+        <h3>Ishikawa (5M)</h3>
+        <div>Pour les NC majeures ou impliquant plusieurs processus. Explore les causes selon les axes Méthode, Matière, Milieu, Matériel, Main-d'œuvre.</div>
+      </div>
+    </div>
+
+    <h2 style="font-size:15px;margin:0 0 12px;border:none;padding:0;color:#1e3a5f">4.2 · Processus de mise en œuvre</h2>
+    <div class="flow-section">
+      <div class="phase-divider"></div>
+      <div class="flow-step sub-process-1">
+        <h4>1. Analyser la cause racine</h4>
+        <ul><li>Choisir l'outil adapté (5 Pourquoi ou Ishikawa) et documenter l'analyse dans <code>Outil-QUAL-02</code>.</li></ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-1">
+        <h4>2. Définir l'action corrective</h4>
+        <ul>
+          <li>Description précise de l'action, responsable désigné, échéance.</li>
+          <li>L'action doit être proportionnée à la criticité de la NC.</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-2">
+        <h4>3. Mettre en œuvre et suivre</h4>
+        <ul><li>Le responsable déploie l'action dans le délai fixé et met à jour le registre.</li></ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-2">
+        <h4>4. Vérifier l'efficacité</h4>
+        <ul><li>À l'échéance, le RQ ou le pilote vérifie que la NC n'est pas réapparue et que la cause est bien traitée.</li></ul>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-step sub-process-3">
+        <h4>5. Clôturer et capitaliser</h4>
+        <ul>
+          <li>AC clôturée dans <code>Outil-QUAL-02</code>.</li>
+          <li>Si la solution est généralisable : intégration dans ce manuel via Pull Request.</li>
+        </ul>
+      </div>
+      <div class="phase-divider"></div>
+    </div>
+
+    <h2 style="font-size:15px;margin:16px 0 10px;border:none;padding:0;color:#1e3a5f">4.3 · Indicateurs de suivi</h2>
+    <table class="kpi-table">
+      <thead>
+        <tr><th>Indicateur</th><th>Objectif</th><th>Fréquence</th><th>Risque lié</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Taux de NC traitées dans les délais</td><td>≥ 90 %</td><td>Mensuelle</td><td><span class="risk-id sub-process-1">R1</span></td></tr>
+        <tr><td>Taux de récurrence des NC majeures</td><td>= 0 %</td><td>Trimestrielle</td><td><span class="risk-id sub-process-1">R1</span></td></tr>
+        <tr><td>Délai moyen de clôture (NC mineure)</td><td>≤ 25 jours</td><td>Trimestrielle</td><td><span class="risk-id sub-process-2">R2</span></td></tr>
+        <tr><td>Taux de clôture des AC dans les délais</td><td>≥ 90 %</td><td>Trimestrielle</td><td><span class="risk-id sub-process-2">R2</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <div class="page-break"></div>
+
+  <!-- ═══════════════════════════════════════════
+       §5 — REVUES DE DIRECTION
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon">📊</span> §5 · Revues de direction <span class="tag-ok" style="margin-left:8px">Approuvé</span></h2>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:18px">Référence normative : <span class="tag-norm">ISO 9001:2015 §9.3</span></p>
+
+    <p style="margin-bottom:16px">La revue de direction est le mécanisme par lequel la Direction s'assure de l'aptitude, de l'adéquation et de l'efficacité continue du SMQ, et décide des orientations d'amélioration.</p>
+
+    <div class="info-grid" style="margin-bottom:18px">
+      <div class="info-card sub-process-1">
+        <h3>Périodicité</h3>
+        <div><strong>Formelle :</strong> au minimum une fois par an.</div>
+        <div style="margin-top:6px"><strong>Extraordinaire :</strong> en cas de NC majeure récurrente, audit externe, réclamation client sérieuse.</div>
+      </div>
+      <div class="info-card sub-process-2">
+        <h3>Compte-rendu</h3>
+        <div>Rédigé et approuvé dans les <strong>5 jours ouvrés</strong> suivant la revue.</div>
+        <div style="margin-top:6px">Conservé comme enregistrement qualité (preuve §9.3.3). Peut être versionné Git avec un tag <code>revue-AAAA</code>.</div>
+      </div>
+    </div>
+
+    <h2 style="font-size:15px;margin:0 0 10px;border:none;padding:0;color:#1e3a5f">5.1 · Données d'entrée obligatoires (§9.3.2)</h2>
+    <div class="io-grid">
+      <div class="io-box">
+        <h4>Données à présenter</h4>
+        <div class="sub-process-1" style="margin-bottom:6px">Résultats des audits internes et externes</div>
+        <div class="sub-process-1" style="margin-bottom:6px">Satisfaction et retours clients</div>
+        <div class="sub-process-1" style="margin-bottom:6px">Performance des processus et conformité</div>
+        <div class="sub-process-2" style="margin-bottom:6px">État des NC, corrections et AC (Outil-QUAL-01 &amp; 02)</div>
+        <div class="sub-process-2" style="margin-bottom:6px">Résultats des actions issues de la revue précédente</div>
+        <div class="sub-process-3" style="margin-bottom:6px">Risques, opportunités et ressources</div>
+      </div>
+      <div class="io-box">
+        <h4>Données de sortie (décisions)</h4>
+        <div class="sub-process-1" style="margin-bottom:6px">Opportunités d'amélioration retenues</div>
+        <div class="sub-process-1" style="margin-bottom:6px">Besoins de modification du SMQ</div>
+        <div class="sub-process-2" style="margin-bottom:6px">Ressources nécessaires allouées</div>
+        <div class="sub-process-3" style="margin-bottom:6px">Sections de ce manuel à créer ou mettre à jour (Pull Request)</div>
+      </div>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:16px">
+      <strong>Lien Docs-as-Code.</strong> Les décisions de revue qui impliquent une mise à jour de ce manuel sont traduites en Pull Request. La revue de direction devient ainsi le mécanisme de gouvernance officiel du dépôt documentaire.
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       §6, 7, 8 — PLACEHOLDERS
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon">📐</span> §6 · Maîtrise des outils de mesure <span class="tag-wip" style="margin-left:8px">En cours de rédaction</span></h2>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:12px">Référence normative : <span class="tag-norm">ISO 9001:2015 §7.1.5</span></p>
+    <div class="placeholder">
+      <h4>Section en cours de rédaction</h4>
+      <p>Responsable : RQ · Échéance prévisionnelle : T3 2025 · Une Pull Request sera ouverte pour approbation avant publication.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2><span class="section-icon">⭐</span> §7 · Satisfaction client <span class="tag-wip" style="margin-left:8px">En cours de rédaction</span></h2>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:12px">Référence normative : <span class="tag-norm">ISO 9001:2015 §9.1.2</span></p>
+    <div class="placeholder">
+      <h4>Section en cours de rédaction</h4>
+      <p>Responsable : RQ · Échéance prévisionnelle : T3 2025 · Une Pull Request sera ouverte pour approbation avant publication.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2><span class="section-icon">🔍</span> §8 · Audits internes <span class="tag-wip" style="margin-left:8px">En cours de rédaction</span></h2>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:12px">Référence normative : <span class="tag-norm">ISO 9001:2015 §9.2</span></p>
+    <div class="placeholder">
+      <h4>Section en cours de rédaction</h4>
+      <p>Responsable : RQ · Échéance prévisionnelle : T4 2025 · Une Pull Request sera ouverte pour approbation avant publication.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       RISQUES DU SMQ
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <h2><span class="section-icon">🛡️</span> Risques du système documentaire</h2>
+    <table class="risk-table">
+      <thead>
+        <tr><th style="width:7%">N°</th><th style="width:30%">Risque identifié</th><th>Description et mesure de maîtrise</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="risk-id sub-process-1">R1</span></td>
+          <td><strong>Modification non autorisée du document</strong></td>
+          <td>La branche <code>main</code> est protégée. Toute modification passe par une Pull Request approuvée par le RQ. Mesure : protection de branche activée dans GitLab/GitHub.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-id sub-process-1">R2</span></td>
+          <td><strong>Version obsolète consultée par un utilisateur</strong></td>
+          <td>La version en vigueur est toujours accessible via le lien canonique du dépôt. La version et la date figurent en footer de ce document. Mesure : sensibilisation des utilisateurs + lien unique diffusé.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-id sub-process-2">R3</span></td>
+          <td><strong>Document vivant modifié sans mise à jour de l'indice</strong></td>
+          <td>La règle de gestion des révisions de trame est définie au §2.4. Mesure : le RQ vérifie le registre des outils lors de chaque revue de direction.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-id sub-process-2">R4</span></td>
+          <td><strong>Perte d'accès au dépôt Git</strong></td>
+          <td>Le dépôt est hébergé sur une plateforme avec sauvegarde automatique (GitLab/GitHub). Mesure : au moins deux administrateurs du dépôt désignés.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-id sub-process-3">R5</span></td>
+          <td><strong>Manuel non mis à jour après une revue de direction</strong></td>
+          <td>Chaque décision de revue impliquant ce manuel donne lieu à une action de rédaction tracée dans le compte-rendu de revue. Mesure : le CR de revue est lui-même versionné Git.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="footer">
+      <span contenteditable="true">Version v1.0.0</span> |
+      <span contenteditable="true">Mise à jour : Juin 2025 – J. Dupont – Responsable Qualité</span> |
+      <span contenteditable="true">Statut : Approuvé</span>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

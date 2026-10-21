@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - OpenSILEX</title>
+    <!-- Charte existante -->
+    <link rel="stylesheet" href="../../css/charte.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/processus/processus.css">
+    <link rel="stylesheet" href="../../css/processus/table.css">
+    <link rel="stylesheet" href="../../css/logigramme/processus.css">
+    <link rel="stylesheet" href="../../css/processus/processus-modern.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+</head>
+
+<body class="modern-layout" data-process-id="">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/images/Logo.svg" target="_blank">
+                <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+        <nav id="navMenuWrap"></nav>
+
+        <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+</header>
+
+<!-- ══ HERO DU PROCESSUS ══ -->
+<div class="proc-hero">
+    <div class="proc-hero-inner">
+        <div>
+            <span class="proc-id-tag"></span>
+            <h1></h1>
+            <div class="proc-hero-sub">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LAYOUT SIDEBAR + CONTENU ══ -->
+<div class="modern-page-layout">
+
+    <!-- ─ SIDEBAR (remplie par js/sidebar.js) ─ -->
+    <aside class="modern-sidebar"></aside>
+
+    <!-- ─ CONTENU ─ -->
+    <main class="modern-content">
+
+        <!-- INFORMATIONS GÉNÉRALES -->
+        <section class="section" id="general">
+            <h2>Informations générales</h2>
+            <div class="info-grid-modern">
+                <div class="info-card-modern">
+                    <span class="ic-label">Pilotage</span>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Pilote :</strong>&nbsp;</div>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Participants :</strong>&nbsp;</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Périmètre</span>
+
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Mode de pilotage</span>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PIED DE PAGE DOC -->
+        <section class="section">
+            <div class="footer" style="text-align:right;font-size:.75rem;color:#547068;border-top:1px solid #D0E8DF;padding-top:10px">
+                <span contenteditable="true">Version 1.0</span> |
+                <span contenteditable="true">Mise à jour : </span>
+            </div>
+        </section>
+
+    </main><!-- /modern-content -->
+</div><!-- /modern-page-layout -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../js/navigation.js"></script>
+<script src="../../js/sidebar.js"></script>
+
+</body>
+</html>

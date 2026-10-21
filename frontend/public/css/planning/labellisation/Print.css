@@ -1,0 +1,196 @@
+/* ===================================
+   PRINT CSS - Format A4 Paysage
+   =================================== */
+
+@media print {
+    /* Configuration de la page */
+    @page {
+        size: A4 landscape;
+        margin: 1cm 1cm 1.5cm 1cm;
+    }
+
+    /* Reset général pour l'impression */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+        line-height: 1.2;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Masquer le bouton d'impression */
+    .print-button {
+        display: none !important;
+    }
+
+    /* Masquer le champ de saisie de date à l'impression */
+    input[type="date"] {
+        display: none !important;
+    }
+    
+    div:has(> input[type="date"]) {
+        display: none !important;
+    }
+
+    /* Titres */
+    h1 {
+        font-size: 14pt;
+        color: #003366;
+        margin: 0 0 8px 0;
+        page-break-after: avoid;
+    }
+
+    h2 {
+        font-size: 11pt;
+        color: #003366;
+        margin: 12px 0 6px 0;
+        page-break-after: avoid;
+    }
+
+    /* Paragraphes */
+    p {
+        font-size: 9pt;
+        margin: 4px 0;
+        page-break-inside: avoid;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0;
+        font-size: 8pt;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tbody {
+        display: table-row-group;
+    }
+
+    th, td {
+        border: 1px solid #666;
+        padding: 4px 6px;
+        vertical-align: top;
+        text-align: left;
+    }
+
+    th {
+        background-color: #e5f0ff !important;
+        font-weight: bold;
+        font-size: 8.5pt;
+    }
+
+    /* Colonnes spécifiques */
+    th:nth-child(1), td:nth-child(1) {
+        width: 12%;
+    }
+
+    th:nth-child(2), td:nth-child(2) {
+        width: 42%;
+    }
+
+    th:nth-child(3), td:nth-child(3) {
+        width: 18%;
+    }
+
+    th:nth-child(4), td:nth-child(4) {
+        width: 28%;
+    }
+
+    /* Éviter les coupures */
+    tr {
+        page-break-inside: avoid;
+    }
+
+    /* Footer */
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 8pt;
+        color: #666;
+        padding: 5px 0;
+        border-top: 1px solid #999;
+    }
+
+    .footer-line {
+        margin: 0;
+    }
+
+    /* Afficher uniquement le footer de la page 1 sur la première page */
+    .footer-page1 {
+        display: block;
+    }
+
+    .footer-page2 {
+        display: none;
+    }
+
+    /* Sur la page 2 et suivantes, masquer footer page 1 et afficher footer page 2 */
+    @page :nth(2) {
+        @bottom-center {
+            content: element(footer-page2);
+        }
+    }
+
+   
+
+    /* Éviter les sauts de page inappropriés */
+    h2 + table {
+        page-break-before: avoid;
+    }
+
+    /* Optimisation de l'espace */
+    br {
+        line-height: 1.1;
+    }
+
+    /* Assurer la lisibilité du texte en gras */
+    b, strong {
+        font-weight: bold;
+        color: #000;
+    }
+
+    /* Réduire l'espace autour des phases pour tout tenir sur une page */
+    h2 + p {
+        margin-bottom: 4px;
+    }
+
+    /* Forcer l'impression des couleurs de fond */
+    th {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    /* Saut de page forcé */
+    .page-break {
+        page-break-after: always;
+        break-after: always;
+        display: block;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: none;
+        visibility: hidden;
+    }
+
+    /* Empêcher les titres suivant un page-break de rester sur la page précédente */
+    .page-break + h2,
+    .page-break + * {
+        page-break-before: always;
+        break-before: always;
+    }
+}

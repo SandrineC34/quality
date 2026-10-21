@@ -1,0 +1,1643 @@
+/* =====================================================
+   PROCESSUS.CSS — feuille fusionnée
+   Fusion de processus.css et processus-modern.css.
+   Les couleurs de référence proviennent de charte.css.
+   Charger charte.css (et common.css si nécessaire) avant ce fichier.
+   ===================================================== */
+
+/* =====================================================
+   PROCESSUS.CSS - Styles spécifiques aux processus
+   (version nettoyée : doublons fusionnés, erreurs corrigées)
+   ===================================================== */
+
+
+
+/* =================== SAUTS DE PAGE =================== */
+.page-break {
+    break-before: page;
+    page-break-before: always;
+}
+
+/* =================== CONTAINER =================== */
+
+
+/* =================== SECTIONS =================== */
+.section {
+    max-width: var(--breakpoint-desktop);
+    margin: 0 auto var(--spacing-xl) auto;
+    background: white;
+    padding: 26px 30px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07);
+    page-break-inside: avoid;
+}
+
+.section h2,
+.section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color, #0a2540);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section h3 {
+    margin-top: 24px;
+}
+
+/* =================== COULEURS DES SOUS-PROCESSUS =================== */
+/*.sub-process,
+.sub-process-1, .sub-process-2, .sub-process-3, .sub-process-4 {
+    padding: 0.5rem 0.75rem 0.5rem 10px;
+    list-style: none;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-radius: 0.5rem;
+    color: inherit;
+    margin-bottom: 0.75rem;
+}
+
+.sub-process   { background: var(--sub-process-bg);   border-left-color: var(--sub-process-border); }
+.sub-process-1 { background: var(--sub-process-1-bg); border-left-color: var(--sub-process-1-border); }
+.sub-process-2 { background: var(--sub-process-2-bg); border-left-color: var(--sub-process-2-border); }
+.sub-process-3 { background: var(--sub-process-3-bg); border-left-color: var(--sub-process-3-border); }
+.sub-process-4 { background: var(--sub-process-4-bg); border-left-color: var(--sub-process-4-border); }
+
+.sub-process:last-child,
+.sub-process-1:last-child,
+.sub-process-2:last-child,
+.sub-process-3:last-child,
+.sub-process-4:last-child { margin-bottom: 0; }*/
+
+/* =================== LÉGENDE DES SOUS-PROCESSUS =================== */
+.legend-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: center;
+    max-width: var(--breakpoint-desktop);
+    margin: 2rem auto 0 auto;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.8rem;
+    background: #f8fafc;
+    border-radius: 0 0 6px 6px;
+}
+
+.footer .legend-bar {
+    margin: 0 auto;
+    padding: 0.4rem 0;
+    border-top: none;
+    background: transparent;
+}
+
+.legend-bar .legend-title {
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.legend-bar .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    color: #475569;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Les couleurs reprennent exactement les bordures des sub-process */
+.legend-dot.sp1 { background-color: var(--sub-process-1-border); }
+.legend-dot.sp2 { background-color: var(--sub-process-2-border); }
+.legend-dot.sp3 { background-color: var(--sub-process-3-border); }
+.legend-dot.sp4 { background-color: var(--sub-process-4-border); }
+
+@media print {
+    .legend-bar {
+        break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* =================== BADGES OBJECTIFS =================== */
+/* ── Badge standard ── */
+.obj-id {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.6em;
+    height: 1.7em;
+    padding: 0 0.45em;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+    margin-right: 0.35em;
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1.5px solid #93c5fd;
+}
+
+/* ── Version inline pour les tables ── */
+.obj-id-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.6em;
+    height: 1.6em;
+    padding: 0 0.35em;
+    border-radius: 4px;
+    font-size: 0.76em;
+    font-weight: 700;
+    vertical-align: middle;
+    margin: 1px 2px;
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1.5px solid #93c5fd;
+}
+
+/* ── Badges objectifs colorés par SP ── */
+.badge-obj1 {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1.5px solid #93c5fd;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 3px;
+}
+
+.badge-obj2 {
+    display: inline-block;
+    background: #d1fae5;
+    color: #065f46;
+    border: 1.5px solid #6ee7b7;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 3px;
+}
+
+.badge-obj3 {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    border: 1.5px solid #fcd34d;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 3px;
+}
+
+.badge-obj4 {
+    display: inline-block;
+    background: #f3f4f6;
+    color: #4b5563;
+    border: 1.5px solid #9ca3af;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 3px;
+}
+
+/* ── Alignement flex dans la grille objectifs ── */
+.objective-grid .sub-process-1 {
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+}
+
+/* ── Badges KPI / KRI / Fonctionnement / autres ── */
+.badge-kpi   { background: #4aa0f1;  color: #fff; padding: 2px 7px; border-radius: 4px; font-size: 0.78em; font-weight: bold; white-space: nowrap; }
+.badge-kri   { background: #f5823f;  color: #fff; padding: 2px 7px; border-radius: 4px; font-size: 0.78em; font-weight: bold; white-space: nowrap; }
+.badge-fonct { background: #3A5F2B;  color: #fff; padding: 2px 7px; border-radius: 4px; font-size: 0.78em; font-weight: bold; white-space: nowrap; }
+.badge-opp   { display: inline-block; background: #6ee7b7; color: #058451; border: 1.5px solid #058451; padding: 2px 7px; border-radius: 4px; font-size: 0.78em; font-weight: bold; white-space: nowrap; }
+.badge-kio   { background: #caa9f1;  color: #fff; padding: 2px 7px; border-radius: 4px; font-size: 0.78em; font-weight: bold; white-space: nowrap; }
+
+/* =================== TABLEAU INTERACTIONS =================== */
+.io-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+.io-table thead tr {
+    background: var(--primary-color, #0a2540);
+    color: #fff;
+}
+
+.io-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.io-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.io-table tbody tr:nth-child(even) { background: #f8fafc; }
+
+.io-table td {
+    padding: 10px 14px;
+    line-height: 1.45;
+    white-space: normal !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.io-table td:first-child,
+.io-table td:nth-child(2) { 
+    font-weight: 600; 
+    white-space: normal !important; 
+}
+
+/* ── Listes sans puce native ── */
+.io-table ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.io-table ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    line-height: 1.4;
+}
+
+/* Les styles SP sont mutualisés dans la section « Palette commune » en fin de fichier. */
+
+/* ── Badge rôle neutre ── */
+.role-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    white-space: nowrap;
+}
+
+/* ── Légende locale (même style que .legend-bar) ── */
+.io-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.2rem;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.80rem;
+    color: #475569;
+}
+
+.io-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.io-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Reprend exactement .legend-dot.sp* */
+.io-legend-dot.sp1 { background: var(--sub-process-1-border, #93c5fd); }
+.io-legend-dot.sp2 { background: var(--sub-process-2-border, #6ee7b7); }
+.io-legend-dot.sp3 { background: var(--sub-process-3-border, #fcd34d); }
+.io-legend-dot.sp4 { background: var(--sub-process-4-border, #9ca3af); }
+
+/* =================== BADGES SOUS-PROCESSUS LÉGENDE =================== */
+.badge,
+.process,
+.otag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 9px;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+/* Labels auto via ::after — ne rien écrire dans le <span> */
+.MGMT::after     { content: "MGNT"; }
+.SMQ::after      { content: "SMQ"; }
+.COM::after      { content: "COM"; }
+.CONCEP::after   { content: "CONCEP"; }
+.DEV::after      { content: "DEV"; }
+.INFRA::after    { content: "INFRA"; }
+.MCO::after      { content: "MCO"; }
+.DEPLOY::after   { content: "DEPLOY"; }
+.FOURN::after     { content: "FOURN"; }
+.Conception::after { content: "Conception"; }
+
+/* Couleurs */
+.MGMT       { background: #dbeafe; color: #1e40af; }
+.SMQ        { background: #d1fae5; color: #065f46; }
+.COM        { background: #ccfbf1; color: #087450; }
+.CONCEP     { background: #dcfce7; color: #047857; }
+.DEV        { background: #e7f5ea; color: #065f46; }
+.INFRA      { background: #fef3c7; color: #92400e; }
+.MCO        { background: #ede9fe; color: #4c1d95; }
+.DEPLOY     { background: #f3f4f6; color: #374151; }
+.FOURN      { background: #add8e6; color: #1e40af; }
+.Conception { background: #cffafe; color: #155e75; }
+
+/* =================== LIGNES RISQUES / OPPORTUNITÉS =================== */
+.risque-row { background: #FDF2EC; }
+.opport-row { background: #EAF5EE; }
+
+/* ── Badge "Risque" en ligne (type column) ── */
+.badge-risque {
+    display: inline-block;
+    background: #FDF2EC;
+    color: #7B2D00;
+    border: 1.5px solid #e07b39;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* ── Colonne Obj lié dans table risques ── */
+.obj-col { white-space: nowrap; text-align: center; }
+
+/* ── Section indicateurs opportunités ── */
+.kio-section-title {
+    font-size: 0.95em;
+    font-weight: 700;
+    color: #1A6B3C;
+    border-bottom: 2px solid #6ee7b7;
+    padding-bottom: 4px;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+/* ── Badge "aucun lien politique" ── */
+.badge-no-pol {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 1.5px solid #cbd5e1;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 600;
+    white-space: nowrap;
+    font-style: italic;
+}
+
+/* =================== GRILLE INFOS =================== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    min-height: 350px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-card);
+    border-left: var(--border-width-accent) solid var(--primary-color);
+    transition: var(--transition-all);
+}
+
+.info-card h3 {
+    color: var(--primary-color);
+    font-size: var(--font-size-card-h3);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-card ul { padding-left: 15px; }
+.info-card li { margin-bottom: 5px; font-size: 13px; }
+
+/* =================== OBJECTIFS =================== */
+.objective-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    margin-top: var(--spacing-md);
+    align-items: stretch;
+}
+
+.objective-grid > div {
+    height: 100%;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* =================== PARTIES PRENANTES =================== */
+.stakeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.stakeholder-item {
+    background: var(--card-bg-alt);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--primary-color);
+    text-align: left;
+    transition: var(--transition-transform);
+}
+
+.stakeholder-item:hover { transform: translateY(-2px); }
+
+/* =================== DONNÉES D'ENTRÉE / SORTIE =================== */
+.io-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: var(--spacing-md);
+}
+
+.io-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    overflow: hidden;
+}
+
+.io-box h4 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-md);
+}
+
+/* =================== DOCUMENTATION =================== */
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+/* =================== ACTIVITÉS PRINCIPALES =================== */
+.flow-step {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 15px 18px;
+    margin-bottom: 4px;
+    transition: transform 0.2s;
+    /* Plus de bg/border-left fixes ici — géré par les classes sub-process-* */
+}
+
+.flow-step:hover { transform: translateX(10px); }
+
+.flow-step.sub-process-1 {
+    background: var(--sub-process-1-bg);
+    border-left: 5px solid var(--sub-process-1-border);
+}
+
+.flow-step.sub-process-2 {
+    background: var(--sub-process-2-bg);
+    border-left: 5px solid var(--sub-process-2-border);
+}
+
+.flow-step.sub-process-3 {
+    background: var(--sub-process-3-bg);
+    border-left: 5px solid var(--sub-process-3-border);
+}
+
+.flow-step.sub-process-4 {
+    background: var(--sub-process-4-bg);
+    border-left: 5px solid var(--sub-process-4-border);
+}
+
+.flow-step h4 {
+    color: var(--primary-color);
+    font-size: var(--font-size-flow-h4);
+    margin-bottom: 0.8rem;
+}
+
+.flow-step ul          { padding-left: 17px; margin: 0; list-style-type: disc; }
+.flow-step ul ul       { padding-left: 17px; margin-top: 3px; list-style-type: circle; }
+.flow-step ul ul ul     { padding-left: 25px; list-style-type: square; }
+.flow-step ul ul ul ul  { padding-left: 35px; list-style-type: none; }
+.flow-step li          { margin-bottom: 4px; font-size: 13px; }
+
+.flow-arrow {
+    text-align: center;
+    font-size: 18px;
+    color: #94a3b8;
+    margin: 5px 0;
+}
+
+/* =================== TABLEAUX RISQUES & KPI =================== */
+.risk-table,
+.kpi-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    margin-top: var(--spacing-md);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+
+.risk-table th,
+.risk-table td,
+.kpi-table th,
+.kpi-table td {
+    border-bottom: var(--border-width) solid var(--table-border-color);
+    padding: 0.75rem;
+    text-align: left;  
+}
+
+.risk-table th,
+.kpi-table th {
+    background: var(--card-bg-alt);
+    color: var(--primary-color);
+    
+}
+
+.risk-table tbody tr:nth-child(even),
+.kpi-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+    
+}
+
+.risk-table tbody tr:hover,
+.kpi-table tbody tr:hover {
+    background: #eef2f7;
+   
+}
+
+
+/* =================== BADGES RISQUE / KPI =================== */
+/*
+ * Usage : <span class="risk-id sub-process-1">R1</span>
+ * La couleur suit automatiquement la classe sub-process-* appliquée.
+ */
+.risk-id,
+.kpi-id {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: var(--font-weight-bold);
+    font-size: 12px;    
+    background: var(--primary-color);
+    color: var(--text-color-white);
+}
+
+
+
+/* ==========Reference ========== */
+.risk-table td.reference,
+.kpi-table td.reference {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.7em;
+    vertical-align: middle;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* =================== BADGES PROCESSUS =================== */
+/* Le label s'affiche automatiquement via ::after */
+.Management::after      { content: "Management"; }
+.Exploitation::after    { content: "Exploitation"; }
+.Developpement::after   { content: "Développement"; }
+.Infrastructure::after  { content: "Infrastructure"; }
+.Support::after         { content: "Support"; }
+.Utilisateur::after     { content: "Utilisateur"; }
+.Interne::after         { content: "Interne"; }
+.AllProcessus::after    { content: "Tous processus"; }
+
+.Management      { background: #dbeafe; color: #1e40af; }
+.Exploitation    { background: #d1fae5; color: #065f46; }
+.Developpement   { background: #ccfbf1; color: #087450; }
+.Infrastructure  { background: #dcfce7; color: #047857; }
+.Support         { background: #e7f5ea; color: #065f46; }
+.Utilisateur     { background: #ffffff; color: #1e40af; }
+.Interne         { background: #fef3c7; color: #92400e; }
+.AllProcessus    { background: #add8e6; color: #1e40af; }
+
+/* Process badges numérotés (compatibilité historique) */
+.process-1  { background: #dbeafe; color: #1e40af; }
+.process-2  { background: #d1fae5; color: #065f46; }
+.process-3  { background: #ccfbf1; color: #087450; }
+.process-4  { background: #dcfce7; color: #047857; }
+.process-5  { background: #e7f5ea; color: #065f46; }
+.process-6  { background: #d0f5e0; color: #000; }
+.process-7  { background: #fef3c7; color: #92400e; }
+.process-8  { background: #add8e6; color: #1e40af; }
+.process-9  { background: #d3d3d3; color: #374151; }
+.process-10 { background: #fef3c7; color: #1bbba0; }
+.process-11 { background: #fef3c7; color: #5d910a; }
+
+/* =================== BADGES POLITIQUE QUALITÉ =================== */
+.politique {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    margin-left: 6px;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 9px;
+}
+
+/* Le label s'affiche automatiquement via ::after */
+.satisfaction::after { content: "Satisfaction des utilisateurs"; }
+.fair::after         { content: "Données FAIR"; }
+.confiance::after    { content: "Confiance des PP"; }
+.amelioration::after { content: "Amélioration Continue"; }
+.compétence::after   { content: "Compétences-condition Travail"; }
+.risque::after       { content: "Maitrise Risques/Sécurité"; }
+
+/* Couleurs */
+.satisfaction { background: #dbeafe; color: #1e40af; }
+.fair         { background: #d1fae5; color: #065f46; }
+.confiance    { background: #ccfbf1; color: #087850; }
+.amelioration { background: #e7f5ea; color: #065f46; }
+.compétence   { background: #fef3c7; color: #92400e; }
+.risque       { background: #fee2e2; color: #7f1d1d; }
+
+/* =================== LOGIGRAMME =================== */
+.logigramme-section {
+    background: var(--card-bg-alt);
+    padding: var(--spacing-lg);
+}
+
+.logigramme-wrapper {
+    position: relative;
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 80%;
+}
+
+.logigramme-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.mobile-message {
+    display: none;
+    background: #e3f2fd;
+    border: 2px solid #2196f3;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: #1565c0;
+    margin: 20px 0;
+}
+
+.mobile-message h3 {
+    margin-top: 0;
+    color: #1565c0;
+}
+
+/* =================== FOOTER =================== */
+.footer {
+    display: block;
+    width: 100%;
+    margin: 10px auto 0 auto;
+    padding: 8px;
+    text-align: center;
+    font-size: 15pt;
+    border-top: var(--border-width) solid var(--primary-color);
+}
+
+.footer-content {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-line {
+    margin: 3px 0;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* =================== TEMPORALITÉS DES ACTIVITÉS =================== */
+.temporalite-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.temp-conditionnel {
+    background: var(--sub-process-3-bg);
+    color: var(--sub-process-3-text);
+    border: 1px solid var(--sub-process-3-border);
+}
+
+.temp-periodique {
+    background: var(--sub-process-1-bg);
+    color: var(--sub-process-1-text);
+    border: 1px solid var(--sub-process-1-border);
+}
+
+.temp-parallele {
+    background: var(--sub-process-2-bg);
+    color: var(--sub-process-2-text);
+    border: 1px solid var(--sub-process-2-border);
+}
+
+.temp-demande {
+    background: var(--sub-process-4-bg);
+    color: var(--sub-process-4-text);
+    border: 1px solid var(--sub-process-4-border);
+}
+
+/* =================== RESPONSIVE & PRINT =================== */
+@media (max-width: 768px) {
+    .io-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: var(--font-size-xxl); }
+    .logigramme-wrapper { display: none; }
+    .mobile-message { display: block; }
+}
+
+@media (max-width: 480px) {
+    .mobile-message { font-size: 14px; padding: 15px; }
+}
+
+@media print {
+    .mobile-message { display: none !important; }
+    .logigramme-wrapper { display: block !important; page-break-inside: avoid; }
+    .logigramme-iframe { min-height: 1200px; }
+}
+
+/* =================== COMPATIBILITÉ CLASSES HISTORIQUES =================== */
+
+/* Flow steps - activités */
+.flow-step.activite1 {
+    border-left: 5px solid #3b82f6;
+    background: #f8fbff;
+}
+
+.flow-step.activite2 {
+    border-left: 5px solid #10b981;
+    background: #f8fffe;
+}
+
+.flow-step.activite3 {
+    border-left: 5px solid #f59e0b;
+    background: #fffdf5;
+}
+
+/* Phase dividers */
+.phase-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.phase-divider::before,
+.phase-divider::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.phase-divider.activite1 { color: #1e40af; }
+.phase-divider.activite1::before { background: #bfdbfe; }
+
+.phase-divider.activite2 { color: #065f46; }
+.phase-divider.activite2::before { background: #a7f3d0; }
+
+.phase-divider.activite3 { color: #92400e; }
+.phase-divider.activite3::before { background: #fcd34d; }
+
+/* Risk badges */
+.risk-activite1,
+.risk-activite2,
+.risk-activite3 {
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: var(--font-weight-bold);
+    display: inline-block;
+}
+
+.risk-activite1 { background: #3b82f6; color: var(--text-color-white); }
+.risk-activite2 { background: #10b981; color: var(--text-color-white); }
+.risk-activite3 { background: #fcd34d; color: #92400e; }
+
+/* IO data items */
+.data-item.donnee1 {
+    background: #eff6ff;
+    border-left: var(--border-width-thick) solid #3b82f6;
+}
+
+.data-item.donnee2 {
+    background: #f0fdf4;
+    border-left: var(--border-width-thick) solid #10b981;
+}
+
+.data-item.donnee3 {
+    background: #fffbeb;
+    border-left: var(--border-width-thick) solid #f59e0b;
+}
+
+.data-item.donnee4 {
+    background: #e9ecef;
+    border-left: var(--border-width-thick) solid gray;
+}
+
+/* Tags */
+.otag-1 { background: #dbeafe; color: #1e40af; }
+.otag-2 { background: #d1fae5; color: #065f46; }
+.otag-3 { background: #fef3c7; color: #92400e; }
+.otag-4 { background: #8f8e89; color: darkblue; }
+
+/* Objective badges */
+.objective-badge {
+    border-left: 4px solid;
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.objective-badge.obj-1 {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e3a8a;
+}
+
+.objective-badge.obj-2 {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #064e3b;
+}
+
+.objective-badge.obj-3 {
+    background: #fffbeb;
+    border-color: #f59e0b;
+    color: #78350f;
+}
+
+/* Couleurs des objectifs alignées sur la charte MISTEa */
+:root {
+  --obj1-bg: color-mix(in srgb, var(--mistea-yellow) 20%, white);
+  --obj1-c: var(--mistea-dark-green);
+  --obj1-bd: color-mix(in srgb, var(--mistea-yellow) 55%, white);
+  --obj2-bg: color-mix(in srgb, var(--mistea-lime) 20%, white);
+  --obj2-c: var(--mistea-dark-green);
+  --obj2-bd: color-mix(in srgb, var(--mistea-lime) 50%, white);
+  --obj3-bg: color-mix(in srgb, var(--mistea-green) 16%, white);
+  --obj3-c: var(--mistea-dark-green);
+  --obj3-bd: color-mix(in srgb, var(--mistea-green) 45%, white);
+  --obj4-bg: color-mix(in srgb, var(--mistea-dark-green) 10%, white);
+  --obj4-c: var(--mistea-dark-green);
+  --obj4-bd: color-mix(in srgb, var(--mistea-dark-green) 25%, white);
+}
+
+/* =====================================================
+   SURCOUCHE MODERNE + PALETTE MUTUALISÉE
+   ===================================================== */
+
+/* ══════════════════════════════════════════
+   RESET DU BODY / WRAPPER pour le layout sidebar
+══════════════════════════════════════════ */
+body.modern-layout {
+  background: var(--page-bg);
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+
+  
+}
+
+/* Masque le .page-wrapper original quand on est en layout modern */
+body.modern-layout .page-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ══════════════════════════════════════════
+   TOP NAV — remplace .main-header de common.css
+══════════════════════════════════════════ */
+body.modern-layout .main-header {
+  background: var(--mistea-dark-green) !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  border-bottom: 2px solid var(--mistea-green);
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+
+body.modern-layout .main-header .nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+/* Logo zone */
+body.modern-layout .main-header .logo {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 28px;
+  flex-shrink: 0;
+}
+body.modern-layout .main-header .logo img {
+  height: 36px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+/* Nav links */
+body.modern-layout .main-header nav {
+  flex: 1;
+}
+body.modern-layout .main-header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+  height: 58px;
+  align-items: center;
+  margin: 0; padding: 0;
+}
+body.modern-layout .main-header nav ul li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+body.modern-layout .main-header nav ul li a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 14px;
+  font-size: .8rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  border-radius: 0;
+  border-bottom: 3px solid transparent;
+  transition: color .15s, border-color .15s, background .15s;
+  white-space: nowrap;
+}
+body.modern-layout .main-header nav ul li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,.07);
+  border-bottom-color: var(--mistea-lime);
+  transform: none;
+}
+body.modern-layout .main-header nav ul li.active-nav > a {
+  color: #fff;
+  border-bottom-color: var(--mistea-lime);
+}
+
+/* Submenu */
+body.modern-layout .main-header .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--mistea-dark-green);
+  border: 1px solid rgba(255,255,255,.12);
+  border-top: 2px solid var(--mistea-lime);
+  border-radius: 0 0 8px 8px;
+  min-width: 210px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  padding: 6px 0;
+  z-index: 300;
+  list-style: none;
+  display: none;
+  margin: 0;
+}
+body.modern-layout .main-header .has-submenu:hover > .submenu,
+body.modern-layout .main-header .submenu-open > .submenu {
+  display: block;
+}
+body.modern-layout .main-header .submenu li {
+  height: auto;
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+body.modern-layout .main-header .submenu li a {
+  height: auto;
+  padding: 9px 18px;
+  border-bottom: none !important;
+  font-size: .8rem;
+  color: rgba(255,255,255,.75);
+  display: block;
+}
+body.modern-layout .main-header .submenu li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,.09);
+  border-bottom: none !important;
+}
+body.modern-layout .main-header .submenu li a.current-page {
+  color: var(--mistea-lime);
+  font-weight: 600;
+}
+
+/* Print btn in nav */
+.print-btn-nav {
+  margin-left: auto;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.8);
+  font-size: .75rem;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: .2s;
+  flex-shrink: 0;
+}
+.print-btn-nav:hover { background: rgba(255,255,255,.18); }
+
+/* ══════════════════════════════════════════
+   HERO STRIP DU PROCESSUS
+══════════════════════════════════════════ */
+.proc-hero {
+  background: var(--mistea-dark-green);
+  position: relative;
+  overflow: hidden;
+  padding: 24px 0 28px;
+  border-bottom: 3px solid transparent;
+  border-image: var(--mistea-gradient) 1;
+}
+.proc-hero::before {
+  content: '';
+  position: absolute;
+  right: -40px; top: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.035);
+  pointer-events: none;
+}
+.proc-hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.proc-id-tag {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--opensilex-lime);
+  margin-bottom: .5rem;
+  display: block;
+}
+.proc-hero h1 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: .5rem;
+}
+.proc-hero-sub {
+  font-size: .79rem;
+  color: rgba(255,255,255,.55);
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.proc-hero-sub span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.proc-hero-sub span::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.h-sp1::before { background: var(--opensilex-blue); }
+.h-sp2::before { background: var(--opensilex-yellow); }
+.h-sp3::before { background: var(--opensilex-lime); }
+.proc-hero-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.proc-meta-chip {
+  font-size: .74rem;
+  color: rgba(255,255,255,.6);
+}
+.proc-meta-chip strong { color: #fff; }
+
+/* ══════════════════════════════════════════
+   PAGE LAYOUT — grille sidebar + contenu
+══════════════════════════════════════════ */
+.modern-page-layout {
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
+}
+
+/* ── SIDEBAR ── */
+.modern-sidebar {
+  background: var(--sb-bg);
+  border-right: 1px solid var(--sb-border);
+  position: sticky;
+  top: 58px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-border) transparent;
+}
+.sb-group { padding: 14px 12px 6px; }
+.sb-group-label {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--sb-muted);
+  padding: 0 6px;
+  margin-bottom: 3px;
+  display: block;
+}
+.sb-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: .79rem;
+  color: var(--sb-text);
+  text-decoration: none;
+  transition: background .12s, color .12s;
+  margin-bottom: 1px;
+}
+.sb-link:hover  { background: var(--sb-active-bg); color: var(--mistea-dark-green); }
+.sb-link.active { background: var(--sb-active-bg); color: var(--mistea-dark-green); font-weight: 600; }
+.sb-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sd-all  { background: var(--mistea-green); }
+.sd-sp1  { background: var(--opensilex-blue); }
+.sd-sp2  { background: var(--opensilex-green); }
+.sd-sp3  { background: var(--opensilex-lime); }
+.sd-sp4  { background: var(--mistea-dark-green); }
+.sb-sep  { height: 1px; background: var(--sb-border); margin: 6px 12px; }
+.sb-foot {
+  margin-top: auto;
+  padding: 12px 16px;
+  border-top: 1px solid var(--sb-border);
+  font-size: .71rem;
+  color: var(--sb-muted);
+}
+
+/* ── CONTENT AREA ── */
+.modern-content {
+  padding: 28px 36px 72px;
+  min-width: 0;
+}
+
+/* ── Sections (surcharge légère du processus.css) ── */
+.modern-content .section {
+  max-width: 100%;
+  margin-bottom: 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+/* h2 avec barre dégradée */
+.modern-content .section h2 {
+  font-size: .98rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  color: var(--mistea-dark-green);
+}
+.modern-content .section h2::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--mistea-gradient);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════
+   PALETTE COMMUNE — SP / risques / opportunités
+   Une seule définition pour tous les badges
+══════════════════════════════════════════ */
+.sp-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: .70rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  line-height: 1.6;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.sp-tag.sp,
+.sp-tag.spx {
+  background: color-mix(in srgb, var(--mistea-green) 12%, white);
+  color: var(--mistea-dark-green);
+  border-color: color-mix(in srgb, var(--mistea-green) 35%, white);
+}
+.risk-id.sub-process-1,
+.kpi-id.sub-process-1,
+.sp-tag.sp1,
+.fc-sp1,
+.sd-sp1 {
+    background: color-mix(in srgb, var(--opensilex-blue) 20%, white);
+    color: color-mix(in srgb, var(--opensilex-blue) 70%, black);
+    border: 1px solid color-mix(in srgb, var(--opensilex-blue) 28%, white);
+}
+
+.risk-id.sub-process-2,
+.kpi-id.sub-process-2,
+.sp-tag.sp2,
+.fc-sp2 {
+    background: color-mix(in srgb, var(--mistea-yellow) 22%, white);
+    color: var(--mistea-dark-green);
+    border: 1px solid color-mix(in srgb, var(--mistea-yellow) 45%, white);
+}
+
+.risk-id.sub-process-3,
+.kpi-id.sub-process-3,
+.sp-tag.sp3,
+.fc-sp3 {
+    background: color-mix(in srgb, var(--mistea-lime) 20%, white);
+    color: var(--mistea-dark-green);
+    border: 1px solid color-mix(in srgb, var(--mistea-lime) 40%, white);
+}
+
+.risk-id.sub-process-4,
+.kpi-id.sub-process-4,
+.sp-tag.sp4,
+.fc-sp4 {
+    background: color-mix(in srgb, var(--mistea-dark-green) 10%, white);
+    color: var(--mistea-dark-green);
+    border: 1px solid color-mix(in srgb, var(--mistea-dark-green) 25%, white);
+}
+
+/* Risque / opportunité : couleur commune et centralisée */
+:root {
+  --risk-opportunity-bg: color-mix(in srgb, var(--mistea-green) 12%, white);
+  --risk-opportunity-text: var(--mistea-dark-green);
+  --risk-opportunity-border: color-mix(in srgb, var(--mistea-green) 45%, white);
+}
+.risque-id, .badge-risque, .badge-opp, .badge-opportunite {
+  display: inline-block;
+  background: var(--risk-opportunity-bg);
+  color: var(--risk-opportunity-text);
+  border: 1.5px solid var(--risk-opportunity-border);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: .78em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.risque-row, .opport-row { background: color-mix(in srgb, var(--mistea-green) 5%, white); }
+
+/* ══════════════════════════════════════════
+   BADGES OBJ — couleurs distinctes des SP
+══════════════════════════════════════════ */
+.badge-obj1 {
+  background: var(--obj1-bg) !important;
+  color: var(--obj1-c) !important;
+  border: 1.5px solid var(--obj1-bd) !important;
+}
+.badge-obj2 {
+  background: var(--obj2-bg) !important;
+  color: var(--obj2-c) !important;
+  border: 1.5px solid var(--obj2-bd) !important;
+}
+.badge-obj3 {
+  background: var(--obj3-bg) !important;
+  color: var(--obj3-c) !important;
+  border: 1.5px solid var(--obj3-bd) !important;
+}
+.badge-obj4 {
+  background: var(--obj4-bg) !important;
+  color: var(--obj4-c) !important;
+  border: 1.5px solid var(--obj4-bd) !important;
+}
+
+/* ══════════════════════════════════════════
+   ACTIVITÉS — flow steps
+══════════════════════════════════════════ */
+.flow-step-modern {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--card-border);
+}
+.flow-step-modern:last-child { border-bottom: none; }
+.flow-circle {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+.flow-title-modern {
+  font-size: .87rem;
+  font-weight: 600;
+  color: var(--mistea-dark-green);
+  margin-bottom: 3px;
+}
+.flow-desc-modern {
+  font-size: .81rem;
+  color: #547068;
+  line-height: 1.65;
+  margin: 0;
+}
+.phase-sep {
+  border: none;
+  border-top: 1px dashed var(--card-border);
+  margin: 10px 0;
+  position: relative;
+}
+.phase-sep::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -9px; left: 0;
+  background: #fff;
+  padding: 0 8px;
+  font-size: .67rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--sb-muted);
+}
+
+/* ══════════════════════════════════════════
+   STAKEHOLDER PILLS
+══════════════════════════════════════════ */
+.stakeholder-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.s-pill {
+  background: var(--page-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: .79rem;
+  color: var(--mistea-dark-green);
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════
+   FINALITÉ BOX
+══════════════════════════════════════════ */
+.finalite-box {
+  font-size: .9rem;
+  color: #0D2822;
+  line-height: 1.8;
+  padding: 14px 18px;
+  border-left: 3px solid var(--mistea-green);
+  background: rgba(0,163,137,.04);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ══════════════════════════════════════════
+   INFO GRID
+══════════════════════════════════════════ */
+.info-grid-modern {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 12px;
+}
+.info-card-modern {
+  background: var(--page-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+.info-card-modern .ic-label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--opensilex-ardoise);
+  margin-bottom: 9px;
+  display: block;
+}
+.sp-line-modern {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 5px 0;
+  font-size: .82rem;
+  color:var(--mistea-dark-green);
+  line-height: 1.55;
+  border-bottom: 1px solid var(--card-border);
+}
+ .sp-line-modern:last-child { border-bottom: none; }
+/* Remove bottom border for the first line in each info card (title area) */
+.info-card-modern .sp-line-modern:first-child { border-bottom: none; }
+/* Remove inner separators in info cards */
+.info-card-modern .sp-line-modern { border-bottom: none; }
+
+/* ══════════════════════════════════════════
+   DOC GRID
+══════════════════════════════════════════ */
+.doc-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+  gap: 8px;
+}
+.doc-item-modern {
+  background: var(--page-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 5px;
+  padding: 9px 12px;
+  font-size: .79rem;
+  color: #0D2822;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════
+   RESOURCE GRID
+══════════════════════════════════════════ */
+.resource-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+.resource-card-modern {
+  background: var(--page-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: .81rem;
+  color: #0D2822;
+}
+.resource-card-modern strong {
+  display: block;
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--sb-muted);
+  margin-bottom: 4px;
+}
+
+/* ══════════════════════════════════════════
+   KPI TARGET
+══════════════════════════════════════════ */
+.kpi-target { font-weight: 700; color: var(--mistea-dark-green); }
+.desc-note {
+  font-size: .78rem;
+  color: #547068;
+  font-style: italic;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* ══════════════════════════════════════════
+   FOOTER — surcharge common.css
+══════════════════════════════════════════ */
+body.modern-layout .nav-footer {
+  background: var(--mistea-dark-green) !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border-top: 2px solid var(--mistea-green);
+  color: rgba(255,255,255,.55);
+  font-size: .75rem;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .modern-page-layout {
+    grid-template-columns: 1fr;
+  }
+  .modern-sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--sb-border);
+  }
+  .modern-sidebar .sb-group { display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 12px; }
+  .modern-sidebar .sb-group-label { width: 100%; }
+  .sb-link { font-size: .75rem; padding: 5px 8px; }
+  .sb-sep { display: none; }
+  .modern-content { padding: 18px 14px 48px; }
+  .info-grid-modern { grid-template-columns: 1fr; }
+  body.modern-layout .main-header nav { display: none; }
+  body.modern-layout .main-header nav.open { display: block; }
+  body.modern-layout .main-header .menu-toggle { display: block; }
+  body.modern-layout .main-header nav ul {
+    flex-direction: column;
+    height: auto;
+    background: rgba(0,0,0,.25);
+    padding: 8px 0;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+  }
+}
+
+/* ══════════════════════════════════════════
+   IMPRESSION
+══════════════════════════════════════════ */
+@media print {
+  body.modern-layout .main-header { display: none !important; }
+  .modern-sidebar { display: none !important; }
+  .modern-page-layout { display: block !important; }
+  .modern-content { padding: 0 !important; }
+  .proc-hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .modern-content .section { break-inside: avoid; border: none; box-shadow: none; margin-bottom: 18px; }
+  .print-btn-nav { display: none !important; }
+}

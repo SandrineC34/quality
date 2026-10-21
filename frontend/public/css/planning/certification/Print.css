@@ -1,0 +1,176 @@
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 8mm 8mm;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .print-button {
+        display: none !important;
+    }
+
+    .container {
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .cartouche {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: var(--primary-color) !important;
+        border-radius: 10px !important;
+        padding: 14px 18px !important;
+    }
+
+    .page-break {
+        page-break-after: always !important;
+        break-after: page !important;
+    }
+
+    /* ── TABLE (pages 1-2) ── */
+    table {
+        font-size: 11px;
+        page-break-inside: auto;
+    }
+    th, td { padding: 6px 8px; }
+    tr { page-break-inside: avoid; }
+
+    th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: var(--entete) !important;
+        color: #ffffff !important;
+    }
+    tr:nth-child(even) td {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: #dbeafe !important;
+    }
+    tr:nth-child(odd) td {
+        background: #ffffff !important;
+    }
+
+    /* ── TIMELINE (page 4) ── */
+
+    h2 {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        margin: 0 0 8px 0 !important;
+        font-size: 16px !important;
+    }
+
+    .timeline-wrap {
+        overflow: visible !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin-top: 8px !important;
+        padding-bottom: 0 !important;
+        width: 100% !important;
+    }
+
+    .timeline-bar {
+        min-width: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        height: 130px !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .month {
+        font-size: 10px !important;
+        top: 10px !important;
+    }
+
+    .yearline {
+        top: 36px !important;
+    }
+
+    .milestone {
+        top: 22px !important;
+        height: 40px !important;
+    }
+
+    .milestone::after {
+        font-size: 9px !important;
+        top: 44px !important;
+        min-width: 90px !important;
+        max-width: 110px !important;
+        padding: 5px 6px !important;
+        border-radius: 7px !important;
+        line-height: 1.3 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .milestone.up { height: 16px !important; }
+    .milestone.up::after {
+        top: 18px !important;
+        width: 80px !important;
+    }
+
+    .milestone.lab::after {
+        top: 18px !important;
+        height: auto !important;
+        width: 80px !important;
+        min-width: unset !important;
+        max-width: unset !important;
+    }
+
+    .milestone.dir::after,
+    .milestone.cert::after,
+    .milestone.aud::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .monthlabel {
+        top: 24px !important;
+        height: 16px !important;
+    }
+
+    .you-are-here {
+        top: 22px !important;
+        height: 55px !important;
+    }
+    .you-are-here::before {
+        font-size: 8px !important;
+        top: 28px !important;
+        padding: 2px 6px !important;
+    }
+    .you-are-here::after {
+        width: 8px !important;
+        height: 8px !important;
+    }
+
+    .tag {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* ── Légende ── */
+    .legend {
+        display: block !important;
+        margin-top: 10px !important;
+        font-size: 11px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+    .legend .tag {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+        margin-right: 5px !important;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin-top: 8px !important;
+        font-size: 10px !important;
+    }
+}

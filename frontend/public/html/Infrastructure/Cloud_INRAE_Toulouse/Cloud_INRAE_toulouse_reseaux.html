@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schéma Réseau OpenStack Toulouse</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <link rel="stylesheet" href="../../../../css/charte.css">
+  <link rel="stylesheet" href="../../../css/infrastructure/Cloud_INRAE - Toulouse/Cloud_INRAE_Toulouse_md.css">  
+  <link rel="stylesheet" href="../../../../css/common.css">
+
+  
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "dark",
+      themeVariables: {
+        background: "#0f172a",
+        primaryColor: "#1e293b",
+        primaryTextColor: "#e5e7eb",
+        lineColor: "#94a3b8",
+        tertiaryColor: "#1f2937",
+        fontFamily: "Inter, Arial"
+      },
+      flowchart: {
+        nodeSpacing: 80,
+        rankSpacing: 100,
+        padding: 25,
+        curve: 'basis'
+      }
+    });
+  </script>
+</head>
+
+<body>
+   <div class="titre">
+      <div class="titre-content">
+        <h1>Infrastructure Toulouse2</h1>
+        <p class="subtitle">Infrastructure2</p>
+        </div>
+    </div>
+
+    <div class="diagram-wrapper" id="diagramWrapper">
+      <div id="diagram">
+        <pre class="mermaid">
+graph TB
+    subgraph Internet["🌐 INTERNET"]
+        Users["Utilisateurs<br/>Internet"]
+        Admin["Administrateurs<br/>SSH"]
+    end
+
+    subgraph PublicNetwork["📡 RÉSEAU PUBLIC - 147.100.202.0/24"]
+        FloatingIP1(("Floating IP<br/>147.100.202.248<br/>→ Bastion"))
+        FloatingIP2(("Floating IP<br/>147.100.202.17<br/>→ Proxy"))
+    end
+
+    subgraph DMZ["🛡️ RÉSEAU PRIVÉ - 10.0.0.0/24"]
+        Bastion["🔐 Phis-ssh-Bastion<br/>10.0.0.26<br/>Security: SSH-only"]
+        Proxy["🔀 Opensilex-proxy<br/>10.0.0.96<br/>Security: HTTP/HTTPS"]             
+    end
+
+    subgraph AppNetwork["⚙️ MACHINES APPLICATIVES"]
+        Phis1["Phis-opensilex-1<br/>10.0.0.122"]
+        Phis2["Phis-opensilex-2<br/>10.0.0.208"]
+        OS1["Opensilex-server-1<br/>10.0.0.22"]
+        OS2["Opensilex-server-2<br/>10.0.0.110"]      
+    end
+
+    subgraph MonitorNetwork["📊 MONITORING"]
+        Monitor["Phis-monitoring<br/>10.0.0.183<br/>Grafana: 3000<br/>Prometheus: 9090"]
+    end
+
+    subgraph DataNetwork["🗄️ BASE DE DONNÉES - 10.0.3.0/24"]
+        Mongo["Opensilex-mongodb<br/>10.0.0.135<br/>Port: 27017"]
+        Mongo1["Opensilex-mongodb-1<br/>10.0.0.234<br/>Port: 27017"]
+        RDF1["Opensilex-rdf-1<br/>10.0.0.160<br/>Port: 8666"]
+        PhisRDF["Phis-rdf-1<br/>10.0.0.212<br/>Port: 8666"]
+        PhisGRA["Phis-graphql<br/>10.0.0.29<br/>Port: 4000"]       
+    end
+
+    subgraph BackupNetwork["💾 BACKUP"]
+        Backup1["Opensilex-Backup<br/>10.0.0.90"]     
+        Backup2["4p-Backup<br/>10.0.0.198"]               
+    end
+
+    %% Connexions Internet
+    Users -->|HTTPS:443| FloatingIP2
+    Admin -->|SSH:22| FloatingIP1
+    
+    %% NAT/Floating IPs
+    FloatingIP1 <-.->|NAT| Bastion
+    FloatingIP2 <-.->|NAT| Proxy
+    
+    %% DMZ vers App
+    Proxy -->|HTTP:8080| Phis1
+    Proxy -->|HTTP:8080| Phis2
+    Proxy -->|HTTP:8080| OS1
+    Proxy -->|HTTP:8080| OS2
+    
+    %% Connexion SSH via bastion
+    Bastion -.->|SSH:22| Phis1
+    Bastion -.->|SSH:22| Phis2
+    Bastion -.->|SSH:22| Proxy
+    Bastion -.->|SSH:22| OS1
+    Bastion -.->|SSH:22| OS2
+    Bastion -.->|SSH:22| Mongo
+    Bastion -.->|SSH:22| Mongo1
+    Bastion -.->|SSH:22| RDF1
+    Bastion -.->|SSH:22| PhisRDF
+    Bastion -.->|SSH:22| Backup1
+    Bastion -.->|SSH:22| Backup2     
+    Bastion -.->|SSH:22| Monitor
+    
+    %% App vers Data
+    Phis1 -->|MongoDB:27017| Mongo
+    Phis2 -->|MongoDB:27017| Mongo
+    OS1 -->|MongoDB:27017| Mongo1
+    OS2 -->|MongoDB:27017| Mongo1
+    Phis1 -->|RDF4J:8666| RDF1
+    Phis2 -->|RDF4J:8666| RDF1
+    OS1 -->|RDF4J:8666| PhisRDF
+    OS2 -->|RDF4J:8666| PhisRDF
+    
+    %% Data vers Backup
+    Mongo -.->|rsync| Backup1
+    RDF1 -.->|rsync| Backup1
+    Mongo1 -.->|rsync| Backup1
+    PhisRDF -.->|rsync| Backup1
+    
+    %% Monitoring
+    Monitor -.->|Metrics:9100| Phis1
+    Monitor -.->|Metrics:9100| Phis2
+    Monitor -.->|Metrics:9100| OS1
+    Monitor -.->|Metrics:9100| OS2
+    Monitor -.->|Metrics:9100| Mongo
+    Monitor -.->|Metrics:9100| RDF1
+    
+    %% Styles
+    classDef public fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    classDef dmz fill:#e67e22,stroke:#d35400,stroke-width:3px,color:#fff
+    classDef app fill:#9b59b6,stroke:#8e44ad,stroke-width:3px,color:#fff
+    classDef data fill:#27ae60,stroke:#229954,stroke-width:3px,color:#fff
+    classDef backup fill:#34495e,stroke:#2c3e50,stroke-width:3px,color:#fff
+    classDef monitor fill:#16a085,stroke:#138d75,stroke-width:3px,color:#fff
+    classDef api fill:#f1c40f,stroke:#f39c12,stroke-width:3px,color:#000
+    classDef floatingip fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    
+    class FloatingIP1,FloatingIP2 floatingip
+    class Bastion,Proxy dmz
+    class Phis1,Phis2,OS1,OS2 app
+    class Mongo,Mongo1,RDF1,PhisRDF data
+    class PhisGRA api
+    class Backup1,Backup2 backup
+    class Monitor monitor
+        </pre>
+      </div>
+    </div>
+
+    <div class="legend">
+      <h2>Légende des couleurs</h2>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-color" style="background: #3498db;"></div>
+          <span>Floating IPs (Réseau Public)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #e67e22;"></div>
+          <span>Réseau Privé (Bastion, Proxy)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #9b59b6;"></div>
+          <span>Serveurs Application</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #27ae60;"></div>
+          <span>Bases de données</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #f1c40f;"></div>
+          <span>API (GraphQL)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #16a085;"></div>
+          <span>Monitoring</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #34495e;"></div>
+          <span>Backup</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-line">
+          <span>Version 1.0</span> | <span>17 Décembre 2025</span>
+        </div>            
+      </div>
+    </div>
+  </div>
+</body>
+</html>

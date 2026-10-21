@@ -1,0 +1,377 @@
+/* =====================================================
+   CHARTE.CSS - Variables CSS centralisées
+   Toutes les couleurs et constantes du projet
+   ===================================================== */
+
+:root {
+    /* ========================================
+       COULEURS PRINCIPALES
+       ======================================== */
+    
+    /* Couleur primaire (Vert OpenSILEX) */
+    --primary-color: #5ebc7e;
+    --primary-dark: #4a9d63;
+    --primary-darker: #3d8654;
+    --primary-darkest: #2f6b42;
+    --primary-light: #7cd39a;
+    --primary-lighter: #a9dfbf;
+    --primary-lightest: #d5f4e6;
+    --primary-ultralight: #e8f8f0;
+
+    /* Opensilex */
+    --opensilex-green: #5ebc7e;
+    --opensilex-lime: #82C325;
+    --opensilex-turquoise: #00a3a6;
+    --opensilex-turquoise-dark: #008a8c;
+    --opensilex-ardoise: #275662;
+    --opensilex-accent: #66c1bf;
+    --opensilex-blue:      #0096D6;
+    --opensilex-yellow: #F2C94C;
+
+    /* Mistea */
+    --mistea-yellow: #F2B200;
+    --mistea-lime:   #82C325;
+    --mistea-green:        #00A389;
+    --mistea-dark-green:   #0A423C;
+    --mistea-gradient: linear-gradient(135deg, #F2B200 0%, #82C325 35%, #00A389 70%, #0A423C 100%);
+
+
+
+    /* Sidebar clair */
+         --sb-bg:        #EBF7F0;
+         --sb-border:    #B8DDD0;
+         --sb-active-bg: #CEF0E2;
+         --sb-text:      #1A3E32;
+         --sb-muted:     #4E7868;
+
+         /* Badges Obj — distincts des SP tags */
+         --obj1-bg:#FFF3CD; --obj1-c:#7A4F00; --obj1-bd:rgba(122,79,0,.25);
+         --obj2-bg:#FFE4CC; --obj2-c:#7A3200; --obj2-bd:rgba(122,50,0,.22);
+         --obj3-bg:#EDE0F8; --obj3-c:#5A1E8C; --obj3-bd:rgba(90,30,140,.2);
+         --obj4-bg:#D4EEF7; --obj4-c:#0B4F6C; --obj4-bd:rgba(11,79,108,.2);
+
+         --page-bg:  #F2F8F5;
+         --card-border: #D0E8DF;
+
+
+       --sub-process-bg:      #ffffff;
+       --sub-process-border:  #6ee7b7;
+       --sub-process-text:    #fcd34d;
+
+       --sub-process-1-bg:     #dbeafe;
+       --sub-process-1-border: #93c5fd;
+       --sub-process-1-text:   #1e40af;
+
+       --sub-process-2-bg:     #d1fae5;
+       --sub-process-2-border: #6ee7b7;
+       --sub-process-2-text:   #065f46;
+
+      --sub-process-3-bg:     #fef3c7;
+      --sub-process-3-border: #fcd34d;
+      --sub-process-3-text:   #92400e;
+
+      --sub-process-4-bg:     #f3f4f6;
+      --sub-process-4-border: #9ca3af;
+      --sub-process-4-text:   #4b5563;
+
+
+
+    /* Couleurs secondaires */
+    --secondary-red: #de5e5e;
+    --secondary-red-dark: #c94a4a;
+
+    /* Dégradés principaux */
+    --primary-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    --primary-gradient-reverse: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    
+    /* Dégradés alternatifs */
+    /*dégradé rouge pour les risques externes*/
+    --threats-gradient: linear-gradient(135deg, #e88080 0%, #d96666 100%);
+    --strenghts-gradient: linear-gradient(135deg, #5ebc7e 0%, #4a9d63 100%);
+    --weaknesses-gradient: linear-gradient(135deg, #e8a04e 0%, #d18a3c 100%);
+    --opportunities-gradient: linear-gradient(135deg, #5eb7de 0%, #4a9dc9 100%);
+
+
+
+
+        /* ========================================
+       COULEURS DE FOND
+       ======================================== */
+
+    
+    /* Fond de page */
+    --bg-color: #f0f4f8;
+    --bg-color-secondary: #e8eff5;
+    --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #e8eff5 100%);
+    
+    /* Fonds de sections */
+    --section-bg: #d5f4e6;
+    --section-bg-light: #e8f8f0;
+    --section-bg-gradient: linear-gradient(135deg, #d5f4e6 0%, #a9dfbf 100%);
+    
+    /* Fonds de cartes */
+    --card-bg: #ffffff;
+    --card-bg-alt: #f8f9fa;
+    --card-bg-gradient: linear-gradient(135deg, #e8f8f0 0%, #d5f4e6 100%);
+    
+    /* ========================================
+       COULEURS DE TEXTE
+       ======================================== */
+    
+    --text-color: #333333;
+    --text-color-light: #555555;
+    --text-color-lighter: #666666;
+    --text-color-white: #ffffff;
+    
+    /* ========================================
+       COULEURS FONCTIONNELLES
+       ======================================== */
+    
+    /* Succès (Vert) */
+    --success-color: #5ebc7e;
+    --success-bg: #d5f4e6;
+    
+    /* Attention (Orange) */
+    --warning-color: #e8a04e;
+    --warning-dark: #d18a3c;
+    --warning-bg: #fff3cd;
+    
+    /* Information (Bleu) */
+    --info-color: #5eb7de;
+    --info-dark: #4a9dc9;
+    --info-bg: #d1ecf1;
+    
+    /* Danger (Rouge) */
+    --danger-color: #de5e5e;
+    --danger-dark: #c94a4a;
+    --danger-bg: #f8d7da;
+    
+    /* ========================================
+       COULEURS SPÉCIFIQUES NAVIGATION
+       ======================================== */
+    
+    --nav-hover-bg: rgba(255, 255, 255, 0.15);
+    --nav-submenu-hover-bg: rgba(255, 255, 255, 0.2);
+    --nav-mobile-submenu-bg: rgba(0, 0, 0, 0.1);
+    --nav-mobile-subsubmenu-bg: rgba(0, 0, 0, 0.15);
+    
+    /* ========================================
+       COULEURS SPÉCIFIQUES FOOTER
+       ======================================== */
+    
+    --footer-chip-bg: rgba(255, 255, 255, 0.15);
+    
+    /* ========================================
+       COULEURS SPÉCIFIQUES TABLEAUX
+       ======================================== */
+    
+    --table-border-color: #e0e0e0;
+    --table-hover-bg: #f8f9fa;
+    --table-header-bg: #5ebc7e;
+    --table-header-color: #ffffff;
+    
+    /* KPI */
+    --kpi-highlight-bg: #fff3cd;
+    --kpi-print-highlight-bg: #fffde7;
+    
+    /* ========================================
+       COULEURS SPÉCIFIQUES PROCESSUS
+       ======================================== */
+    
+    --flow-section-bg: linear-gradient(135deg, #d5f4e6 0%, #a9dfbf 100%);
+    --info-card-bullet-color: #5ebc7e;
+    
+        /* ========================================
+       COULEURS SPÉCIFIQUES CARTOGRAPHIE
+       ======================================== */
+    
+    /* Flèches de connexion */
+    --carto-arrow-green: #5ebc7e;
+    --carto-arrow-orange: #f39c12;
+    
+    /* Sections Management */
+    --carto-management-gradient: linear-gradient(135deg, #d4e6f1 0%, #aed6f1 100%);
+    --carto-management-border: #5499c7;
+    
+    /* Sections Core/Métier */
+    --carto-core-gradient: linear-gradient(135deg, #d5f4e6 0%, #a9dfbf 100%);
+    --carto-core-border: #5ebc7e;
+    
+    /* Sections Support */
+    --carto-support-gradient: linear-gradient(135deg, #d6eaf8 0%, #aed6f1 100%);
+    --carto-support-border: #3498db;
+    
+    /* Stakeholders & Output */
+    --carto-stakeholder-bg: #f8f9fa;
+    --carto-output-bg: #fff9f0;
+
+
+
+    /* ===================================
+    Activite
+    ======================================= */
+    
+    --activite1: #3b82f6;
+    --activite2: #10b981;
+    --activite3: #fcd34d;
+
+    /* ========================================
+       COULEURS IMPRESSION
+       ======================================== */
+    
+    --print-border-color: #ddd;
+    --print-bg-light: #f9f9f9;
+    --print-section-border: #ddd;
+    
+    /* ========================================
+       BORDURES
+       ======================================== */
+    
+    --border-color: #e0e0e0;
+    --border-color-light: #f0f0f0;
+    --border-width: 1px;
+    --border-width-thick: 3px;
+    --border-width-accent: 5px;
+    
+    /* ========================================
+       BORDER RADIUS
+       ======================================== */
+    
+    --border-radius-sm: 5px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 15px;
+    --border-radius-pill: 50px;
+    
+    /* ========================================
+       OMBRES (SHADOWS)
+       ======================================== */
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 6px 25px rgba(0, 0, 0, 0.15);
+    --shadow-primary: 0 4px 20px rgba(94, 188, 126, 0.4);
+    
+    /* Ombres spécifiques */
+    --shadow-hover: 0 6px 25px rgba(94, 188, 126, 0.5);
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.10);
+    --shadow-logigramme: 0 4px 12px rgba(0, 0, 0, 0.06);
+    
+    /* ========================================
+       ESPACEMENTS
+       ======================================== */
+    
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    
+    /* ========================================
+       TYPOGRAPHIE
+       ======================================== */
+    
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Tailles de police */
+    --font-size-xs: 0.8rem;
+    --font-size-sm: 0.9rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.1rem;
+    --font-size-lg: 1.2rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 1.8rem;
+    --font-size-xxxl: 2.5rem;
+    
+    /* Tailles spécifiques */
+    --font-size-header-h1: 2.5rem;
+    --font-size-header-subtitle: 1.2rem;
+    --font-size-section-h2: 1.8rem;
+    --font-size-flow-h4: 1.2rem;
+    --font-size-card-h3: 1.2rem;
+    
+    /* Poids de police */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Line height */
+    --line-height-tight: 1.4;
+    --line-height-normal: 1.6;
+    --line-height-loose: 1.8;
+    
+    /* ========================================
+       TRANSITIONS
+       ======================================== */
+    
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+    
+    --transition-all: all 0.3s ease;
+    --transition-transform: transform 0.3s ease;
+    --transition-colors: background-color 0.3s ease, color 0.3s ease;
+    
+    /* ========================================
+       Z-INDEX
+       ======================================== */
+    
+    --z-dropdown: 200;
+    --z-sticky: 500;
+    --z-fixed: 1000;
+    --z-modal: 2000;
+    --z-tooltip: 3000;
+    
+    /* ========================================
+       BREAKPOINTS (pour référence)
+       ======================================== */
+    
+    --breakpoint-mobile: 768px;
+    --breakpoint-tablet: 992px;
+    --breakpoint-desktop: 1200px;
+    --breakpoint-wide: 1400px;
+    }
+
+/* ========================================
+   CLASSES UTILITAIRES
+   ======================================== */
+
+/* Couleurs de fond */
+.bg-primary { background: var(--primary-color); }
+.bg-primary-gradient { background: var(--primary-gradient); }
+.bg-card { background: var(--card-bg); }
+.bg-section { background: var(--section-bg-gradient); }
+
+/* Couleurs de texte */
+.text-primary { color: var(--primary-color); }
+.text-white { color: var(--text-color-white); }
+.text-muted { color: var(--text-color-light); }
+
+/* Bordures */
+.border-primary { border-color: var(--primary-color); }
+.border-left-primary { border-left: var(--border-width-accent) solid var(--primary-color); }
+
+/* Ombres */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* Border radius */
+.rounded-sm { border-radius: var(--border-radius-sm); }
+.rounded-md { border-radius: var(--border-radius-md); }
+.rounded-lg { border-radius: var(--border-radius-lg); }
+
+/* Espacements */
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+

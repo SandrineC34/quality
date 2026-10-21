@@ -1,0 +1,180 @@
+/* =====================================================
+   POLITIQUE.CSS — Politique Qualité 
+   Ce fichier ne contient que ce qui est propre à la politique.
+   ===================================================== */
+
+/* ── Conteneur : colonne unique centrée (pas de sidebar) ── */
+.policy-content {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 24px 72px;
+}
+
+/* ── Bloc contexte ── */
+.policy-content .finalite-box p + p { margin-top: .75em; }
+
+/* ══════════════════════════════════════════
+   ENGAGEMENTS
+══════════════════════════════════════════ */
+.engagements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.engagement-card {
+  position: relative;
+  background: var(--page-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 16px 16px 14px;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+/* filet dégradé MISTEA en haut de carte */
+.engagement-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--mistea-gradient);
+}
+.engagement-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--mistea-green);
+  box-shadow: 0 6px 18px rgba(10, 66, 60, .10);
+}
+
+.eng-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.engagement-card .num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mistea-green), var(--mistea-dark-green));
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 700;
+}
+.engagement-card .card-title {
+  font-size: .86rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--mistea-dark-green);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.engagement-card p {
+  font-size: .81rem;
+  line-height: 1.6;
+  color: #0D2822;
+}
+.engagement-card p + p { margin-top: .6em; }
+
+/* ══════════════════════════════════════════
+   DÉCLINAISON OPÉRATIONNELLE
+══════════════════════════════════════════ */
+.declinaison-block {
+  padding: 14px 18px;
+  border-left: 3px solid var(--mistea-yellow);
+  background: rgba(242, 178, 0, .07);
+  border-radius: 0 6px 6px 0;
+}
+.declinaison-block p {
+  font-size: .9rem;
+  line-height: 1.8;
+  color: #0D2822;
+}
+.declinaison-block p + p { margin-top: .75em; }
+.declinaison-block strong { color: var(--mistea-dark-green); }
+
+/* ══════════════════════════════════════════
+   APPROBATION
+══════════════════════════════════════════ */
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sig-box .sig-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mistea-dark-green);
+}
+
+
+/* ══════════════════════════════════════════
+   Référence
+══════════════════════════════════════════ */
+.reference {
+  font-size: 0.75rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .engagements-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .policy-content { padding: 18px 14px 48px; }
+  .engagements-grid,
+  .signature-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════
+   IMPRESSION — une seule page A4 portrait
+══════════════════════════════════════════ */
+@media print {
+  @page { size: A4 portrait; margin: 8mm; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  body.modern-layout { background: #fff; }
+  body.modern-layout .nav-footer { display: none !important; }
+
+  .proc-hero { padding: 10px 0 12px; }
+  .proc-hero h1 { font-size: 1.3rem; margin-bottom: 2px; }
+  .proc-id-tag { margin-bottom: 2px; }
+
+  .policy-content { max-width: 100%; padding: 8px 0 0 !important; }
+  .policy-content .section { padding: 10px 14px; margin-bottom: 8px; border: 1px solid var(--card-border); }
+  .modern-content .section h2 { font-size: .85rem; margin-bottom: 8px; padding-bottom: 5px; }
+
+  .finalite-box,
+  .declinaison-block { padding: 7px 11px; }
+  .finalite-box p,
+  .declinaison-block p { font-size: .72rem; line-height: 1.45; }
+
+  .engagements-grid { gap: 6px; }
+  .engagement-card { padding: 8px 9px 6px; }
+  .engagement-card:hover { transform: none; }
+  .eng-head { margin-bottom: 4px; gap: 6px; }
+  .engagement-card .num { width: 20px; height: 20px; font-size: .62rem; }
+  .engagement-card .card-title { font-size: .7rem; }
+  .engagement-card p { font-size: .64rem; line-height: 1.35; }
+
+  .signature-grid { gap: 8px; }
+  .sig-box .sig-value { font-size: .8rem; }
+
+  .engagement-card, .finalite-box, .declinaison-block, .signature-grid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

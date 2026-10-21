@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management &amp; Pilotage stratégique - OpenSILEX</title>
+    <!-- Charte existante -->
+    <link rel="stylesheet" href="../../../../css/charte.css">
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/table.css">
+    <link rel="stylesheet" href="../../../../css/logigramme/processus.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+</head>
+
+<body class="modern-layout" data-process-id="P1-01">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/images/Logo.svg" target="_blank">
+                <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+        <nav id="navMenuWrap"></nav>
+
+        <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+</header>
+
+<!-- ══ HERO DU PROCESSUS ══ -->
+<div class="proc-hero">
+    <div class="proc-hero-inner">
+        <div>
+            <span class="proc-id-tag">P1-01 Management &amp; Pilotage stratégique</span>
+            <h1>Management &amp; Pilotage stratégique</h1>
+            <div class="proc-hero-sub">
+                <span class="h-sp1">SP1 – Pilotage stratégique et arbitrage</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LAYOUT SIDEBAR + CONTENU ══ -->
+<div class="modern-page-layout">
+
+    <!-- ─ SIDEBAR (remplie par js/sidebar.js) ─ -->
+    <aside class="modern-sidebar"></aside>
+
+    <!-- ─ CONTENU ─ -->
+    <main class="modern-content">
+
+        <!-- INFORMATIONS GÉNÉRALES -->
+        <section class="section" id="general">
+            <h2>Informations générales</h2>
+            <div class="info-grid-modern">
+                <div class="info-card-modern">
+                    <span class="ic-label">Pilotage</span>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Pilote :</strong>&nbsp;Anne Tireau</div>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Participants :</strong>&nbsp;Pilotes de processus, Comité de Pilotage (COPIL)</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Périmètre</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Pilotage stratégique et arbitrage : arbitrage des demandes et opportunités, montage et financement, suivi budgétaire, pilotage RH stratégique (GPEC), revue de direction et amélioration continue, diffusion des décisions</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Mode de pilotage</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Réunions de COPIL et arbres décisionnels</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Analyses stratégiques (SWOT/TOWS, modèle économique)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Tableaux de bord et suivi de la roadmap</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Revue de direction annuelle (activité intégrée)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Suivi des indicateurs qualité et des non-conformités (activité intégrée)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Plan de communication annuel (activité intégrée)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINALITÉ -->
+        <section class="section" id="finalite">
+            <h2>Finalité du processus</h2>
+            <div class="finalite-box">
+                Garantir le pilotage stratégique, la viabilité financière et la gouvernance de la cellule OpenSILEX, en assurant l'amélioration continue du Système de Management de la Qualité et une communication fluide auprès de l'ensemble des parties prenantes.
+            </div>
+        </section>
+
+        <!-- PARTIES PRENANTES -->
+        <section class="section" id="parties">
+            <h2>Parties prenantes</h2>
+            <div class="stakeholder-pills">
+                <span class="s-pill">Tutelles (INRAE, unité)</span>
+                <span class="s-pill">Partenaires scientifiques</span>
+                <span class="s-pill">Équipe OpenSILEX</span>
+                <span class="s-pill">Communautés utilisatrices</span>
+                <span class="s-pill">Financeurs (AAP, conventions)</span>
+                <span class="s-pill">Auditeurs externes</span>
+            </div>
+        </section>
+
+        <!-- INTERACTIONS IO -->
+        <section class="section" id="io">
+            <h2>Interactions — Données d'entrée et de sortie</h2>
+            <div style="overflow-x:auto">
+            <table class="io-table">
+                <thead>
+                    <tr><th style="width:18%">Interlocuteur</th><th style="width:10%">Rôle</th><th style="width:36%">Entrées</th><th style="width:36%">Sorties</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Processus opérationnels (tous)</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Demandes d'arbitrage internes</li><li><span class="sp-tag sp1">SP1</span>KPI et rapports des processus opérationnels</li><li><span class="sp-tag sp1">SP1</span>Non-conformités détectées</li><li><span class="sp-tag sp1">SP1</span>Retours d'expérience et remontées des parties prenantes</li><li><span class="sp-tag sp1">SP1</span>Veille technologique et stratégique</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Décision de validation ou rejet de demandes</li><li><span class="sp-tag sp1">SP1</span>Feuille de route stratégique (roadmap) et allocation des ressources</li><li><span class="sp-tag sp1">SP1</span>Plan d'amélioration continue et suivi des actions</li><li><span class="sp-tag sp1">SP1</span>Tableaux de bord qualité (indicateurs processus)</li><li><span class="sp-tag sp1">SP1</span>Décisions diffusées — comptes rendus COPIL, notes de service</li><li><span class="sp-tag sp1">SP1</span>Plan de communication annuel</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Infrastructure (P2-03)</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Plan PRA/MCO</li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Tutelles &amp; Partenaires</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Appels à projets (AAP), sollicitations partenaires</li><li><span class="sp-tag sp1">SP1</span>Directives des tutelles</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Conventions de partenariat, devis, réponses AAP</li><li><span class="sp-tag sp1">SP1</span>Modèle économique mis à jour</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Processus Support (P3-01)</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Données ressources disponibles (RH, budget, charge)</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>PGD, PGL</li></ul></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- DOCUMENTATIONS -->
+        <section class="section" id="docs">
+            <h2>Documentations associées</h2>
+            <div class="doc-grid-modern">
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Arbres décisionnels pour les arbitrages</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Exemples de réponses AAP, conventions de partenariat, devis</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Modèle économique et tableau coûts complets</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Tableaux de suivi des ressources (GPEC, RH, Projets)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Comptes rendus de COPIL</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Dossier de labellisation ISC</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Cartographie des processus</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Procédure de traitement des non-conformités</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Plan de communication annuel</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Guide de rédaction des communications</div></div>
+            </div>
+        </section>
+
+        <!-- RESSOURCES -->
+        <section class="section" id="ressources">
+            <h2>Ressources</h2>
+            <div class="resource-grid-modern">
+                <div class="resource-card-modern"><strong>Humaines</strong>Pilote de processus (Anne Tireau), membres du COPIL, responsables de projets</div>
+                <div class="resource-card-modern"><strong>Outils</strong>Outil de gestion de projet/Roadmap (ex: Jira), Tableurs de suivi budgétaire, Outil de GPEC, Système de gestion documentaire</div>
+                <div class="resource-card-modern"><strong>Environnements</strong>Salles de réunion, espaces collaboratifs virtuels (ex: Teams/Nextcloud)</div>
+            </div>
+        </section>
+
+        <!-- ACTIVITÉS -->
+        <section class="section flow-section" id="activites">
+            <h2>Activités principales</h2>
+
+            <hr class="phase-sep" data-label="SP1 – Pilotage stratégique et arbitrage">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A1</div>
+                <div>
+                    <div class="flow-title-modern">A1. Analyse et arbitrage d'une demande ou opportunité</div>
+                    <p class="flow-desc-modern">Évaluation de l'intérêt stratégique, de la valeur ajoutée et de la faisabilité (ressources, compétences, charge, délais). La décision d'engagement conditionne toutes les étapes suivantes ; un refus motivé est documenté.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A2</div>
+                <div>
+                    <div class="flow-title-modern">A2. Montage et financement</div>
+                    <p class="flow-desc-modern">Élaboration de la proposition (devis, convention, réponse AAP) avec estimation des ETP, coûts et délais. Engagement dès validation du financement. Recherche de fonds complémentaires si nécessaire (tutelles, partenariats, AAP).</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A3</div>
+                <div>
+                    <div class="flow-title-modern">A3. Suivi budgétaire et ajustement des ressources</div>
+                    <p class="flow-desc-modern">Suivi des budgets, détection des dérives, réévaluation et corrections (périmètre, délais, renforts). Mise à jour du modèle économique et des tableaux de suivi.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A4</div>
+                <div>
+                    <div class="flow-title-modern">A4. Pilotage des ressources humaines au niveau stratégique</div>
+                    <p class="flow-desc-modern">Arbitrage des besoins en ETP et compétences : renouvellement de contrats, déclenchement des recrutements, gestion de la GPEC. L'opérationnel (intégration, formation, logistique) est traité dans P3-01.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A5</div>
+                <div>
+                    <div class="flow-title-modern">A5. Pilotage de l'amélioration continue *(activité récurrente — déclencheur : calendrier SMQ ou alerte KRI)*</div>
+                    <p class="flow-desc-modern">Collecte et analyse des indicateurs qualité (KPI processus, KRI, tableaux de bord). Traitement des non-conformités : cause racine, actions correctives/préventives, documentation. Revue de direction annuelle : bilan et orientations (Plan d'Actions Qualité). Mise à jour de la documentation qualité (fiches processus, procédures, cartographie, PGD, PGL, PRA/MCO).</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A6</div>
+                <div>
+                    <div class="flow-title-modern">A6. Communication des décisions *(activité récurrente — déclencheur : décision COPIL ou revue de direction)*</div>
+                    <p class="flow-desc-modern">Diffusion des décisions COPIL aux processus concernés. Élaboration et suivi du plan de communication annuel. Communication interne (notes, réunions) et externe (tutelles, partenaires, communauté scientifique). Archivage et traçabilité (CR COPIL, notes de service, plan communication).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERFORMANCE -->
+        <section class="section" id="perf">
+            <h2>Performance</h2>
+
+            <h3>Objectifs</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>N°</th><th>Description de l'objectif</th><th>Lien avec la politique</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj1">Obj1</span></td>
+                        <td>Évaluer et prioriser les demandes en termes d'intérêt stratégique, de valeur ajoutée et de faisabilité — et allouer les ressources disponibles (humaines, financières, temporelles) en conséquence.</td>
+                        <td><span class="politique confiance"></span> <span class="politique satisfaction"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj2">Obj2</span></td>
+                        <td>Assurer la viabilité financière de la cellule : sécuriser les financements, maîtriser les coûts et garantir la qualité des estimations budgétaires.</td>
+                        <td><span class="politique confiance"></span> <span class="politique risque"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj3">Obj3</span></td>
+                        <td>Piloter l'amélioration continue via l'identification et le traitement des non-conformités, en cohérence avec la politique qualité.</td>
+                        <td><span class="politique amelioration"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj4">Obj4</span></td>
+                        <td>Assurer une diffusion cohérente et dans les délais des décisions et orientations stratégiques auprès de l'ensemble des parties prenantes.</td>
+                        <td><span class="politique confiance"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KPI)</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'atteinte d'un résultat attendu. Ils répondent à la question : « Est-ce qu'on atteint nos objectifs ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Objectif</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de réalisation de la feuille de route stratégique (roadmap)</strong></td><td class="kpi-target">≥ 80 %</td><td>Semestriel</td><td>(Nombre de jalons stratégiques atteints / Nombre de jalons planifiés) × 100</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de succès des demandes de financement</strong></td><td class="kpi-target">≥ 40 %</td><td>Trimestriel</td><td>(Dossiers de financement acceptés / Total dossiers soumis) × 100</td><td><span class="badge-obj2">Obj2</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de clôture des actions d'amélioration dans les délais</strong></td><td class="kpi-target">≥ 90 %</td><td>Trimestriel</td><td>(Actions clôturées dans le délai / Total actions planifiées) × 100</td><td><span class="badge-obj3">Obj3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de réalisation du plan de communication annuel</strong></td><td class="kpi-target">≥ 85 %</td><td>Semestriel</td><td>(Actions de communication réalisées / Actions planifiées dans le plan annuel) × 100</td><td><span class="badge-obj4">Obj4</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs de fonctionnement</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'activité courante. Ils répondent à la question : « Que s'est-il passé ? Combien ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Définition / mode de calcul</th><th>Fréquence</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Taux de demandes avec avis stratégique renseigné</td><td>(Demandes avec avis stratégique rempli / Total demandes analysées) × 100</td><td>Mensuel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Taux d'acceptation des demandes</td><td>(Demandes acceptées / Total demandes analysées) × 100</td><td>Mensuel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de COPIL tenus dans l'année</td><td>Décompte des réunions COPIL réalisées. Source : comptes rendus archivés.</td><td>Annuel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de non-conformités ouvertes en fin de période</td><td>Stock de NC enregistrées non encore clôturées à la date de relevé.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de communications diffusées dans la période</td><td>Décompte des envois (notes, CR, newsletters). Source : plan de communication archivé.</td><td>Mensuel</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <!-- RISQUES -->
+        <section class="section" id="risques">
+            <h2>Analyse des Risques</h2>
+            <h3>Risques</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Risque</th><th>Description</th><th>Actions de maîtrise / Mesures préventives</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R1</span></td><td><strong>Mauvaise évaluation de l'intérêt stratégique</strong></td><td>Des demandes non prioritaires sont validées tandis que des projets à forte valeur ajoutée sont écartés.</td><td>Grille d'évaluation multicritères (faisabilité, valeur ajoutée, adéquation avec les axes stratégiques et validation du COPIL)</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R2</span></td><td><strong>Mauvaise estimation des ressources financières, budgétaires</strong></td><td>Projets lancés sans disponibilité réelle des ressources humaines, financières ou temporelles → blocages ou retards.</td><td>Historique des coûts des projets passés, procédure de chiffrage</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R3</span></td><td><strong>SMQ inadapté ou indicateurs non suivis</strong></td><td>Le SMQ ne reflète pas les besoins réels ou les indicateurs ne sont pas collectés, rendant l'amélioration continue inopérante.</td><td>Sensibilisation des pilotes de processus, point à chaque revue de fin de sprint</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R4</span></td><td><strong>Décisions mal communiquées ou messages incohérents</strong></td><td>Décisions COPIL non transmises dans les délais ou messages contradictoires → perte d'efficacité et de confiance.</td><td>Utilisation d'un canal unique : réunion de fin de sprint ou réunion spéciale</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KRI)</h3>
+            <span class="desc-note">Ces indicateurs sont un signal d'alerte. Ils répondent à la question : « Y a-t-il un signal qui annonce un problème à venir ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Risque</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de projets ayant nécessité un abandon ou une réorientation</strong></td><td class="kpi-target">≤ 1 %</td><td>Annuel</td><td>(Projets abandonnés ou réorientés suite à une mauvaise évaluation / Total des projets engagés) × 100</td><td><span class="risk-id sub-process-1">R1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Écart moyen devis / coût réel sur projets clôturés</strong></td><td class="kpi-target">≤ 10 %</td><td>Trimestriel</td><td>|Coût réel − Devis initial| / Devis initial × 100, moyenne sur les projets clôturés dans la période</td><td><span class="risk-id sub-process-1">R2</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de collecte des KPI processus dans les délais</strong></td><td class="kpi-target">≥ 95 %</td><td>Mensuel</td><td>(KPI collectés dans les délais / Total KPI attendus sur la période) × 100 — un taux bas signale une défaillance du SMQ avant toute revue</td><td><span class="risk-id sub-process-1">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de diffusion des décisions COPIL dans les délais</strong></td><td class="kpi-target">≥ 95 %</td><td>Mensuel</td><td>(Décisions diffusées dans le délai convenu / Total décisions COPIL planifiées) × 100</td><td><span class="risk-id sub-process-1">R4</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- OPPORTUNITÉS -->
+        <section class="section" id="opport">
+            <h2>Analyses des Opportunités</h2>
+            <h3>Opportunités</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Opportunité</th><th>Description</th><th>Mesure de surveillance</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-1">O1</span></td><td><strong>Labellisation et reconnaissance institutionnelle</strong></td><td>Une labellisation (ex. ISC) renforce la crédibilité auprès des tutelles et partenaires, facilitant l'accès à des financements pérennes.</td><td></td></tr>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-1">O2</span></td><td><strong>Nouveaux partenariats structurants</strong></td><td>Des collaborations avec de nouvelles communautés scientifiques ou industrielles peuvent élargir les cas d'usage d'OpenSILEX et diversifier les sources de financement.</td><td></td></tr>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-1">O3</span></td><td><strong>Maturité du SMQ comme levier de confiance</strong></td><td>Un SMQ bien rodé renforce la confiance des partenaires et tutelles, et peut être valorisé comme argument de qualité dans les réponses à des AAP.</td><td></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KIO)</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Opportunité</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Avancement du dossier de labellisation ISC</strong></td><td class="kpi-target">Dépôt dossier avant fin d'année</td><td>Trimestriel</td><td>Jalons atteints / Jalons prévus dans le plan de labellisation × 100</td><td><span class="risk-id sub-process-1">O1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Nombre de nouveaux partenariats formalisés dans l'année</strong></td><td class="kpi-target">≥ 2 conventions / an</td><td>Annuel</td><td>Décompte des conventions de partenariat signées dans l'exercice. Source : registre des conventions.</td><td><span class="risk-id sub-process-1">O2</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de revues de direction réalisées avec revue du SMQ</strong></td><td class="kpi-target">100 %</td><td>Annuel</td><td>(Revues de direction avec évaluation SMQ documentée / Total revues planifiées) × 100</td><td><span class="risk-id sub-process-1">O3</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- LOGIGRAMMES -->
+        <svg width="0" height="0" style="position:absolute"><defs>
+            <marker id="arr-head-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6b7280"/></marker>
+            <marker id="arr-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2937"/></marker>
+        </defs></svg>
+
+        <section class="section logigramme-section" id="logi-sp1">
+            <h2>Logigramme — SP1 · Pilotage stratégique et arbitrage</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 1478" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP1 — Pilotage stratégique et arbitrage</title>
+                <rect class="frame-sp1" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#1e40af;">SP1 — Pilotage stratégique et arbitrage</text>
+                <rect class="node-term" x="221" y="36" width="258" height="30" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Demande · AAP · directive tutelle</text>
+                <line class="arr" x1="350" y1="66" x2="350" y2="92" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="92" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="111" text-anchor="middle">A1 — Analyse &amp; arbitrage de la demande</text>
+                <text class="lbl-sub" x="350" y="128" text-anchor="middle">Intérêt stratégique · valeur ajoutée · faisabilité (RH, budget, charge, délais)</text>
+                <line class="arr" x1="350" y1="144" x2="350" y2="170" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,170 438,196 350,222 262,196"/>
+                <text class="lbl-aside" x="350" y="200" text-anchor="middle">Demande validée ?</text>
+                <line class="arr" x1="438" y1="196" x2="490" y2="196" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="190">Non</text>
+                <rect class="node-refus" x="490" y="174" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="191" text-anchor="middle">Refus motivé</text>
+                <text class="lbl-sub" x="580" y="207" text-anchor="middle">Documenté → fin</text>
+                <text class="yes" x="355" y="238">Oui</text>
+                <line class="arr" x1="350" y1="222" x2="350" y2="248" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="248" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="267" text-anchor="middle">A2 — Montage &amp; financement</text>
+                <text class="lbl-sub" x="350" y="284" text-anchor="middle">Devis · convention · réponse AAP · estimation ETP/coûts/délais</text>
+                <line class="arr" x1="350" y1="300" x2="350" y2="326" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,326 438,352 350,378 262,352"/>
+                <text class="lbl-aside" x="350" y="349" text-anchor="middle">Financement</text>
+                <text class="lbl-aside" x="350" y="363" text-anchor="middle">obtenu ?</text>
+                <line class="arr" x1="438" y1="352" x2="490" y2="352" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="346">Non</text>
+                <rect class="node-refus" x="490" y="330" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="347" text-anchor="middle">Abandon</text>
+                <text class="lbl-sub" x="580" y="363" text-anchor="middle">clôture → fin</text>
+                <text class="yes" x="355" y="394">Oui</text>
+                <line class="arr" x1="350" y1="378" x2="350" y2="404" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="404" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="423" text-anchor="middle">A3 — Suivi budgétaire &amp; ajustement</text>
+                <text class="lbl-sub" x="350" y="440" text-anchor="middle">Détection dérives · corrections périmètre/délais · mise à jour modèle éco.</text>
+                <line class="arr" x1="350" y1="456" x2="350" y2="482" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="482" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="501" text-anchor="middle">A4 — Pilotage RH stratégique</text>
+                <text class="lbl-sub" x="350" y="518" text-anchor="middle">Arbitrage ETP · déclenchement recrutements · GPEC (opérationnel → P3-01)</text>
+                <line class="arr" x1="350" y1="534" x2="350" y2="560" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="188" y="560" width="324" height="32" rx="16"/>
+                <text class="lbl-title" x="350" y="581" text-anchor="middle">Roadmap · conventions · devis · modèle éco.</text>
+                <rect class="node-term" x="152" y="618" width="396" height="30" rx="15"/>
+                <text class="lbl-title" x="350" y="638" text-anchor="middle">Indicateurs · non-conformités remontées · échéance SMQ</text>
+                <line class="arr" x1="350" y1="648" x2="350" y2="674" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="674" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="693" text-anchor="middle">A5a — Collecte &amp; analyse des indicateurs</text>
+                <text class="lbl-sub" x="350" y="710" text-anchor="middle">KPI processus · tableaux de bord · alertes KRI · rapports</text>
+                <line class="arr" x1="350" y1="726" x2="350" y2="752" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,752 438,778 350,804 262,778"/>
+                <text class="lbl-aside" x="350" y="775" text-anchor="middle">Non-conformité</text>
+                <text class="lbl-aside" x="350" y="789" text-anchor="middle">détectée ?</text>
+                <line class="arr" x1="438" y1="778" x2="490" y2="778" marker-end="url(#arr-head)"/>
+                <text class="yes" x="448" y="772">Oui</text>
+                <rect class="node-loop" x="490" y="749" width="180" height="58" rx="6"/>
+                <text class="lbl-title" x="580" y="766" text-anchor="middle">Actions correctives</text>
+                <text class="lbl-sub" x="580" y="782" text-anchor="middle">Cause racine · traitement ·</text>
+                <text class="lbl-sub" x="580" y="796" text-anchor="middle">doc NC</text>
+                <text class="no" x="355" y="820">Non</text>
+                <line class="arr" x1="350" y1="804" x2="350" y2="830" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="830" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="849" text-anchor="middle">A5b — Revue de direction</text>
+                <text class="lbl-sub" x="350" y="866" text-anchor="middle">Bilan annuel · analyse résultats · orientations · Plan d'Actions Qualité (PAQ)</text>
+                <line class="arr" x1="350" y1="882" x2="350" y2="908" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="908" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="927" text-anchor="middle">A5c — Mise à jour de la documentation</text>
+                <text class="lbl-sub" x="350" y="944" text-anchor="middle">Fiches processus · procédures · cartographie · PGD · PGL · PRA/MCO</text>
+                <line class="arr" x1="350" y1="960" x2="350" y2="986" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="198" y="986" width="304" height="32" rx="16"/>
+                <text class="lbl-title" x="350" y="1007" text-anchor="middle">TDB qualité · PAQ · documentation à jour</text>
+                <rect class="node-term" x="178" y="1044" width="344" height="30" rx="15"/>
+                <text class="lbl-title" x="350" y="1064" text-anchor="middle">Décisions COPIL · résultats revue de direction</text>
+                <line class="arr" x1="350" y1="1074" x2="350" y2="1100" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="1100" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="1119" text-anchor="middle">A6a — Préparation des messages</text>
+                <text class="lbl-sub" x="350" y="1136" text-anchor="middle">Décisions COPIL · orientations · plan de communication annuel</text>
+                <line class="arr" x1="350" y1="1152" x2="350" y2="1178" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="1178" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="1197" text-anchor="middle">A6b — Diffusion interne &amp; externe</text>
+                <text class="lbl-sub" x="350" y="1214" text-anchor="middle">Interne : équipe, pilotes processus · Externe : tutelles, partenaires,</text>
+                <text class="lbl-sub" x="350" y="1228" text-anchor="middle">communauté sci.</text>
+                <line class="arr" x1="350" y1="1244" x2="350" y2="1270" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,1270 438,1296 350,1322 262,1296"/>
+                <text class="lbl-aside" x="350" y="1293" text-anchor="middle">Réception</text>
+                <text class="lbl-aside" x="350" y="1307" text-anchor="middle">confirmée ?</text>
+                <line class="arr" x1="438" y1="1296" x2="490" y2="1296" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="1290">Non</text>
+                <rect class="node-loop" x="490" y="1274" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="1291" text-anchor="middle">Relance</text>
+                <text class="lbl-sub" x="580" y="1307" text-anchor="middle">Rappel aux destinataires</text>
+                <text class="yes" x="355" y="1338">Oui</text>
+                <line class="arr" x1="350" y1="1322" x2="350" y2="1348" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="1348" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="1367" text-anchor="middle">A6c — Archivage &amp; traçabilité</text>
+                <text class="lbl-sub" x="350" y="1384" text-anchor="middle">CR COPIL · notes de service · plan communication archivé</text>
+                <line class="arr" x1="350" y1="1400" x2="350" y2="1426" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="228" y="1426" width="245" height="32" rx="16"/>
+                <text class="lbl-title" x="350" y="1447" text-anchor="middle">CR · notes · plan communication</text>
+                <path class="arr-loop" d="M670 778 L680 778 L680 700 L590 700" marker-end="url(#arr-head-gray)"/>
+                <path class="arr-loop" d="M670 1296 L687 1296 L687 1211 L590 1211" marker-end="url(#arr-head-gray)"/>
+            </svg>
+            </div>
+        </section>
+
+        <!-- PIED DE PAGE DOC -->
+        <section class="section">
+            <div class="footer" style="text-align:right;font-size:.75rem;color:#547068;border-top:1px solid #D0E8DF;padding-top:10px">
+                <span contenteditable="true">Version 5.0</span> |
+                <span contenteditable="true">Mise à jour : /10/2026</span>
+            </div>
+        </section>
+
+    </main><!-- /modern-content -->
+</div><!-- /modern-page-layout -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/sidebar.js"></script>
+
+</body>
+</html>

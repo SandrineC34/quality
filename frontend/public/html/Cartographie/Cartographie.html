@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>OpenSILEX — Cartographie des processus</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/charte.css">
+    <link rel="stylesheet" href="../../css/cartographie/cartographie.css">
+    <link rel="stylesheet" href="../../css/cartographie/print.css">
+    <!-- Pour la 36 -->
+    <!--<base href="https://opensilex.org/SMQ/html/" />-->
+ <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+
+    
+</head>
+<body>
+
+<!-- HERO -->
+<div class="proc-hero">
+  <div class="proc-hero-inner">
+    <div>
+      <span class="proc-id-tag">SMQ — OpenSILEX</span>
+      <h1>Cartographie des processus</h1>
+
+    </div>
+    <div class="proc-hero-meta">
+
+    </div>
+  </div>
+</div>
+
+<!-- CARTOGRAPHIE -->
+<div class="carto-wrapper">
+  <div class="main-grid">
+
+    <!-- COLONNE GAUCHE -->
+    <div class="side-col left">
+      <div class="side-title green">Besoins en gestion de données scientifiques</div>
+      <div class="side-item left-item">
+        <h3>Besoins des utilisateurs</h3>
+        <p>Spécificité des communautés et des domaines d'application</p>
+      </div>
+      <div class="side-item left-item">
+        <h3>Attentes des parties prenantes</h3>
+        <p>Tutelles, partenaires, financeurs, auditeurs</p>
+      </div>
+      <div class="side-item left-item">
+        <h3>Prise en compte des contraintes</h3>
+        <p>Technique, sécurité, réglementaire, administrative</p>
+      </div>
+      <div class="side-item left-item">
+        <h3>Standards & innovations</h3>
+        <p>Gestion de données à l'état de l'art</p>
+      </div>
+    </div>
+
+    <!-- FLÈCHE GAUCHE -->
+    <div class="arrow-col">
+      <svg class="arr-svg" viewBox="0 0 52 50" fill="none">
+        <defs>
+          <linearGradient id="ag" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#5ebc7e"/>
+            <stop offset="100%" stop-color="#4a9d63"/>
+          </linearGradient>
+        </defs>
+        <line x1="4" y1="25" x2="44" y2="25" stroke="url(#ag)" stroke-width="3"/>
+        <polygon points="42,19 50,25 42,31" fill="#4a9d63"/>
+      </svg>
+    </div>
+
+    <!-- COLONNE CENTRALE -->
+    <div class="center-col">
+
+    <!-- Management + Qualité sur deux colonnes -->
+        <div class="proc-section mgmt">
+            <div class="proc-section-header">Processus de direction</div>
+
+            <div class="proc-row">
+                <a class="proc-card mgmt-card" href="#">
+                    <div class="proc-card-id mgmt-id">P1-01</div>
+                    <div class="proc-card-name">Management &amp; Pilotage stratégique</div>
+                    <div class="proc-card-desc">Pilotage stratégique, arbitrage, viabilité financière, amélioration continue (SMQ), communication</div>
+                </a>
+
+                <!-- FLÈCHE BIDIRECTIONNELLE -->
+                <div class="h-arrow">
+                    <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
+                        <line x1="6" y1="12" x2="42" y2="12" stroke="var(--carto-management-border)" stroke-width="2.5"/>
+                        <polygon points="2,12 12,5 12,19" fill="var(--carto-management-border)"/>
+                        <polygon points="46,12 36,5 36,19" fill="var(--carto-management-border)"/>
+                    </svg>
+                </div>
+
+                <a class="proc-card mgmt-card" href="#">
+                    <div class="proc-card-id mgmt-id">P1-02</div>
+                    <div class="proc-card-name">Management &amp; Pilotage stratégique</div>
+                    <div class="proc-card-desc">Pilotage stratégique, arbitrage, viabilité financière, amélioration continue (SMQ), communication</div>
+                </a>
+            </div>
+        </div>
+
+      <!-- FLÈCHE VERS BAS -->
+      <div class="vert-arrow">
+        <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
+          <line x1="20" y1="2" x2="20" y2="24" stroke="var(--carto-management-border)" stroke-width="2.5"/>
+          <polygon points="13,22 20,30 27,22" fill="var(--carto-management-border)"/>
+        </svg>
+      </div>
+
+              <!-- MÉTIER -->
+        <div class="proc-section core">
+            <div class="proc-section-header">Processus métier</div>
+
+            <!-- Accompagnement — pleine largeur -->
+            <a class="proc-card core-card" href="#">
+                <div class="proc-card-id core-id">P2-01</div>
+                <div class="proc-card-name">Accompagnement des communautés</div>
+                <div class="proc-card-desc">Qualification et suivi des demandes (bugs, fonctionnalités, instances), formation &amp; dissémination, assistance à l'utilisation</div>
+            </a>
+
+            <!-- Flèches bidirectionnelles -->
+            <div class="bidir-row" style="margin-top:10px;">
+                <span class="m-bidir-arrow">↕</span>
+                <span class="m-bidir-arrow">↕</span>
+            </div>
+
+            <!-- Développement + Déploiement sur 2 colonnes -->
+            <div class="core-grid">
+                <div class="core-row">
+                    <a class="proc-card core-card" href="#">
+                        <div class="proc-card-id core-id">P2-02</div>
+                        <div class="proc-card-name">Développement logiciel</div>
+                        <div class="proc-card-desc">Conception (phase conditionnelle), développement, tests, revue de code, release</div>
+                    </a>
+
+                    <div class="horiz-flow">
+                        <!-- Flèche vers la droite -->
+                        <svg class="flow-arrow" width="40" height="24" viewBox="0 0 40 24" fill="none">
+                            <line x1="2" y1="12" x2="30" y2="12" stroke="var(--carto-core-border)" stroke-width="2.5"/>
+                            <polygon points="38,12 26,6 26,18" fill="var(--carto-core-border)"/>
+                        </svg>
+
+                        <span class="horiz-flow-label">Release / hotfix</span>
+
+                        <!-- Flèche vers la gauche -->
+                        <svg class="flow-arrow" width="40" height="24" viewBox="0 0 40 24" fill="none">
+                            <line x1="2" y1="12" x2="30" y2="12" stroke="var(--carto-core-border)" stroke-width="2.5"/>
+                            <polygon points="38,12 26,6 26,18" fill="var(--carto-core-border)"/>
+                        </svg>
+                    </div>
+
+                    <a class="proc-card core-card" href="#">
+                        <div class="proc-card-id core-id">P2-04</div>
+                        <div class="proc-card-name">Déploiement applicatif</div>
+                        <div class="proc-card-desc">Validation pré-déploiement, déploiement via GitLab CI/CD &amp; Ansible, vérification post-déploiement, notification Exploitation</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flèches bidirectionnelles -->
+            <div class="bidir-row" style="margin-top:10px;">
+                <span class="m-bidir-arrow">↕</span>
+                <span class="m-bidir-arrow">↕</span>
+            </div>
+
+            <!-- Infrastructure & MCO — pleine largeur -->
+            <a class="proc-card core-card" href="#">
+                <div class="proc-card-id core-id">P2-03</div>
+                <div class="proc-card-name">Infrastructure &amp; MCO</div>
+                <div class="proc-card-desc">Création et sécurisation des VMs, maintien en condition opérationnelle, supervision, PRA</div>
+            </a>
+        </div>    
+
+
+      <!-- FLÈCHE VERS HAUT -->
+      <div class="vert-arrow">
+        <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
+          <line x1="20" y1="30" x2="20" y2="8" stroke="#5ebc7e" stroke-width="2.5"/>
+          <polygon points="13,10 20,2 27,10" fill="#5ebc7e"/>
+        </svg>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="proc-section support">
+        <div class="proc-section-header">Processus support</div>
+        <a class="proc-card support-card" href="#">
+          <div class="proc-card-id support-id">P3-01</div>
+          <div class="proc-card-name">Gestion des Ressources Humaines &amp; Moyens</div>
+          <div class="proc-card-desc">Recrutement, intégration, administration RH — Logistique matérielle et locaux — Développement des compétences &amp; évaluation fournisseurs</div>
+        </a>
+      </div>
+
+    </div>
+    <!-- /center-col -->
+
+    <!-- FLÈCHE DROITE -->
+    <div class="arrow-col">
+      <svg class="arr-svg" viewBox="0 0 52 50" fill="none">
+        <defs>
+          <linearGradient id="ao" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#f39c12"/>
+            <stop offset="100%" stop-color="#e08e10"/>
+          </linearGradient>
+        </defs>
+        <line x1="4" y1="25" x2="44" y2="25" stroke="url(#ao)" stroke-width="3"/>
+        <polygon points="42,19 50,25 42,31" fill="#e08e10"/>
+      </svg>
+    </div>
+
+    <!-- COLONNE DROITE -->
+    <div class="side-col right">
+      <div class="side-title orange">Satisfaction des utilisateurs &amp; confiance des parties prenantes</div>
+      <div class="side-item right-item">
+        <h3>Satisfaction des utilisateurs</h3>
+        <p>Qualité, réactivité, adoption des services</p>
+      </div>
+      <div class="side-item right-item">
+        <h3>Transformation des utilisateurs</h3>
+        <p>De potentiels à actifs, fidélisation</p>
+      </div>
+      <div class="side-item right-item">
+        <h3>Confiance des parties prenantes</h3>
+        <p>Tutelles, partenaires, financeurs</p>
+      </div>
+      <div class="side-item right-item">
+        <h3>Valorisation scientifique</h3>
+        <p>Publications, communications, visibilité</p>
+      </div>
+    </div>
+
+  </div>
+  <!-- /main-grid -->
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/sidebar.js"></script>
+<button class="print-btn" onclick="window.print()">
+  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+    <rect x="6" y="14" width="12" height="8" rx="1"/>
+  </svg>
+  Imprimer
+</button>
+
+</body>
+</html>

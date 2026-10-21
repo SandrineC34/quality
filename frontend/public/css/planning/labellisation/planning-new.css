@@ -1,0 +1,98 @@
+
+    
+
+    .cartouche {
+      background: var(--primary-gradient);
+      color: #fff; border-radius: 22px;
+      padding: 30px 28px; box-shadow: var(--shadow); margin-bottom: 20px;
+    }
+    .cartouche h1 { margin: 0 0 8px; font-size: 26px; }
+    .cartouche p  { margin: 4px 0 0; color: rgba(255,255,255,.85); font-size: 13px; }
+    .données { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .element {
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+      padding: 5px 13px; border-radius: 999px; font-size: 12px; color: #fff;
+    }
+
+    .print-button {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 0 0 16px; padding: 8px 18px;
+      background: #1e293b; color: #f1f5f9; border: none;
+      border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .print-button:hover { background: #0f172a; }
+
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin: 0 0 16px; align-items: center; font-size: 13px;
+    }
+
+    /* Tableau */
+    table { width: 100%; border-collapse: collapse; box-shadow: var(--shadow); border-radius: 14px; overflow: hidden; }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: middle; text-align: left; font-size: 12.5px; }
+    th {
+      background: var(--entete); color: #fff;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    tr:nth-child(even) td { background: #f0f5ff; }
+    tr:nth-child(odd)  td { background: #fff; }
+
+    /* Colonne phase */
+    td.col-phase {
+      width: 95px; font-size: 10.5px; font-weight: 700;
+      text-align: center; vertical-align: middle;
+      color: #fff; line-height: 1.3;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .ph1 { background: #1e3a8a !important; }
+    .ph2 { background: #2563eb !important; }
+    .ph3 { background: #0369a1 !important; }
+    .ph4 { background: #0891b2 !important; }
+    .ph5 { background: #6d28d9 !important; }
+
+    td.col-statut  { width: 90px; text-align: center; vertical-align: middle; }
+    td.col-periode { width: 110px; font-size: 11.5px; }
+    td.col-resp    { width: 14%; font-size: 11.5px; }
+    td.col-action  { }
+    td.col-livrable{ width: 18%; font-size: 11.5px; }
+
+    /* Tags statut */
+    .tag {
+      display: inline-block; padding: 3px 9px;
+      border-radius: 999px; font-size: 10px; font-weight: 700;
+      color: #fff; white-space: nowrap;
+    }
+    .tag.realise     { background: #34d46f; }
+    .tag.en-retard   { background: #e53e3e; }
+    .tag.en-cours    { background: #f6ad55; color: #7c3000; }
+    .tag.a-planifier { background: #2563eb; }
+    .tag.a-venir     { background: #6b7280; }
+
+    /* Couleurs texte action */
+    .done-item  { color: #15803d; }
+    .late-item  { color: #b91c1c; }
+    .moved-item { color: #2563eb; font-style: italic; font-size: 11px; }
+    .new-task   { color: #2563eb; font-style: italic; }
+    .note-cell  { font-size: 11px; color: #92400e; background: #fef3c7; border-radius: 6px; padding: 3px 7px; display: inline-block; }
+
+    .footer {
+      margin-top: 24px; padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 12px; color: #6b7280;
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 8mm; }
+      body { background: white !important; }
+      .print-button { display: none !important; }
+      .container { padding: 0 !important; max-width: 100% !important; }
+      table { font-size: 9px; box-shadow: none; }
+      th, td { padding: 4px 6px; }
+      .tag { font-size: 8px; padding: 2px 5px; }
+      th, td.col-phase, .tag {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      tr:nth-child(even) td { background: #f0f5ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }

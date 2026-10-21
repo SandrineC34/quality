@@ -1,0 +1,37 @@
+/* Base commune pour tous les tableaux */
+.kpi-table,
+.io-table,
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* En-têtes (thead / th) */
+.kpi-table th,
+.io-table th,
+.risk-table th {
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Cellules (tbody / td) */
+.kpi-table td,
+.io-table td,
+.risk-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+/* Alternance de couleurs sur les lignes (optionnel) */
+.kpi-table tbody tr:nth-child(even),
+.io-table tbody tr:nth-child(even),
+.risk-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}

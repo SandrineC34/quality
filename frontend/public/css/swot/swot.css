@@ -1,0 +1,194 @@
+/* =====================================================
+   SWOT.CSS — Analyse SWOT (style « modern-layout »)
+   À charger APRÈS charte.css, common.css et processus.css :
+   header, hero, .section et footer viennent de processus.css.
+   Ce fichier ne contient que ce qui est propre à la matrice SWOT.
+   ===================================================== */
+
+.swot-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 24px 72px;
+}
+
+/* ══════════════════════════════════════════
+   GRILLE SWOT
+══════════════════════════════════════════ */
+.swot-layout {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 14px;
+}
+.spacer { grid-column: 1; grid-row: 1; }
+
+/* En-têtes Positif / Négatif */
+.header-positive,
+.header-negative {
+  grid-row: 1;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.header-positive { grid-column: 2; background: var(--mistea-green); }
+.header-negative { grid-column: 3; background: var(--mistea-dark-green); }
+
+/* Labels verticaux Interne / Externe */
+.label-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  border-radius: 6px;
+  background: var(--sb-bg);
+  border: 1px solid var(--sb-border);
+  color: var(--sb-text);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+}
+.label-interne { grid-column: 1; grid-row: 2; }
+.label-externe { grid-column: 1; grid-row: 3; }
+
+/* ══════════════════════════════════════════
+   BOÎTES SWOT
+══════════════════════════════════════════ */
+.swot-box {
+  --c: var(--primary-color);
+  --c-bg: #e8f8f0;
+  --c-dark: #2f6b42;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-top: 4px solid var(--c);
+  border-radius: 8px;
+  padding: 16px 18px 8px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.swot-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(10, 66, 60, .10);
+}
+
+.strengths      { grid-column: 2; grid-row: 2; }
+.weaknesses     { grid-column: 3; grid-row: 2; --c: var(--warning-color); --c-bg: #fdf1e0; --c-dark: #8a5a14; }
+.opportunities  { grid-column: 2; grid-row: 3; --c: var(--info-color);    --c-bg: #e6f4fb; --c-dark: #1f6a8c; }
+.threats        { grid-column: 3; grid-row: 3; --c: var(--danger-color);  --c-bg: #fbeaea; --c-dark: #9a2f2f; }
+
+/* Titre de boîte (h3 : neutralise le style .section h3 de processus.css) */
+.swot-box h3.box-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-dark);
+}
+.box-tag {
+  margin-left: auto;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: var(--c-bg);
+  color: var(--c-dark);
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Liste */
+.swot-box ul { list-style: none; margin: 0; padding: 0; flex-grow: 1; }
+.swot-box li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: .86rem;
+  line-height: 1.55;
+  color: #0D2822;
+}
+.swot-box li:last-child { border-bottom: none; }
+
+.swot-id {
+  flex-shrink: 0;
+  min-width: 2.2em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--c-bg);
+  border: 1.5px solid var(--c);
+  color: var(--c-dark);
+  font-size: .72rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Pied de page du document */
+.doc-footer {
+  text-align: right;
+  font-size: .75rem;
+  color: #547068;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .swot-content { padding: 18px 14px 48px; }
+  .swot-layout { grid-template-columns: 1fr; grid-template-rows: none; }
+  .spacer, .label-box, .header-positive, .header-negative { display: none; }
+  .strengths, .weaknesses, .opportunities, .threats { grid-column: 1; grid-row: auto; }
+}
+
+/* ══════════════════════════════════════════
+   IMPRESSION — une seule page A4 portrait
+══════════════════════════════════════════ */
+@media print {
+  @page { size: A4 portrait; margin: 6mm; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  body.modern-layout { background: #fff; }
+  .main-header, .nav-footer, .print-btn-nav { display: none !important; }
+
+  .proc-hero { padding: 10px 0 12px; }
+  .proc-hero h1 { font-size: 1.3rem; margin-bottom: 2px; }
+  .proc-id-tag { margin-bottom: 2px; }
+
+  .swot-content { max-width: 100%; padding: 8px 0 0 !important; }
+  .swot-content .section { padding: 8px 10px; margin-bottom: 6px; border: 1px solid var(--card-border); }
+  .modern-content .section h2 { font-size: .85rem; margin-bottom: 8px; padding-bottom: 5px; }
+
+  .swot-layout { gap: 6px; }
+  .header-positive, .header-negative { padding: 3px 8px; font-size: .6rem; }
+  .label-box { padding: 4px; font-size: .6rem; }
+
+  .swot-box { padding: 8px 10px 2px; }
+  .swot-box:hover { transform: none; }
+  .swot-box h3.box-title { font-size: .75rem; padding-bottom: 4px; margin-bottom: 2px; }
+  .box-tag { font-size: .5rem; padding: 1px 6px; }
+  .swot-box li { padding: 4px 0; gap: 6px; font-size: .62rem; line-height: 1.35; }
+  .swot-id { font-size: .56rem; padding: 0 4px; }
+
+  .doc-footer { font-size: .6rem; }
+
+  .swot-layout, .swot-box { break-inside: avoid; page-break-inside: avoid; }
+}

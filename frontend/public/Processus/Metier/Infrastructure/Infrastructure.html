@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processus Infrastructure &amp; MCO P2-03 - OpenSILEX - OpenSILEX</title>
+    <!-- Charte existante -->
+    <link rel="stylesheet" href="../../../../css/charte.css">
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/table.css">
+    <link rel="stylesheet" href="../../../../css/logigramme/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus-modern.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+</head>
+
+<body class="modern-layout" data-process-id="P2-03">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/images/Logo.svg" target="_blank">
+                <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+        <nav id="navMenuWrap"></nav>
+
+        <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+</header>
+
+<!-- ══ HERO DU PROCESSUS ══ -->
+<div class="proc-hero">
+    <div class="proc-hero-inner">
+        <div>
+            <span class="proc-id-tag">P2-03 Infrastructure &amp; MCO</span>
+            <h1>Infrastructure &amp; MCO</h1>
+            <div class="proc-hero-sub">
+                <span class="h-sp1">SP1 – SP1 Création d'infrastructure</span>
+                <span class="h-sp2">SP2 – SP2 MCO &amp; Supervision</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LAYOUT SIDEBAR + CONTENU ══ -->
+<div class="modern-page-layout">
+
+    <!-- ─ SIDEBAR (remplie par js/sidebar.js) ─ -->
+    <aside class="modern-sidebar"></aside>
+
+    <!-- ─ CONTENU ─ -->
+    <main class="modern-content">
+
+        <!-- INFORMATIONS GÉNÉRALES -->
+        <section class="section" id="general">
+            <h2>Informations générales</h2>
+            <div class="info-grid-modern">
+                <div class="info-card-modern">
+                    <span class="ic-label">Pilotage</span>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Pilote :</strong>&nbsp;Renaud Colin</div>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Participants :</strong>&nbsp;Pilote du processus, Administrateurs Systèmes, SI central, Équipe exploitation, Direction / Management</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Périmètre</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>SP1 Création d'infrastructure : création et configuration de VMs, configuration réseau, sécurité et certificats</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp2">SP2</span>SP2 MCO &amp; Supervision : supervision avancée, MCO continu, sauvegardes, PRA, iRODS, iDRAC</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Mode de pilotage</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Réunions techniques fin de sprint</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp2">SP2</span>Tableaux de bord Prometheus / Grafana</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp2">SP2</span>Alertes automatisées Mattermost</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp2">SP2</span>Exercices PRA planifiés (annuels)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINALITÉ -->
+        <section class="section" id="finalite">
+            <h2>Finalité du processus</h2>
+            <div class="finalite-box">
+                Garantir la disponibilité, la sécurité et la performance de l'infrastructure technique hébergeant les services OpenSILEX. Le processus couvre la création et la configuration des machines virtuelles, le maintien en condition opérationnelle (supervision, sauvegardes, gestion des incidents) et le plan de reprise d'activité (PRA).
+            </div>
+        </section>
+
+        <!-- PARTIES PRENANTES -->
+        <section class="section" id="parties">
+            <h2>Parties prenantes</h2>
+            <div class="stakeholder-pills">
+                <span class="s-pill">Pilote du processus</span>
+                <span class="s-pill">Administrateurs Systèmes</span>
+                <span class="s-pill">SI central</span>
+                <span class="s-pill">Déploiement applicatif (P2-04)</span>
+                <span class="s-pill">Équipe exploitation (P2-01)</span>
+                <span class="s-pill">Utilisateurs finaux</span>
+                <span class="s-pill">Utilisateurs iRODS/S3 &amp; Stockage</span>
+                <span class="s-pill">Direction / Management</span>
+                <span class="s-pill">Tutelles / DSI</span>
+            </div>
+        </section>
+
+        <!-- INTERACTIONS IO -->
+        <section class="section" id="io">
+            <h2>Interactions — Données d'entrée et de sortie</h2>
+            <div style="overflow-x:auto">
+            <table class="io-table">
+                <thead>
+                    <tr><th style="width:18%">Interlocuteur</th><th style="width:10%">Rôle</th><th style="width:36%">Entrées</th><th style="width:36%">Sorties</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Management (P1-01)</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Roadmap, allocation ressources, PGD / PGL</li><li><span class="sp-tag sp2">SP2</span>Plan infrastructure PRA, MCO</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp2">SP2</span>Rapports d'incidents, tableaux de bord disponibilité</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Déploiement applicatif (P2-04)</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp2">SP2</span>Alertes incidents liés aux instances déployées</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Environnement technique disponible pour le déploiement</li><li><span class="sp-tag sp2">SP2</span>État de supervision des instances</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Exploitation (P2-01)</td>
+                        <td><span class="role-badge">Aval</span></td>
+                        <td></td>
+                        <td><ul><li><span class="sp-tag sp2">SP2</span>Alertes incidents, état supervision</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>SI central / Tutelles / DSI</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Quotas de ressources disponibles, contraintes de sécurité</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Cahier des charges fonctionnel, inventaire CMDB</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Utilisateurs iRODS/S3</td>
+                        <td><span class="role-badge">Aval</span></td>
+                        <td><ul><li><span class="sp-tag sp2">SP2</span>Demandes de comptes, signalement d'incidents iRODS</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp2">SP2</span>Comptes configurés, infra iRODS opérationnelle</li></ul></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- DOCUMENTATIONS -->
+        <section class="section" id="docs">
+            <h2>Documentations associées</h2>
+            <div class="doc-grid-modern">
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Formulaire de demande de VM / CR réunion</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Standards de configuration (templates Ansible)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Guide de dimensionnement des ressources</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Standards de sécurité et durcissement</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Documentation réseau (plan d'adressage, VLAN, firewall)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Registre des certificats SSL/TLS</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Tableaux de bord Grafana / Prometheus</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Documentation iRODS (architecture, comptes, quotas)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Plan de Reprise d'Activité (PRA)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Politiques de sauvegarde (RPO / RTO)</div></div>
+            </div>
+        </section>
+
+        <!-- RESSOURCES -->
+        <section class="section" id="ressources">
+            <h2>Ressources</h2>
+            <div class="resource-grid-modern">
+                <div class="resource-card-modern"><strong>Humaines</strong>Pilote (Renaud Colin), administrateurs systèmes, SI central</div>
+                <div class="resource-card-modern"><strong>Matérielles</strong>Serveurs physiques, VMs, réseau (VLAN, firewall, bastion), stockage iRODS, iDRAC</div>
+                <div class="resource-card-modern"><strong>Supervision</strong>Prometheus / Grafana (métriques), Mattermost (alertes), runbooks</div>
+                <div class="resource-card-modern"><strong>Sauvegardes &amp; PRA</strong>Outils de sauvegarde (VM, BDD, fichiers critiques), environnement de secours</div>
+                <div class="resource-card-modern"><strong>Déploiement infrastructure</strong>Ansible (templates de configuration), registre des certificats SSL/TLS</div>
+            </div>
+        </section>
+
+        <!-- ACTIVITÉS -->
+        <section class="section flow-section" id="activites">
+            <h2>Activités principales</h2>
+
+            <hr class="phase-sep" data-label="SP1 – SP1 Création d&#x27;infrastructure">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A1</div>
+                <div>
+                    <div class="flow-title-modern">I1. Réception, analyse et dimensionnement</div>
+                    <p class="flow-desc-modern">Réception de la demande de création de VM, échange avec le demandeur pour qualifier les besoins techniques (CPU, RAM, stockage, OS). Évaluation de la faisabilité et des ressources disponibles, dimensionnement de l'architecture (IP, DNS, VLAN) et planification de la mise en œuvre avec estimation du délai de livraison.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A2</div>
+                <div>
+                    <div class="flow-title-modern">I2. Création, configuration et sécurisation de la VM</div>
+                    <p class="flow-desc-modern">Création de la VM et allocation des ressources, installation de l'OS, configuration du réseau (IP, DNS, firewall) et application des standards de sécurité et de durcissement. Installation des agents de monitoring de base, configuration des accès et droits, mise à jour de l'inventaire CMDB. Tests de connectivité réseau, d'accès (SSH, certificats) et de performances validés avant livraison.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A3</div>
+                <div>
+                    <div class="flow-title-modern">I3. Livraison, documentation et support utilisateur</div>
+                    <p class="flow-desc-modern">Rédaction de la documentation complète (IP, ports, accès, services) et transmission du dossier au processus MCO (SP2). Notification aux parties prenantes. Pour les utilisateurs iRODS : création des comptes avec droits appropriés, configuration des quotas et transmission sécurisée des credentials.</p>
+                </div>
+            </div>
+            <hr class="phase-sep" data-label="SP2 – SP2 MCO &amp; Supervision" style="margin-top:18px">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp2">A4</div>
+                <div>
+                    <div class="flow-title-modern">M1. Intégration et supervision avancée</div>
+                    <p class="flow-desc-modern">Réception du dossier de livraison SP1 et vérification de sa complétude. Configuration des sondes de monitoring avancées (CPU, RAM, disque, réseau, services applicatifs, logs, métriques métier), définition des seuils d'alerte (warning / critical) et des notifications Mattermost. Création des tableaux de bord Grafana, tests des alertes et documentation de la configuration de supervision.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp2">A5</div>
+                <div>
+                    <div class="flow-title-modern">M2. Surveillance continue et maintenance préventive</div>
+                    <p class="flow-desc-modern">Monitoring permanent des tableaux de bord, analyse des alertes et intervention selon les runbooks. Maintenance préventive planifiée : patches de sécurité, mises à jour, renouvellement des certificats SSL/TLS, nettoyage des logs et optimisation des performances. Surveillance de l'utilisation des ressources et anticipation des saturations.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp2">A6</div>
+                <div>
+                    <div class="flow-title-modern">M3. Sauvegardes, incidents et PRA</div>
+                    <p class="flow-desc-modern">Définition et configuration de la politique de sauvegarde (RPO, RTO, fréquence, rétention) selon le type (VM complète, bases de données, fichiers critiques), planification des tâches et tests initiaux de restauration. Gestion des incidents : détection automatique ou signalement utilisateur, qualification (criticité, impact, urgence), diagnostic, application du runbook et restauration du service documentée. Tests trimestriels de restauration sur environnement de test et exercices PRA annuels (simulation de sinistre, mesure RTO/RPO réels, amélioration continue du plan).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERFORMANCE -->
+        <section class="section" id="perf">
+            <h2>Performance</h2>
+
+            <h3>Objectifs</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>N°</th><th>Description de l'objectif</th><th>Lien avec la politique</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj1">Obj1</span></td>
+                        <td>Livrer aux utilisateurs des VM sécurisées, conformes à leurs besoins fonctionnels et prêtes à l'emploi.</td>
+                        <td><span class="politique satisfaction"></span> <span class="politique risque"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp2">SP2</span></td>
+                        <td><span class="badge-obj2">Obj2</span></td>
+                        <td>Assurer la disponibilité des services, les sauvegardes/PRA, la gestion du stockage (iRODS/S3, iDRAC) et garantir l'assistance aux utilisateurs.</td>
+                        <td><span class="politique satisfaction"></span> <span class="politique confiance"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KPI)</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'atteinte d'un résultat attendu. Ils répondent à la question : « Est-ce qu'on atteint nos objectifs ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Objectif</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de VM documentées complètement</strong></td><td class="kpi-target">100 %</td><td>Mensuel</td><td>(VM avec documentation complète / Total VM livrées) × 100</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de VM conformes aux standards de sécurité à la livraison</strong></td><td class="kpi-target">100 %</td><td>Trimestriel</td><td>(VM validées sur la check-list durcissement / Total VM livrées) × 100</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Disponibilité de l'infrastructure</strong></td><td class="kpi-target">≥ 99 %</td><td>Trimestriel</td><td>(Temps total − Temps d'indisponibilité) / Temps total × 100</td><td><span class="badge-obj2">Obj2</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Taux de succès des sauvegardes</strong></td><td class="kpi-target">≥ 98 %</td><td>Mensuel</td><td>(Sauvegardes réussies / Total sauvegardes planifiées) × 100</td><td><span class="badge-obj2">Obj2</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs de fonctionnement</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'activité courante. Ils répondent à la question : « Que s'est-il passé ? Combien ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Définition / mode de calcul</th><th>Fréquence</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de VMs créées</td><td>Décompte des nouvelles VMs mises en service. Source : CMDB / inventaire.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de certificats SSL/TLS renouvelés</td><td>Décompte des certificats renouvelés dans l'année. Source : registre des certificats.</td><td>Annuel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de mises à jour de patches de sécurité appliquées</td><td>Décompte des patches appliqués sur les VMs en production. Source : rapports maintenance préventive.</td><td>Mensuel</td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td>Nombre d'incidents traités</td><td>Décompte des incidents enregistrés et clôturés dans le mois. Source : Prometheus / journal incidents.</td><td>Mensuel</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <!-- RISQUES -->
+        <section class="section" id="risques">
+            <h2>Analyse des Risques</h2>
+            <h3>Risques</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Risque</th><th>Description</th><th>Actions de maîtrise / Mesures préventives</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R1</span></td><td><strong>Saturation des ressources</strong></td><td>CPU, RAM ou stockage atteignent leurs limites, dégradant les performances ou empêchant la création de nouvelles VM sans arbitrage préalable.</td><td>Surveiller les seuils de capacité, revoir les quotas chaque trimestre avec le SI central et valider les ressources avant toute création de VM.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-2">R2</span></td><td><strong>Incident (iRODS, Instance)</strong></td><td>Plateforme ou instance devenant indisponible ou perdant des données, impactant la gestion des données de recherche.</td><td>Appliquer les runbooks, maintenir la supervision et les sauvegardes, tirer un retour d'expérience après chaque incident majeur.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-2">R3</span></td><td><strong>Défaillance de la supervision</strong></td><td>Défaillance de l'infrastructure détectée par les utilisateurs avant d'être identifiée par les outils de supervision.</td><td>Tester les alertes à la mise en service, supprimer toute VM non supervisée du périmètre livré.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R4</span></td><td><strong>Documentation incomplète ou absente</strong></td><td>La VM est livrée sans documentation adéquate, compliquant la maintenance et le dépannage futurs.</td><td>Rendre la check-list de documentation obligatoire en I3 et contrôler la complétude du dossier à la réception par le MCO.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-2">R5</span></td><td><strong>Échec du PRA</strong></td><td>Le plan de reprise d'activité n'est pas testé ou ne fonctionne pas en situation réelle, prolongeant l'indisponibilité.</td><td>Planifier un exercice PRA annuel et des tests de restauration trimestriels, avec un plan d'actions correctives suivi jusqu'à clôture.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-2">R6</span></td><td><strong>Non-respect du RTO / RPO</strong></td><td>Le temps de restauration ou la perte de données dépasse les objectifs définis, impactant la continuité de service.</td><td>Définir RTO / RPO par service, les mesurer lors des tests et ajuster fréquence et rétention des sauvegardes en cas d'écart.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-2">R7</span></td><td><strong>Défaillance du système de sauvegarde</strong></td><td>Les sauvegardes ne sont pas effectuées, échouent ou sont corrompues, empêchant la restauration des données.</td><td>Alerter automatiquement sur tout échec de sauvegarde et vérifier l'intégrité par des tests de restauration trimestriels.</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KRI)</h3>
+            <span class="desc-note">Ces indicateurs sont un signal d'alerte. Ils répondent à la question : « Y a-t-il un signal qui annonce un problème à venir ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Risque</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux d'utilisation des quotas</strong></td><td class="kpi-target">≤ 85 %</td><td>Trimestriel</td><td>(Ressources utilisées / Ressources totales disponibles) × 100</td><td><span class="risk-id sub-process-1">R1</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Nombre d'incidents majeurs</strong></td><td class="kpi-target">0</td><td>Mensuel</td><td>Incidents avec indisponibilité supérieure au RTO ou perte de données</td><td><span class="risk-id sub-process-2">R2</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Taux d'incidents détectés par les utilisateurs</strong></td><td class="kpi-target">≤ 15 %</td><td>Mensuel</td><td>(Nb d'incidents détectés par les utilisateurs / Nb total d'incidents) × 100</td><td><span class="risk-id sub-process-2">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Nombre de VM sans documentation complète depuis plus de 30 jours</strong></td><td class="kpi-target">0</td><td>Mensuel</td><td>Décompte des VM livrées dont la documentation reste incomplète 30 jours après livraison</td><td><span class="risk-id sub-process-1">R4</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Résultat de l'exercice PRA (RTO mesuré vs RTO cible)</strong></td><td class="kpi-target">RTO mesuré ≤ RTO cible</td><td>Annuel</td><td>Temps de restauration mesuré lors de l'exercice PRA comparé au RTO cible</td><td><span class="risk-id sub-process-2">R5</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Nombre d'incidents dépassant le RTO cible</strong></td><td class="kpi-target">0</td><td>Mensuel</td><td>Décompte des restaurations dont la durée dépasse le RTO du service concerné</td><td><span class="risk-id sub-process-2">R6</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Nombre de VM avec 2 échecs de sauvegarde consécutifs</strong></td><td class="kpi-target">0</td><td>Mensuel</td><td>Décompte des VM dont les 2 dernières sauvegardes planifiées ont échoué</td><td><span class="risk-id sub-process-2">R7</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- OPPORTUNITÉS -->
+        <section class="section" id="opport">
+            <h2>Analyses des Opportunités</h2>
+            <h3>Opportunités</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Opportunité</th><th>Description</th><th>Mesure de surveillance</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-2">O1</span></td><td><strong>PRA testé comme argument de confiance partenaires</strong></td><td>Un PRA documenté et régulièrement exercé constitue un critère différenciant pour les partenaires scientifiques et les tutelles, renforçant la confiance dans la continuité de service d'OpenSILEX.</td><td></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- LOGIGRAMMES -->
+        <svg width="0" height="0" style="position:absolute"><defs>
+            <marker id="arr-head-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6b7280"/></marker>
+            <marker id="arr-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2937"/></marker>
+        </defs></svg>
+
+        <section class="section logigramme-section" id="logi-sp1">
+            <h2>Logigramme — SP1 · SP1 Création d'infrastructure</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 456" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP1 — SP1 Création d'infrastructure</title>
+                <rect class="frame-sp1" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#1e40af;">SP1 — SP1 Création d'infrastructure</text>
+                <rect class="node-term" x="195" y="36" width="311" height="30" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Demande de VM · spécifications techniques</text>
+                <line class="arr" x1="350" y1="66" x2="350" y2="92" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="92" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="111" text-anchor="middle">I1 — Réception, analyse &amp; dimensionnement</text>
+                <text class="lbl-sub" x="350" y="128" text-anchor="middle">Qualification besoin · faisabilité · architecture IP/DNS · planification</text>
+                <line class="arr" x1="350" y1="144" x2="350" y2="170" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="170" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="189" text-anchor="middle">I2 — I2 — Création, configuration &amp; sécurisation VM</text>
+                <text class="lbl-sub" x="350" y="206" text-anchor="middle">OS · réseau · sécurité · monitoring de base · accès · CMDB</text>
+                <line class="arr" x1="350" y1="222" x2="350" y2="248" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,248 438,274 350,300 262,274"/>
+                <text class="lbl-aside" x="350" y="278" text-anchor="middle">Tests validés ?</text>
+                <line class="arr" x1="438" y1="274" x2="490" y2="274" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="268">Non</text>
+                <rect class="node-refus" x="490" y="252" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="269" text-anchor="middle">Correction</text>
+                <text class="lbl-sub" x="580" y="285" text-anchor="middle">↻ retour I2</text>
+                <text class="yes" x="355" y="316">Oui</text>
+                <line class="arr" x1="350" y1="300" x2="350" y2="326" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="326" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="345" text-anchor="middle">I3 — Livraison, documentation &amp; support utilisateur</text>
+                <text class="lbl-sub" x="350" y="362" text-anchor="middle">Documentation complète · transmission MCO · comptes iRODS · notification</text>
+                <line class="arr" x1="350" y1="378" x2="350" y2="404" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="205" y="404" width="291" height="32" rx="16"/>
+                <text class="lbl-title" x="350" y="425" text-anchor="middle">VM livrée · dossier transmis → SP2 MCO</text>
+            </svg>
+            </div>
+        </section>
+
+        <section class="section logigramme-section" id="logi-sp2">
+            <h2>Logigramme — SP2 · SP2 MCO &amp; Supervision</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 456" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP2 — SP2 MCO &amp; Supervision</title>
+                <rect class="frame-sp2" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#065f46;">SP2 — SP2 MCO &amp; Supervision</text>
+                <rect class="node-term" x="185" y="36" width="330" height="30" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Dossier de livraison SP1 · alertes incidents</text>
+                <line class="arr" x1="350" y1="66" x2="350" y2="92" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="92" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="111" text-anchor="middle">M1 — Intégration &amp; supervision avancée</text>
+                <text class="lbl-sub" x="350" y="128" text-anchor="middle">Sondes monitoring · seuils d'alerte · Grafana · tests alertes · documentation</text>
+                <line class="arr" x1="350" y1="144" x2="350" y2="170" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="170" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="189" text-anchor="middle">M2 — Surveillance continue &amp; maintenance préventive</text>
+                <text class="lbl-sub" x="350" y="206" text-anchor="middle">Monitoring tableaux de bord · patches · certificats · capacité ressources</text>
+                <line class="arr" x1="350" y1="222" x2="350" y2="248" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,248 438,274 350,300 262,274"/>
+                <text class="lbl-aside" x="350" y="271" text-anchor="middle">Incident détecté</text>
+                <text class="lbl-aside" x="350" y="285" text-anchor="middle">?</text>
+                <line class="arr" x1="438" y1="274" x2="490" y2="274" marker-end="url(#arr-head)"/>
+                <text class="yes" x="448" y="268">Oui</text>
+                <rect class="node-refus" x="490" y="252" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="269" text-anchor="middle">Gestion incident</text>
+                <text class="lbl-sub" x="580" y="285" text-anchor="middle">Runbook · restauration</text>
+                <text class="no" x="355" y="316">Non</text>
+                <line class="arr" x1="350" y1="300" x2="350" y2="326" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="326" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="345" text-anchor="middle">M3 — Sauvegardes, tests restauration &amp; PRA</text>
+                <text class="lbl-sub" x="350" y="362" text-anchor="middle">Politique RPO/RTO · tests trimestriels · exercices PRA annuels</text>
+                <line class="arr" x1="350" y1="378" x2="350" y2="404" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="139" y="404" width="423" height="32" rx="16"/>
+                <text class="lbl-title" x="350" y="425" text-anchor="middle">Infrastructure supervisée · PRA à jour · incidents résolus</text>
+            </svg>
+            </div>
+        </section>
+
+        <!-- PIED DE PAGE DOC -->
+        <section class="section">
+            <div class="footer" style="text-align:right;font-size:.75rem;color:#547068;border-top:1px solid #D0E8DF;padding-top:10px">
+                <span contenteditable="true">Version 3.0</span> |
+                <span contenteditable="true">Mise à jour : /10/2026</span>
+            </div>
+        </section>
+
+    </main><!-- /modern-content -->
+</div><!-- /modern-page-layout -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/sidebar.js"></script>
+
+</body>
+</html>

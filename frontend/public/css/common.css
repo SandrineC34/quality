@@ -1,0 +1,385 @@
+/* =====================================================
+   COMMON.CSS - Styles communs et navigation
+   ===================================================== */
+
+/*Header */
+
+.header {
+    max-width: var(--breakpoint-desktop);
+    margin: 2rem auto 1.5rem auto;
+    border-radius: var(--border-radius-lg);
+    background: var(--primary-gradient);
+    color: var(--text-color-white);
+    padding: 1.5rem 2rem 2rem 2rem;
+    box-shadow: var(--shadow-card);
+}
+
+.header-content {
+    max-width: var(--breakpoint-desktop);
+    margin: 0 auto;
+    padding: 0;
+}
+
+.header h1 {
+    font-size: var(--font-size-header-h1);
+    margin-bottom: 0.5rem;
+}
+
+.header .subtitle {
+    font-size: var(--font-size-header-subtitle);
+    opacity: 0.95;
+}
+
+.process-badge {
+    display: inline-block;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--border-radius-pill);
+    font-weight: var(--font-weight-bold);
+    margin-top: var(--spacing-md);
+    border: none;
+    cursor: pointer;
+}
+
+/* Reset basique */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY GLOBAL */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: var(--line-height-normal);
+    background: var(--bg-gradient);
+}
+
+/* WRAPPER DE PAGE */
+.page-wrapper {
+    max-width: var(--breakpoint-wide);
+    margin: var(--spacing-xxl) auto;
+    padding: 0 2rem 2rem 2rem;
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* CONTAINER GÉNÉRAL */
+.container {
+    max-width: var(--breakpoint-desktop);
+    margin: 0 auto;
+    padding: 0 0 2rem 0;
+}
+
+
+
+/* =================== HEADER NAVIGATION GLOBAL =================== */
+.main-header {
+    max-width: var(--breakpoint-wide, 1400px);
+    margin: var(--spacing-md, 1rem) auto 0 auto;
+    padding: 0 2rem;
+    border-radius: var(--border-radius-lg, 12px);
+    background: var(--primary-light, #4a9b7f);
+    color: var(--text-color-white, #ffffff);
+    box-shadow: var(--shadow-md, 0 2px 8px rgba(0,0,0,0.15));
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky, 100);
+}
+
+.nav-container {
+    max-width: var(--breakpoint-desktop);
+    margin: 0 auto;
+    padding: var(--spacing-sm) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+        font-size: var(--font-size-xl, 1.5rem);
+        font-weight: var(--font-weight-bold, 700);
+        color: var(--text-color-white, #ffffff);
+        letter-spacing: 1px;
+        width: 100px; /* Taille personnalisée */
+        height: auto;
+    }
+    .logo img {
+        width: 100%;
+        height: auto;
+    }
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--text-color-white);
+    color: var(--text-color-white);
+    font-size: var(--font-size-xl);
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-fast) ease;
+}
+
+.menu-toggle:hover {
+    background: var(--nav-hover-bg);
+}
+
+/* NAV */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--text-color-white, #ffffff);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium, 500);
+    padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+    border-radius: var(--border-radius-sm, 4px);
+    transition: 0.2s ease;
+    display: block;
+}
+
+nav ul li a:hover {
+    background: var(--nav-hover-bg, rgba(255,255,255,0.15));
+    transform: translateY(-2px);
+}
+
+/* SOUS-MENU */
+.has-submenu {
+    position: relative;
+}
+
+.has-submenu > a::after {
+    content: "▾";
+    font-size: 0.8em;
+    margin-left: 0.3rem;
+}
+
+/* Sous-menu (niveau 1) */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-light, #4a9b7f);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.2));
+    border-radius: var(--border-radius-md, 8px);
+    padding: var(--spacing-sm, 0.5rem) 0;
+    z-index: var(--z-dropdown, 200);
+    list-style: none;
+    margin-top: 0;
+}
+
+/* Sous-sous-menu (niveau 2) */
+.submenu .submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -80%;    
+    background: var(--primary-darkest);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) 0;
+    z-index: var(--z-dropdown);
+    margin-top: 0;
+    list-style: none;
+}
+
+/* Affichage des sous-menus au survol (desktop) */
+.has-submenu:hover > .submenu {
+    display: block;
+}
+
+/* Affichage des sous-sous-menus au survol du parent (desktop) */
+.has-submenu:hover > .submenu .has-submenu:hover > .submenu .submenu {
+    display: block;
+}
+
+/* Style des éléments de sous-menu */
+.submenu li {
+    width: 100%;
+    margin: 0;
+}
+
+.submenu a {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0;
+    font-weight: var(--font-weight-normal);
+    white-space: nowrap;
+    display: block;
+}
+
+.submenu a:hover {
+    background: var(--nav-submenu-hover-bg);
+    transform: none;
+}
+
+/* =================== FOOTER GLOBAL =================== */
+.nav-footer {
+    max-width: 1400px;
+    margin: var(--spacing-xl, 2rem) auto;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    background: var(--primary-light, #4a9b7f);
+    color: var(--text-color-white, #ffffff);
+    max-height:80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-footer .container {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-color-white, #ffffff);
+    text-decoration: underline;
+    font-weight: var(--font-weight-medium, 500);
+}
+
+.footer-links a:not(:last-child)::after {
+    content: "|";
+    margin-left: 0.6rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.footer-chip {
+    background: rgba(255,255,255,0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-left: 0.25rem;
+}
+
+
+/* BOUTON IMPRESSION 
+.print-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 30rem;
+    background: var(--primary-color);
+    color: var(--text-color-white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-pill);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition-all);
+    border: none;
+    z-index: var(--z-fixed);
+} */
+
+.print-button {
+    background: var(--primary-color);
+    color: var(--text-color-white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-pill);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition-all);
+    border: none;
+}
+
+.print-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* =================== RESPONSIVE (MOBILE) =================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        padding: var(--spacing-md);
+        gap: 0;
+        box-shadow: var(--shadow-lg);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 0.8rem var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+    }
+
+    /* Sous-menu mobile */
+    .submenu {
+        position: static;
+        display: none;
+        margin-left: var(--spacing-md);
+        box-shadow: none;
+        background: var(--nav-mobile-submenu-bg);
+        border-radius: var(--border-radius-sm);
+    }
+
+    .submenu.active {
+        display: block;
+    }
+
+    /* Sous-sous-menu mobile */
+    .submenu .submenu {
+        margin-left: var(--spacing-md);
+        background: var(--nav-mobile-subsubmenu-bg);
+    }
+
+    .submenu .submenu.active {
+        display: block;
+    }
+}
+/* Maj Collavizza S - 14/04/2021 bouton pour site */
+

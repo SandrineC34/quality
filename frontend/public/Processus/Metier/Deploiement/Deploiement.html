@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processus Déploiement applicatif P2-04 - OpenSILEX - OpenSILEX</title>
+    <!-- Charte existante -->
+    <link rel="stylesheet" href="../../../../css/charte.css">
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/table.css">
+    <link rel="stylesheet" href="../../../../css/logigramme/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus-modern.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+</head>
+
+<body class="modern-layout" data-process-id="P2-04">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/images/Logo.svg" target="_blank">
+                <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+        <nav id="navMenuWrap"></nav>
+
+        <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+</header>
+
+<!-- ══ HERO DU PROCESSUS ══ -->
+<div class="proc-hero">
+    <div class="proc-hero-inner">
+        <div>
+            <span class="proc-id-tag">P2-04 Déploiement applicatif</span>
+            <h1>Déploiement applicatif</h1>
+            <div class="proc-hero-sub">
+                <span class="h-sp1">SP1 – SP1 Déploiement et mise en production</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LAYOUT SIDEBAR + CONTENU ══ -->
+<div class="modern-page-layout">
+
+    <!-- ─ SIDEBAR (remplie par js/sidebar.js) ─ -->
+    <aside class="modern-sidebar"></aside>
+
+    <!-- ─ CONTENU ─ -->
+    <main class="modern-content">
+
+        <!-- INFORMATIONS GÉNÉRALES -->
+        <section class="section" id="general">
+            <h2>Informations générales</h2>
+            <div class="info-grid-modern">
+                <div class="info-card-modern">
+                    <span class="ic-label">Pilotage</span>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Pilote :</strong>&nbsp;À définir (co-pilotage Infrastructure / Développement recommandé)</div>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Participants :</strong>&nbsp;Administrateurs Systèmes, Responsable développement, Équipe exploitation</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Périmètre</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>SP1 Déploiement et mise en production : validation pré-déploiement, déploiement via CI/CD, vérification post-déploiement, notification</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Mode de pilotage</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Validations de release avant déploiement en production</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Pipeline GitLab CI/CD (traçabilité automatique)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Registre des instances déployées</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINALITÉ -->
+        <section class="section" id="finalite">
+            <h2>Finalité du processus</h2>
+            <div class="finalite-box">
+                Déployer de manière maîtrisée, documentée et traçable les releases et correctifs applicatifs (OpenSILEX, SilexExplorer) produits par le Développement (P2-02), en garantissant la validation des prérequis avant mise en production, la conformité aux standards de configuration et la notification des équipes concernées.
+            </div>
+        </section>
+
+        <!-- PARTIES PRENANTES -->
+        <section class="section" id="parties">
+            <h2>Parties prenantes</h2>
+            <div class="stakeholder-pills">
+                <span class="s-pill">Développement (P2-02) — fournisseur des artefacts</span>
+                <span class="s-pill">Infrastructure &amp; MCO (P2-03) — fournisseur de l'environnement</span>
+                <span class="s-pill">Accompagnement des communautés (P2-01) — destinataire de la notification</span>
+                <span class="s-pill">Management (P1-01)</span>
+                <span class="s-pill">Utilisateurs finaux</span>
+            </div>
+        </section>
+
+        <!-- INTERACTIONS IO -->
+        <section class="section" id="io">
+            <h2>Interactions — Données d'entrée et de sortie</h2>
+            <div style="overflow-x:auto">
+            <table class="io-table">
+                <thead>
+                    <tr><th style="width:18%">Interlocuteur</th><th style="width:10%">Rôle</th><th style="width:36%">Entrées</th><th style="width:36%">Sorties</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Développement (P2-02)</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Packages applicatifs, artefacts de déploiement (release / hotfix), tag Git, changelog</li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Infrastructure &amp; MCO (P2-03)</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Environnement de déploiement configuré et disponible</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Anomalies d'environnement identifiées lors de la vérification post-déploiement</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Exploitation (P2-01)</td>
+                        <td><span class="role-badge">Aval</span></td>
+                        <td></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Notification de mise à disposition effective de l'instance / release</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Management (P1-01)</td>
+                        <td><span class="role-badge">Amont</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Roadmap, planification des releases</li></ul></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- DOCUMENTATIONS -->
+        <section class="section" id="docs">
+            <h2>Documentations associées</h2>
+            <div class="doc-grid-modern">
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Registre des instances déployées (liste instances)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Pipelines GitLab CI/CD (templates de déploiement)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Templates Ansible de configuration</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Procédure de validation pré-déploiement (check-list)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Procédure de rollback</div></div>
+            </div>
+        </section>
+
+        <!-- RESSOURCES -->
+        <section class="section" id="ressources">
+            <h2>Ressources</h2>
+            <div class="resource-grid-modern">
+                <div class="resource-card-modern"><strong>Humaines</strong>Pilote (à désigner), administrateurs systèmes, responsable développement</div>
+                <div class="resource-card-modern"><strong>Outils</strong>GitLab CI/CD, Ansible (templates de configuration), registre des instances</div>
+                <div class="resource-card-modern"><strong>Environnements</strong>Préproduction, production (infrastructure gérée par P2-03)</div>
+            </div>
+        </section>
+
+        <!-- ACTIVITÉS -->
+        <section class="section flow-section" id="activites">
+            <h2>Activités principales</h2>
+
+            <hr class="phase-sep" data-label="SP1 – SP1 Déploiement et mise en production">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A1</div>
+                <div>
+                    <div class="flow-title-modern">D1. Validation et déploiement</div>
+                    <p class="flow-desc-modern">Réception des artefacts de déploiement (release ou hotfix) depuis le Développement (P2-02). Vérification de la complétude des spécifications (changelog, tag Git, notes de version) et validation des prérequis de l'environnement cible (disponibilité infrastructure, conformité configuration). Déploiement via GitLab CI/CD et Ansible selon les templates de configuration, avec validation formelle documentée avant toute mise en production.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A2</div>
+                <div>
+                    <div class="flow-title-modern">D2. Vérification post-déploiement et notification</div>
+                    <p class="flow-desc-modern">Tests de bon fonctionnement du service déployé (connectivité, accès, services applicatifs). En cas d'anomalie : retour en correction avec le Développement (P2-02) ou l'Infrastructure (P2-03) selon la nature du problème, et redéploiement. Notification à l'Exploitation (P2-01) de la mise à disposition effective. Documentation du déploiement dans le registre des instances.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERFORMANCE -->
+        <section class="section" id="perf">
+            <h2>Performance</h2>
+
+            <h3>Objectifs</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>N°</th><th>Description de l'objectif</th><th>Lien avec la politique</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj1">Obj1</span></td>
+                        <td>Déployer de manière maîtrisée, documentée et transparente pour les utilisateurs les releases et correctifs applicatifs.</td>
+                        <td><span class="politique satisfaction"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj2">Obj2</span></td>
+                        <td>Garantir la traçabilité complète de chaque déploiement (artefact, environnement, validations, notifications).</td>
+                        <td><span class="politique confiance"></span> <span class="politique risque"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KPI)</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'atteinte d'un résultat attendu. Ils répondent à la question : « Est-ce qu'on atteint nos objectifs ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Objectif</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de déploiements validés avant mise en production</strong></td><td class="kpi-target">100 %</td><td>Mensuel</td><td>(Instances déployées avec validation documentée / Total instances déployées) × 100. Source : registre des instances.</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de déploiements réalisés via pipeline automatisé (CI/CD)</strong></td><td class="kpi-target">≥ 90 %</td><td>Trimestriel</td><td>(Déploiements via GitLab CI/CD ou Ansible / Total déploiements) × 100. Source : GitLab.</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Délai moyen entre réception artefact et notification exploitation</strong></td><td class="kpi-target">À définir</td><td>Par release</td><td>Temps entre réception du tag Git et notification à P2-01. Source : suivi interne / GitLab.</td><td><span class="badge-obj2">Obj2</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs de fonctionnement</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'activité courante. Ils répondent à la question : « Que s'est-il passé ? Combien ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Définition / mode de calcul</th><th>Fréquence</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre d'instances déployées</td><td>Décompte des instances applicatives déployées en production. Source : GitLab CI / registre de déploiement.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de hotfixes déployés</td><td>Décompte des correctifs urgents déployés hors cycle de release standard. Source : GitLab / JIRA.</td><td>Par sprint</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de releases déployées</td><td>Décompte des versions majeures/mineures mises en production. Source : GitLab.</td><td>Trimestriel</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <!-- RISQUES -->
+        <section class="section" id="risques">
+            <h2>Analyse des Risques</h2>
+            <h3>Risques</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Risque</th><th>Description</th><th>Actions de maîtrise / Mesures préventives</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R1</span></td><td><strong>Déploiement non maîtrisé ou sans validation</strong></td><td>Instance déployée sans validation préalable des spécifications ou sans respect des standards de configuration, entraînant des dysfonctionnements en production.</td><td>Valider formellement les prérequis avant mise en production et déployer uniquement via GitLab CI/CD et Ansible avec traçabilité dans le registre des instances.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R2</span></td><td><strong>Artefact incomplet ou non conforme reçu du Développement</strong></td><td>Un artefact livré sans changelog complet, sans tag Git ou sans notes de version rend la validation impossible et peut entraîner des régressions.</td><td>Check-list de réception formalisée ; retour systématique vers P2-02 si l'artefact est incomplet avant tout déploiement.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R3</span></td><td><strong>Environnement cible non disponible ou non conforme</strong></td><td>L'infrastructure nécessaire au déploiement n'est pas prête (VM non créée, configuration manquante), bloquant la mise en production.</td><td>Coordination préalable avec P2-03 ; vérification des prérequis environnement avant déclenchement du pipeline.</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R4</span></td><td><strong>Absence de procédure de rollback opérationnelle</strong></td><td>En cas d'anomalie post-déploiement, l'absence de procédure de retour arrière prolonge l'indisponibilité du service.</td><td>Maintenir et tester une procédure de rollback documentée pour chaque type de release.</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KRI)</h3>
+            <span class="desc-note">Ces indicateurs sont un signal d'alerte. Ils répondent à la question : « Y a-t-il un signal qui annonce un problème à venir ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Risque</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de déploiements avec retour en correction</strong></td><td class="kpi-target">≤ 10 %</td><td>Trimestriel</td><td>(Déploiements avec retour en correction ou rollback / Total déploiements) × 100. Source : registre des instances / GitLab.</td><td><span class="risk-id sub-process-1">R1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Nombre d'artefacts reçus incomplets (sans changelog, sans tag Git)</strong></td><td class="kpi-target">0</td><td>Par sprint</td><td>Décompte des artefacts refusés à réception pour non-conformité. Source : suivi interne.</td><td><span class="risk-id sub-process-1">R2</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Nombre de déploiements bloqués faute d'environnement disponible</strong></td><td class="kpi-target">0</td><td>Trimestriel</td><td>Décompte des pipelines en attente d'environnement au-delà du délai prévu. Source : GitLab.</td><td><span class="risk-id sub-process-1">R3</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- OPPORTUNITÉS -->
+        <section class="section" id="opport">
+            <h2>Analyses des Opportunités</h2>
+            <h3>Opportunités</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Opportunité</th><th>Description</th><th>Mesure de surveillance</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-1">O1</span></td><td><strong>Automatisation des déploiements comme levier de fiabilité</strong></td><td>L'extension de l'automatisation via Ansible et GitLab CI/CD réduit les erreurs humaines, accélère la mise en production et renforce la traçabilité des configurations.</td><td></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KIO)</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Opportunité</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de déploiements réalisés via pipeline automatisé</strong></td><td class="kpi-target">≥ 95 % d'ici fin d'exercice</td><td>Trimestriel</td><td>(Déploiements via CI/CD / Total déploiements) × 100. Cible progressive : renforcement de l'automatisation.</td><td><span class="risk-id sub-process-1">O1</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- LOGIGRAMMES -->
+        <svg width="0" height="0" style="position:absolute"><defs>
+            <marker id="arr-head-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6b7280"/></marker>
+            <marker id="arr-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2937"/></marker>
+        </defs></svg>
+
+        <section class="section logigramme-section" id="logi-sp1">
+            <h2>Logigramme — SP1 · SP1 Déploiement et mise en production</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 434" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP1 — SP1 Déploiement et mise en production</title>
+                <rect class="frame-sp1" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#1e40af;">SP1 — SP1 Déploiement et mise en production</text>
+                <rect class="node-term" x="109" y="36" width="482" height="44" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Artefacts release / hotfix (tag Git · changelog · notes de version)</text>
+                <text class="lbl-title" x="350" y="70" text-anchor="middle">depuis P2-02</text>
+                <line class="arr" x1="350" y1="80" x2="350" y2="106" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="106" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="125" text-anchor="middle">D1 — D1 — Validation &amp; déploiement</text>
+                <text class="lbl-sub" x="350" y="142" text-anchor="middle">Vérification complétude artefact · vérification prérequis environnement ·</text>
+                <text class="lbl-sub" x="350" y="156" text-anchor="middle">déploiement Ansible/GitLab CI/CD · validation documentée</text>
+                <line class="arr" x1="350" y1="172" x2="350" y2="198" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,198 438,224 350,250 262,224"/>
+                <text class="lbl-aside" x="350" y="221" text-anchor="middle">Service</text>
+                <text class="lbl-aside" x="350" y="235" text-anchor="middle">opérationnel ?</text>
+                <line class="arr" x1="438" y1="224" x2="490" y2="224" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="218">Non</text>
+                <rect class="node-refus" x="490" y="202" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="219" text-anchor="middle">Nature du problème ?</text>
+                <text class="yes" x="355" y="266">Oui</text>
+                <line class="arr" x1="350" y1="250" x2="350" y2="276" marker-end="url(#arr-head)"/>
+                <rect class="node-sp1" x="110" y="276" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="295" text-anchor="middle">D2 — Vérification post-déploiement &amp; notification</text>
+                <text class="lbl-sub" x="350" y="312" text-anchor="middle">Tests fonctionnels · mise à jour registre instances · notification Exploitation</text>
+                <text class="lbl-sub" x="350" y="326" text-anchor="middle">P2-01</text>
+                <line class="arr" x1="350" y1="342" x2="350" y2="368" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="139" y="368" width="423" height="46" rx="16"/>
+                <text class="lbl-title" x="350" y="389" text-anchor="middle">Instance déployée · Exploitation notifiée · registre mis à</text>
+                <text class="lbl-title" x="350" y="403" text-anchor="middle">jour</text>
+            </svg>
+            </div>
+        </section>
+
+        <!-- PIED DE PAGE DOC -->
+        <section class="section">
+            <div class="footer" style="text-align:right;font-size:.75rem;color:#547068;border-top:1px solid #D0E8DF;padding-top:10px">
+                <span contenteditable="true">Version 1.0</span> |
+                <span contenteditable="true">Mise à jour : /10/2026</span>
+            </div>
+        </section>
+
+    </main><!-- /modern-content -->
+</div><!-- /modern-page-layout -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/sidebar.js"></script>
+
+</body>
+</html>

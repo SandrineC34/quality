@@ -1,0 +1,82 @@
+<header class="main-header">
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo"><a href="/images/Logo.svg" target="_blank"><img src="/images/Logo.svg" alt="Logo"></a></div>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+            <nav>
+                <ul id="navMenu">
+                    <!--<li><a href="/html/index.html">Accueil</a></li>-->
+                    <li><a href="../../html/Politique/politique.html">Politique qualite</a></li>
+                    <li><a href="../../html/Parties_interresees/partie_interresees.html">Parties Prenantes</a></li>
+                    <li><a href="../../html/Enjeux/1-swot.html">SWOT</a></li>
+                    <li><a href="../../html/Enjeux/2-tows.html">TOWS</a></li>
+                    <!--<li><a href="/html/Organigramme/organigramme.html">Organigramme</a></li>-->
+                    <li><a href="../../html/Cartographie/Cartographie.html">Cartographie</a></li>
+                
+                    <!-- Menu processus-->
+                    <li class="has-submenu" onclick="toggleSubmenu(event)">
+                        <a href="#">Processus</a>
+                        <ul class="submenu">
+                            <li><a href="../../html/Processus/Management/Management.html">Management</a></li>
+                            <li><a href="../../html/Processus/Metier/Exploitation.html">Exploitation</a></li>
+                            <li><a href="../../html/Processus/Metier/Developpement.html">Développement</a></li>
+                            <li><a href="../../html/Processus/Metier/Infrastructure.html">Infrastructure</a></li>
+                            <li><a href="../../html/Processus/Support/Gestion-RH.html">Gestion RH</a></li> 
+                        </ul>
+                    </li>
+                    <!-- Menu logigrammes-->
+                    <!--<li class="has-submenu" onclick="toggleSubmenu(event)">
+                        <a href="#">Logigrammes</a>
+                        <ul class="submenu">
+                            <li><a href="/html/Logigrammes/Management-logigramme.html">Management</a></li>
+                            <li><a href="/html/Processus/Management-qualite.html">xxxxx</a></li>
+                            <li><a href="/html/Processus/Management-projet.html">yyyyyy</a></li>
+                            <li><a href="/html/Processus/Management-risques.html">ttttt</a></li>
+                        </ul>
+                    </li>    -->    
+                    
+                   <!-- Menu Infrastructure-->
+                      <!--<li class="has-submenu" onclick="toggleSubmenu(event)">
+                        <a href="#">Infrastructure</a>
+                        <ul class="submenu">
+                            <li><a href="/html/Infrastructure/Infrastructure.html">Infrastructure vue d'ensemble</a></li>
+                            <li class="has-submenu" onclick="toggleSubmenu(event)">
+                                <a href="#">Openstack Toulouse</a>
+                                <ul class="submenu level-2">
+                                    <li><a href="/html/Infrastructure/Cloud_INRAE_Toulouse/Cloud  INRAE - Toulouse.html">Toulouse</a></li>
+                                    <li><a href="/html/Infrastructure/Cloud_INRAE_Toulouse/Cloud_INRAE_Toulouse_Infrastructure.html">Infrastructure</a></li>
+                                    <li><a href="/html/Infrastructure/Cloud_INRAE_Toulouse/Cloud_INRAE_toulouse_reseaux.html">Réseaux</a></li>                                        
+                                </ul>
+                            </li>
+                            <li><a href="/html/Infrastructure/Cloud CESNET - EGI.html">EGI - Phenome</a></li>
+                            <li><a href="/html/Infrastructure/Cloud INRAE - Montpellier.html">Openstack Montpellier</a></li>
+                            <li><a href="/html/Infrastructure/Cloud-FG.html">SCIGNE</a></li>
+                            <li><a href="/html/Infrastructure/IRODS.html">IRODS</a></li>
+                            <li><a href="/html/Infrastructure/vmware-paris.html">VM-WARE Paris</a></li>
+                        </ul>
+                    </li>-->
+
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<script>
+    function toggleMenu() {
+        const navMenu = document.getElementById('navMenu');
+        const toggleButton = document.querySelector('.menu-toggle');
+        
+        navMenu.classList.toggle('active');
+        
+        const isExpanded = navMenu.classList.contains('active');
+        toggleButton.setAttribute('aria-expanded', isExpanded);
+    }
+    function toggleSubmenu(event) {
+        event.stopPropagation();
+        const submenuParent = event.currentTarget;
+        submenuParent.classList.toggle('submenu-open');
+    }
+
+</script>

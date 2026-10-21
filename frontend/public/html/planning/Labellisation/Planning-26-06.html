@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Planning de mise en place du SMQ</title>
+  <link rel="stylesheet" href="../../../css/charte.css">
+  <link rel="stylesheet" href="../../../css/planning/labellisation/Planning.css">
+  <link rel="stylesheet" href="../../../css/planning/labellisation/Print.css">
+  <style>
+    /* Indicateurs de statut */
+    tr.late td { background-color: #fde8e8 !important; border-left: 4px solid #e53e3e; }
+    tr.in-progress td { background-color: #fef9e7 !important; border-left: 4px solid #f6ad55; }
+    tr.upcoming td { background-color:  #fff !important; border-left: 1px solid #000; }
+    .status-badge {
+      display: inline-block;
+      font-size: 0.72em;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-late  { background: #e53e3e; color: #fff; }
+    .badge-progress { background: #f6ad55; color: #fff; }
+    .badge-upcoming { background: #48bb78; color: #fff; }
+    .badge-done     { background: #6b7280; color: #fff; }
+    tr.done td { background-color: #f0fdf4 !important; border-left: 4px solid #48bb78; }
+    .done-item { color: #16a34a; font-weight: bold; }
+    .late-item { color: #b91c1c; }
+    .moved-item { color: #2563eb; font-style: italic; }
+    .legend {
+      display: flex; gap: 18px; flex-wrap: wrap;
+      margin: 10px 0 18px 0; font-size: 0.85em; align-items: center;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+    .dot-late  { background: #e53e3e; }
+    .dot-progress { background: #f6ad55; }
+    .dot-upcoming { background: #48bb78; }
+    .new-task { font-style: italic; color: #2563eb; }
+    .note-report { font-size: 0.88em; color: #555; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <button class="print-button" onclick="window.print()">Imprimer le Planning</button>
+
+<h1>Planning de mise en place du SMQ – Cellule OpenSILEX</h1>
+
+<div class="legend">
+  <span><strong>Légende :</strong></span>
+  <div class="legend-item"><div class="legend-dot dot-late"></div> En retard</div>
+  <div class="legend-item"><div class="legend-dot dot-progress"></div> En cours</div>
+  <div class="legend-item"><div class="legend-dot dot-upcoming"></div> À venir</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#6b7280"></div> Réalisé</div>
+</div>
+
+<h2>Phase 1 – Structuration du SMQ et cartographie (T4 2025)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Période cible</th>
+      <th>Actions à réaliser</th>
+      <th>Responsables</th>
+      <th>Livrables / preuves</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="done">
+      <td>fin décembre 2025 <span class="status-badge badge-done">Réalisé</span></td>
+      <td>
+        <span class="done-item">✔ Créer <b>la cartographie des processus</b> (management, métier, support).</span><br>
+        <span class="done-item">✔ Valider la liste des processus avec le Management.</span><br>
+        <span class="late-item">✘ Définir la politique qualité et les objectifs stratégiques</span> <span class="moved-item">→ reporté au 30 mars 2026</span><br>
+        <span class="late-item">✘ Nommer les pilotes de processus</span> <span class="moved-item">→ reporté au 30 mars 2026</span><br>
+        <span class="done-item">✔ Valider la planification et la démarche par le Service Qualité Central</span>
+      </td>
+      <td>Management</td>
+      <td>
+        <span class="done-item">✔ Cartographie des processus (fichier / page GitLab).</span><br>
+        <span class="late-item">✘ Politique qualité — à produire</span><br>
+        <span class="late-item">✘ Organigramme qualité (rôles &amp; responsabilités) — à produire</span>
+      </td>
+    </tr>
+    <tr class="done">
+      <td>mars 2026 <span class="status-badge badge-done">Réalisé</span></td>
+      <td>
+        <span class="done-item">✔ Définir <b>la politique qualité et les objectifs stratégiques</b>.</span><br>
+        <span class="done-item">✔ <b>Nommer les pilotes de processus.</b></span><br>
+      </td>
+      <td>Management</td>
+      <td>
+        <span class="done-item">✔ Politique qualité validée.</span><br>
+        <span class="late-item">✔ Organigramme qualité (rôles &amp; responsabilités).</span><span class="moved-item">→ reporté au 30 aout 2026</span><br>
+        <span class="late-item">✔ Validation formalisée par le Service Qualité Central.<span class="moved-item">→ reporté début juillet rdv avec cathy</span></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Phase 2 – Création des cartes d’identité de processus</h2>
+<p>Objectif : disposer, pour chaque processus de la cartographie (Management, Qualité, Métier, Support), d’une carte d’identité homogène décrivant son périmètre, ses acteurs, ses risques et ses indicateurs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Période cible</th>
+      <th>Actions à réaliser</th>
+      <th>Responsables</th>
+      <th>Livrables / preuves</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <tr class="done">
+      <td>octobre–décembre 2025 <span class="status-badge badge-done">Réalisé</span></td>
+      <td>
+        <span class="done-item">✔ Définir le modèle standard de carte d'identité de processus (format HTML / GitLab Wiki).</span><br>
+        <span class="done-item">✔ Valider la structure minimale : finalité, périmètre, pilote, parties prenantes, données d'entrée/sortie, activités clés, risques, indicateurs.</span><br>
+        <span class="done-item">✔ Sensibiliser les pilotes de processus à la démarche (réunion courte).</span>
+      </td>
+      <td>Pilote Management, Pilote Qualité</td>
+      <td>
+        <span class="done-item">✔ Modèle de fiche processus validé.</span><br>
+        <span class="done-item">✔ Compte rendu de réunion.</span>
+      </td>
+    </tr>
+
+      <tr class="done">
+      <td>janvier–février 2026 <span class="status-badge badge-done">Réalisé</span></td>
+      <td>
+        <span class="done-item">✔ Créer ou compléter les cartes d'identité des processus déjà décrits (Management, Qualité, processus métier principaux, processus support clés).</span><br>
+        <span class="done-item">✔ Aligner les cartes d'identité avec la cartographie existante (P1-01 Management, P1-02 Qualité, P2-xx, P3-xx).</span><br>
+        <span class="late-item">✘ Renseigner les liens vers les documents associés (procédures, modèles, tableaux de bord)</span> <span class="moved-item">→ reporté en setembre 2026</span>
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        <span class="done-item">✔ Cartes d'identité publiées dans GitLab / HTML.</span><br>
+        <span class="late-item">✘ Liens vers documents associés — à compléter en septembre 2026</span>
+      </td>
+    </tr>
+
+    <tr class="done">
+      <td>mars 2026 <span class="status-badge badge-done">Réalisé</span></td>
+      <td>
+        <span class="done-item ">✔Finalisation des cartes d’identité de processus</span> (Management, Qualité, Métier, Support).<br>
+        <span class="note-report">⚠️ Note : les logigrammes de processus sont reportés à aout 2026.</span>
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        <span class="done-item">✔ Cartes d’identité de processus publiées dans GitLab / HTML (sans logigrammes).<br>
+        <span class="done-item">✔ Validation formalisée en Copil (réunion mamangement - mettre lien vers le CR de la réunion)
+      </td>
+      </tr>
+ 
+
+      <tr class="late">
+      <td>avril 2026 <span class="status-badge badge-late">En retard</span></td>
+      <td>
+        <span class="late-item">✔ Finalisation du Plan de Reprise d’Activité (PRA)</span>.<br>
+        <span class="late-item">✔ Rédiger et valider le PRA (scénarios de reprise, responsabilités, délais).<br>
+        <span class="late-item">✔ Intégrer le PRA dans la documentation qualité (GitLab / Drive).<br>
+        <span class="late-item">✔ Valider le PRA en Copil / Direction.
+      </td>
+      <td>Pilote Qualité, Direction, Pilotes de processus concernés</td>
+      <td>
+        - PRA rédigé et validé.<br>
+        - Document publié sur GitLab / Drive.
+      </td>
+    </tr>
+    
+    <tr class="late">
+      <td>Mai 2026 <span class="status-badge badge-late">En retard</span></td>
+      <td>
+        <span class="late-item">✔ Intégrer une première analyse de risques par processus dans chaque fiche (top 3 à 5 risques prioritaires).<br>
+        <span class="late-item">✔ Associer à chaque risque au moins un indicateur existant ou à créer.<br>
+        <span class="late-item">✔ Réaliser les logigrammes de processus</span> (reportés du 30 mars).<br>
+        <span class="late-item">✔ Valider les cartes d’identité complètes (risques, KPI, logigrammes) en Comité Qualité / Copil.
+      </td>
+      <td>Pilote Qualité, Pilotes de processus, Direction</td>
+      <td>
+        - Cartes d’identité incluant risques, KPI et logigrammes.<br>
+        - Validation formalisée (CR de Copil / réunion qualité).
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h2>Phase 3 – Gestion documentaire et indicateurs (T1–T3 2026)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Période cible</th>
+      <th>Actions à réaliser</th>
+      <th>Responsables</th>
+      <th>Livrables / preuves</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+
+      <tr class="late">
+      <td>Mai 2026 <span class="status-badge badge-late">En retard</span></td>
+      <td>
+        <span class="late-item">✔ Structurer l’arborescence documentaire GitLab / Google Drive.<br>
+        <span class="late-item">✔ Rédiger le manuel qualité (version 0 puis V1).<br>
+        <span class="late-item">✔ Définir le référentiel des indicateurs (KPI par processus).<br>
+        <span class="late-item">✔ Définir les règles de gestion documentaire (versionning, validation).
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        - Manuel qualité V1.<br>
+        - Guide de gestion documentaire.<br>
+        - Tableau de référentiel des indicateurs.
+      </td>
+    </tr>
+    <tr class="upcoming">
+      <td>juin–Juil 2026 <span class="status-badge badge-upcoming">A venir</span></td>
+      <td>
+        - Rédiger les procédures et modes opératoires critiques (priorité label).<br>
+        - Créer les premiers tableaux de bord (KPI clés) dans GitLab / Sheets.<br>
+        - Lancer la collecte régulière des indicateurs retenus.<br>
+        - Organiser les premières réunions qualité trimestrielles.
+      </td>
+      <td>Pilote Qualité, Pilotes de processus, Chefs de projet</td>
+      <td>
+        - Procédures publiées sur GitLab.<br>
+        - Tableaux de bord qualité alimentés.<br>
+        - Comptes rendus de réunions qualité.
+      </td>
+    </tr>
+    <tr class="upcoming">
+      <td>juin 2026<span class="status-badge badge-upcoming">A venir</span></td>
+      <td>
+        <span class="new-task">➕ Finalisation des tableaux Excel</span> (suivi qualité, KPI, plans d’actions).<br>
+        - Consolider et finaliser l’ensemble des fichiers Excel de suivi qualité.<br>
+        - S’assurer de la cohérence entre les tableaux Excel, GitLab et le référentiel d’indicateurs.<br>
+        - Valider les tableaux en Copil avant passage au mode de collecte stable.
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        - Tableaux Excel finalisés et validés.<br>
+        - Cohérence assurée avec le référentiel d’indicateurs.
+      </td>
+    </tr>
+    <tr class="upcoming">
+      <td>Août–Sept 2026</td>
+      <td>
+        - Compléter la documentation manquante pour les processus majeurs.<br>
+        - Stabiliser la collecte des KPI (taux de collecte ≥ 95 %).<br>
+        - Ajuster les indicateurs non pertinents.
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        - Mise à jour du référentiel d’indicateurs.<br>
+        - Historique de données KPI sur plusieurs mois.
+      </td>
+    </tr>
+    <tr class="upcoming">
+      <td>Septembre 2026 </td>
+      <td>
+        <span class="moved-item">➕ Renseigner les liens vers les documents associés</span> (procédures, modèles, tableaux de bord) dans chaque carte d'identité de processus.
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        - Cartes d'identité complètes avec liens documentaires dans GitLab / HTML.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Phase 4 – Non-conformités, actions d’amélioration et revue de processus (T2–T3 2026)</h2>
+<table>
+  <thead>
+    <tr class="upcoming">
+      <th>Période cible</th>
+      <th>Actions à réaliser</th>
+      <th>Responsables</th>
+      <th>Livrables / preuves</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="upcoming">
+      <td>Juil 2026</td>
+      <td>
+        - Rédiger la procédure de traitement des non-conformités.<br>
+        - Créer les modèles d’Issues GitLab pour NC et actions.<br>
+        - Former les équipes au signalement des NC et suggestions.<br>
+        - Démarrer l’enregistrement systématique des NC et actions.
+      </td>
+      <td>Pilote Qualité, Pilotes de processus</td>
+      <td>
+        - Procédure NC validée.<br>
+        - Templates GitLab opérationnels.<br>
+        - Premières fiches NC et plans d’actions.
+      </td>
+    </tr>
+    <tr class="upcoming">
+      <td>Août–Sept 2026</td>
+      <td>
+        - Mettre en place un suivi trimestriel des actions d’amélioration.<br>
+        - Suivre le taux de clôture des actions dans les délais.<br>
+        - Tenir des revues de processus (analyse KPI, NC, actions).
+      </td>
+      <td>Pilote Qualité, Pilotes de processus, Direction</td>
+      <td>
+        - Comptes rendus de revues de processus.<br>
+        - Indicateur de taux de clôture des actions.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Phase 5 – Audits internes et préparation label (T3–T4 2026)</h2>
+<table>
+  <thead>
+    <tr class="upcoming">
+      <th>Période cible</th>
+      <th>Actions à réaliser</th>
+      <th>Responsables</th>
+      <th>Livrables / preuves</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="upcoming">
+      <td>Sept–Oct 2026</td>
+      <td>
+        - Rédiger la procédure d’audit interne.<br>
+        - Élaborer les grilles d’audit par processus.<br>
+        - Réaliser au moins un cycle d’audits internes ciblés label.<br>
+        - Mettre en œuvre et suivre les actions correctives issues des audits.<br>
+        - Préparer la revue de direction (synthèse globale SMQ).
+      </td>
+      <td>Pilote Qualité, Auditeurs internes, Direction</td>
+      <td>
+        - Procédure d’audit interne et grilles d’audit.<br>
+        - Rapports d’audit interne.<br>
+        - Plan d’actions suite aux audits.<br>
+        - Compte rendu de revue de direction.
+      </td>
+    </tr>
+    <tr class="upcoming">
+      <td>Août–Sept 2026</td>
+      <td>
+        - Vérifier la complétude documentaire (manuel, processus, procédures).<br>
+        - Vérifier la disponibilité des preuves (KPI, CR de réunions, NC, audits).<br>
+        - Organiser une « répétition générale » de l’audit (revue de conformité).<br>
+       </td>
+      <td>Pilote Qualité, Direction, Pilotes de processus</td>
+      <td>
+        - Liste de vérification (check-list audit blanc).<br>
+       </td>
+    </tr>
+  </tbody>
+</table>
+<div class="footer">
+        <div class="footer-content">
+        <div class="footer-line">
+            <span contenteditable="true">Version 1.2</span> | 
+            <span contenteditable="true">Mise à jour : 08/06/2026</span><br>
+        </div>
+       
+    </div>
+    </div>
+</body>
+</html>

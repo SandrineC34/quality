@@ -1,0 +1,502 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .proc-hero {
+      background: var(--mistea-dark-green);
+      position: relative;
+      overflow: hidden;
+      padding: 28px 0 32px;
+      border-bottom: 3px solid transparent;
+      border-image: var(--mistea-gradient) 1;
+    }
+    .proc-hero::before {
+      content: '';
+      position: absolute;
+      right: -60px; top: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.03);
+      pointer-events: none;
+    }
+    .proc-hero-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .proc-id-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--opensilex-lime);
+      margin-bottom: .5rem;
+      display: block;
+    }
+    .proc-hero h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: .45rem;
+    }
+    .proc-hero-sub {
+      font-size: .79rem;
+      color: rgba(255,255,255,.55);
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .proc-hero-sub span { display: flex; align-items: center; gap: 6px; }
+    .proc-hero-sub span::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--carto-arrow-green);
+    }
+    .proc-hero-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .proc-meta-chip {
+      font-size: .74rem;
+      color: rgba(255,255,255,.6);
+    }
+    .proc-meta-chip strong { color: #fff; }
+    .proc-badge {
+      display: inline-block;
+      background: var(--mistea-gradient);
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .carto-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 28px 24px 40px;
+    }
+
+    /* ── GRID 5 colonnes ── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 240px 52px 1fr 52px 240px;
+      gap: 0;
+      align-items: stretch;
+      min-height: 680px;
+    }
+
+    /* ── COLONNES LATÉRALES ── */
+    .side-col {
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .side-col.left  { border-left: 5px solid var(--carto-arrow-green); }
+    .side-col.right { border-left: 5px solid var(--carto-arrow-orange); }
+
+    .side-title {
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: .92rem;
+      color: #fff;
+      line-height: 1.35;
+    }
+    .side-title.green  { background: var(--carto-arrow-green); }
+    .side-title.orange { background: var(--carto-arrow-orange); }
+
+    .side-item {
+      background: var(--page-bg);
+      border-radius: 8px;
+      padding: 12px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .side-item.left-item  { border-left: 4px solid var(--carto-arrow-green); }
+    .side-item.right-item { border-left: 4px solid var(--carto-arrow-orange); }
+    .side-item:hover { transform: translateX(4px); box-shadow: 0 4px 14px rgba(94,188,126,.2); }
+    .side-item.right-item:hover { transform: translateX(-4px); box-shadow: 0 4px 14px rgba(243,156,18,.2); }
+
+    .side-item h3 {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--sb-text);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .side-item p {
+      font-size: .74rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── CONNECTEURS FLÈCHE ── */
+    .arrow-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .arr-svg { width: 52px; height: 50px; overflow: visible; }
+
+    /* ── COLONNE CENTRALE ── */
+    .center-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── SECTIONS PROCESSUS ── */
+
+        .proc-row {
+        display: flex;
+        align-items: stretch;        /* cartes de même hauteur */
+        gap: 12px;
+    }
+
+    .h-arrow {
+        display: flex;
+        align-items: center;         /* flèche centrée verticalement */
+        flex: 0 0 auto;
+    }
+
+    .proc-card {
+        flex: 1 1 0;                 /* les deux cartes occupent la même largeur */
+        min-width: 0;
+    }
+    .proc-section {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--card-border);
+    }
+
+    .proc-section.mgmt {
+      background: linear-gradient(135deg, #daeaf6 0%, #bdd6ee 100%);
+      border-left: 5px solid var(--carto-management-border);
+      border-top: none; border-right: none; border-bottom: none;
+    }
+    .proc-section.core {
+      background: linear-gradient(135deg, #d5f4e6 0%, #b8e8cf 100%);
+      border-left: 5px solid var(--carto-core-border);
+      border-top: none; border-right: none; border-bottom: none;
+    }
+    .proc-section.support {
+      background: linear-gradient(135deg, #d6eaf8 0%, #add6f1 100%);
+      border-left: 5px solid var(--carto-support-border);
+      border-top: none; border-right: none; border-bottom: none;
+    }
+
+    .proc-section-header {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--sb-muted);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--card-border);
+    }
+
+    /* ── PROCESS CARDS ── */
+    .proc-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform .2s, box-shadow .2s;
+      border: 1px solid rgba(255,255,255,.7);
+    }
+    .proc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .proc-card.mgmt-card { border-left: 4px solid var(--carto-management-border); }
+    .proc-card.core-card { border-left: 4px solid var(--carto-core-border); }
+    .proc-card.core-card.deploy { border-left: 4px solid #7c5cbf; }
+    .proc-card.support-card { border-left: 4px solid var(--carto-support-border); }
+
+    .proc-card-id {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .proc-card-id.mgmt-id   { color: var(--carto-management-border); }
+    .proc-card-id.core-id   { color: var(--primary-dark); }
+    .proc-card-id.deploy-id { color: #7c5cbf; }
+    .proc-card-id.support-id{ color: var(--carto-support-border); }
+    .proc-card-id.new-id    { color: #7c5cbf; }
+
+    .proc-card-name {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--mistea-dark-green);
+      margin-bottom: 5px;
+      line-height: 1.25;
+    }
+    .proc-card-desc {
+      font-size: .74rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .proc-card-sp {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .sp-chip {
+      font-size: .64rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+    .sp-chip.sp1 {
+      background: color-mix(in srgb, #0096D6 18%, white);
+      color: color-mix(in srgb, #0096D6 80%, black);
+      border: 1px solid color-mix(in srgb, #0096D6 28%, white);
+    }
+    .sp-chip.sp2 {
+      background: color-mix(in srgb, #F2B200 18%, white);
+      color: var(--mistea-dark-green);
+      border: 1px solid color-mix(in srgb, #F2B200 38%, white);
+    }
+    .sp-chip.sp3 {
+      background: color-mix(in srgb, #82C325 18%, white);
+      color: var(--mistea-dark-green);
+      border: 1px solid color-mix(in srgb, #82C325 35%, white);
+    }
+    .sp-chip.spx {
+      background: color-mix(in srgb, #7c5cbf 14%, white);
+      color: #4b3696;
+      border: 1px solid color-mix(in srgb, #7c5cbf 28%, white);
+    }
+    .badge-new {
+      display: inline-block;
+      background: var(--mistea-gradient);
+      color: #fff;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── CORE FLOW (Dév + Infra sur 2 colonnes) ── */
+        .core-row {
+      display: flex;
+      align-items: center;      /* aligne verticalement cartes et flèches */
+      gap: 12px;
+    }
+
+    .core-row .proc-card {
+      flex: 1;                 /* les deux cartes occupent la même largeur */
+    }
+
+    .horiz-flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;     /* le label reste sur une seule ligne */
+    }
+
+
+
+
+
+    .core-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .core-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    /* La ligne Développement / Déploiement s'étire sur toute la largeur */
+.proc-section.core .core-grid,
+.proc-section.core .core-row {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Les deux cartes se répartissent équitablement la largeur */
+.proc-section.core .core-row .core-card {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* La flèche centrale garde une largeur fixe, centrée verticalement */
+.proc-section.core .horiz-flow {
+  flex: 0 0 auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+    /* ── FLÈCHES VERTICALES ── */
+    .vert-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 4px 0;
+    }
+    .bidir-row {
+      display: flex;
+      justify-content: space-around;
+      margin: 4px 0;
+    }
+    .m-bidir-arrow {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--carto-arrow-green);
+      line-height: 1;
+    }
+    .flow-arrow-svg {
+      display: block;
+    }
+
+    /* ── HORIZONTAL FLOW ARROW ── */
+    .horiz-flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 4px;
+    }
+    .horiz-flow-label {
+      font-size: .67rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .horiz-arrow-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--carto-arrow-green), var(--primary-dark));
+      position: relative;
+    }
+    .horiz-arrow-line::after {
+      content: '';
+      position: absolute;
+      right: -1px; top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid var(--primary-dark);
+    }
+
+    /* ── FOOTER ── */
+    .carto-footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 12px 24px 24px;
+      border-top: 1px solid var(--carto-arrow-green);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .footer-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .72rem;
+      color: var(--sb-muted);
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── PRINT BTN ── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(94,188,126,.4);
+      border: none;
+      z-index: 1000;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .print-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(94,188,126,.5);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .arrow-col { height: 40px; transform: rotate(90deg); }
+      .core-grid, .core-grid-3 { grid-template-columns: 1fr; }
+    }
+    @media print {
+      .print-btn { display: none; }
+      body { background: white; }
+      .proc-section, .side-col, .proc-card { box-shadow: none !important; }
+      .proc-hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }

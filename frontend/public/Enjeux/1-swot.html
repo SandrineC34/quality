@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyse SWOT - OpenSILEX</title>
+  <!-- Charte existante (même ordre que Management.html ; swot.css en dernier pour surcharger) -->
+  <link rel="stylesheet" href="../../css/charte.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/processus/processus.css">
+  <link rel="stylesheet" href="../../css/swot/swot.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="modern-layout">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/images/Logo.svg" target="_blank">
+        <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+      </a>
+    </div>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+    <nav id="navMenuWrap"></nav>
+
+    <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="proc-hero">
+  <div class="proc-hero-inner">
+    <div>
+      <span class="proc-id-tag">OpenSILEX · Analyse stratégique</span>
+      <h1>Analyse SWOT</h1>
+      <div class="proc-hero-sub">
+        <span class="h-sp1">Forces, Faiblesses, Opportunités &amp; Risques</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTENU ══ -->
+<main class="modern-content swot-content">
+
+  <section class="section" id="matrice">
+    <h2>Matrice SWOT</h2>
+
+    <div class="swot-layout">
+
+      <!-- Spacer -->
+      <div class="spacer"></div>
+
+      <!-- En-têtes de colonnes -->
+      <div class="header-positive">✓ Positif</div>
+      <div class="header-negative">✗ Négatif</div>
+
+      <!-- Labels gauche -->
+      <div class="label-box label-interne">Interne</div>
+      <div class="label-box label-externe">Externe</div>
+
+      <!-- Forces (Strengths) -->
+      <div class="swot-box strengths">
+        <h3 class="box-title">Forces <span class="box-tag">Interne</span></h3>
+        <ul>
+          <li><span class="swot-id">S1</span><span>Équipe multidisciplinaire compétente et expérimentée</span></li>
+          <li><span class="swot-id">S2</span><span>Infrastructure cloud robuste et évolutive</span></li>
+          <li><span class="swot-id">S3</span><span>Forte collaboration avec la communauté scientifique</span></li>
+          <li><span class="swot-id">S4</span><span>Plateforme open-source favorisant l’adoption et la contribution</span></li>
+          <li><span class="swot-id">S5</span><span>Innovation (architecture logicielle, lien avec la recherche en informatique)</span></li>
+        </ul>
+      </div>
+
+      <!-- Faiblesses (Weaknesses) -->
+      <div class="swot-box weaknesses">
+        <h3 class="box-title">Faiblesses <span class="box-tag">Interne</span></h3>
+        <ul>
+          <li><span class="swot-id">W1</span><span>Dépendance aux financements externes et projets</span></li>
+          <li><span class="swot-id">W2</span><span>Nombre important de CDD impactant la continuité / pérennité des compétences</span></li>
+          <li><span class="swot-id">W3</span><span>Communication externe à renforcer</span></li>
+          <li><span class="swot-id">W4</span><span>Manque de visibilité sur les coûts pour évaluer nos demandes (projet, accompagnement, prestation)</span></li>
+          <li><span class="swot-id">W5</span><span>iRODS : Lourdeur technologique et maintenance complexe</span></li>
+          <li><span class="swot-id">W6</span><span>Faiblesse RH en DevOps</span></li>
+        </ul>
+      </div>
+
+      <!-- Opportunités (Opportunities) -->
+      <div class="swot-box opportunities">
+        <h3 class="box-title">Opportunités <span class="box-tag">Externe</span></h3>
+        <ul>
+          <li><span class="swot-id">O1</span><span>Croissance de la demande en gestion de données FAIR</span></li>
+          <li><span class="swot-id">O2</span><span>Nouveaux financements européens et nationaux</span></li>
+          <li><span class="swot-id">O3</span><span>Évolution des technologies cloud, IA et inférence</span></li>
+          <li><span class="swot-id">O4</span><span>Reconnaissance pour notre compétence au niveau de l’institut</span></li>
+          <li><span class="swot-id">O5</span><span>Réseau de partenaires important</span></li>
+          <li><span class="swot-id">O6</span><span>Ouverture vers d’autres domaines d’applications</span></li>
+        </ul>
+      </div>
+
+      <!-- Menaces (Threats) -->
+      <div class="swot-box threats">
+        <h3 class="box-title">Risques <span class="box-tag">Externe</span></h3>
+        <ul>
+          <li><span class="swot-id">T1</span><span>Concurrence de solutions alternatives possibles avec IA</span></li>
+          <li><span class="swot-id">T2</span><span>Évolution rapide des technologies nécessitant une adaptation continue</span></li>
+          <li><span class="swot-id">T3</span><span>Réduction potentielle des budgets de recherche</span></li>
+          <li><span class="swot-id">T4</span><span>Maintenance évolutive : technos rapides et longs à intégrer (cf. Vue3.js)</span></li>
+          <li><span class="swot-id">T5</span><span>Les utilisateurs ne saisissent pas suffisamment leurs données</span></li>
+          <li><span class="swot-id">T6</span><span>Infrastructure de stockage étendue, forte complexité de mise en place</span></li>
+          <li><span class="swot-id">T7</span><span>Risques de sécurité et cybermenaces</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE DOC : version et date -->
+  <section class="section">
+    <div class="doc-footer">
+      <span>OpenSILEX-SWOT</span> |
+      <span contenteditable="true">Version 1.0</span> |
+      <span contenteditable="true">Mise à jour : 21/04/2026 - Isabelle Alic</span>
+      <!-- <span contenteditable="true">Mise à jour : 08/04/2026 - Anne Tireau</span> -->
+      <!-- <span contenteditable="true">Mise à jour : 17/02/2026 - Sandrine Collavizza</span> -->
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+  <div class="container">
+    <div class="footer-links"></div>
+    <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../js/navigation.js"></script>
+
+</body>
+</html>

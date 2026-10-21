@@ -1,0 +1,236 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schéma Infrastructure OpenStack Toulouse</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script> 
+  <link rel="stylesheet" href="../../../../css/charte.css">
+  <link rel="stylesheet" href="../../../css/infrastructure/Cloud_INRAE - Toulouse/Cloud_INRAE_Toulouse_md.css">  
+  <link rel="stylesheet" href="../../../../css/common.css">
+
+  
+  <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "dark",
+        themeVariables: {
+          background: "#0f172a",
+          primaryColor: "#1e293b",
+          primaryTextColor: "#e5e7eb",
+          lineColor: "#94a3b8",
+          tertiaryColor: "#1f2937",
+          fontFamily: "Inter, Arial"
+        }
+      });
+</script>
+
+</head>
+
+<body>
+  <div class="titre">
+      <div class="titre-content">
+        <h1>Infrastructure Toulouse1</h1>
+        <p class="subtitle">Infrastructure1</p>
+        </div>
+    </div>
+  
+
+    <div class="diagram-wrapper" id="diagramWrapper">
+      <div id="diagram">
+        <pre class="mermaid">
+graph TD
+    subgraph Internet["<b>🌐 Internet</b>"]
+        UsersInternet["Utilisateurs"]
+    end
+
+    subgraph SSH["<b>SSH</b>"]
+        UsersSSH["Administrateur"]
+    end
+
+    subgraph Frontend["<b>ONE FRONTEND</b>"]
+        Bastion["🔐 Phis-ssh-Bastion<br/>147.100.202.248"]
+        Proxy["🔀 Opensilex-proxy<br/>147.100.202.17"]
+    end
+
+    subgraph AppLayer["<b>COUCHE APPLICATION</b>"]
+        direction LR
+        subgraph PhisApps["Serveurs Phis"]
+            Phis1["⚙️ Phis-opensilex-1<br/>icasa, 4pmi, m3p<br/>diaphen, phenopsis"]
+            Phis2["⚙️ Phis-opensilex-2<br/>diaphen, phenotic<br/>phenotoul, demo"]
+        end
+        subgraph OpensilexApps["Serveurs Opensilex"]
+            OS1["⚙️ Opensilex-server-1<br/>vigne, iado<br/>sunagri, vitioeno"]
+            OS2["⚙️Opensilex-server-2<br/>gotheron, mais<br/>gcie, lacage, etc."]
+        end
+    end
+
+    subgraph DataLayer["<b>COUCHE DONNÉES</b>"]
+        direction LR
+        subgraph MongoDB["MongoDB Cluster"]
+            Mongo["🧠 Opensilex-mongodb"]
+            Mongo1["🧠 Opensilex-mongodb-1"]
+        end
+        subgraph RDF["RDF Triplestore"]
+            RDF1["📚 Opensilex-rdf-1"]
+            PhisRDF["📚 Phis-rdf-1"]
+        end
+    end
+
+    subgraph Support["<b>COUCHE SUPPORT</b>"]
+        direction LR
+        GraphQL["🔌Phis-Graphql"]
+        Monitor["📊 Phis-monitoring"]
+        Test["🧪 Opensilex-test"]
+    end
+
+    subgraph BackupLayer["<b>COUCHE BACKUP</b>"]
+        direction LR
+        Backup1["💾 Opensilex-Backup"]
+        Backup2["💾 4p-Backup"]
+        BackupTest["💾 Backup-test"]
+    end
+
+    %% Flux principal
+    UsersInternet -->|HTTPS| Proxy
+    UsersSSH -.->|SSH| Bastion
+    
+    Proxy --> Phis1
+    Proxy --> Phis2
+    Proxy --> OS1
+    Proxy --> OS2
+
+    linkStyle 2 stroke:#f66,stroke-width:2px;
+    linkStyle 3 stroke:#f66,stroke-width:2px;
+    linkStyle 4 stroke:#f66,stroke-width:2px;
+    linkStyle 5 stroke:#f66,stroke-width:2px;
+
+
+    Bastion -.->|Admin| Phis1
+    Bastion -.->|Admin| Phis2
+    Bastion -.->|Admin| OS1
+    Bastion -.->|Admin| OS2
+
+    linkStyle 6 stroke:#f66,stroke-width:2px;
+    linkStyle 7 stroke:#f66,stroke-width:2px;
+    linkStyle 8 stroke:#f66,stroke-width:2px;
+    linkStyle 9 stroke:#f66,stroke-width:2px;
+
+    %% Connexions données
+    Phis1 --> Mongo
+    Phis2 --> Mongo
+    Phis1 --> RDF1
+    Phis2 --> RDF1
+
+    linkStyle 10 stroke:#9b59b6,stroke-width:2px;
+    linkStyle 11 stroke:#9b59b6,stroke-width:2px;
+    linkStyle 12 stroke:#9b59b6,stroke-width:2px;
+    linkStyle 13 stroke:#9b59b6,stroke-width:2px;
+    
+    %%OS1 --> Mongo
+    %%OS2 --> Mongo
+    %%OS1 --> RDF1
+    %%OS2 --> RDF1
+
+   
+
+    %% API GraphQL
+    GraphQL <-.->|API| Phis1
+    GraphQL <-.->|API| Phis2
+
+    linkStyle 14 stroke:#f39c12,stroke-width:2px;
+    linkStyle 15 stroke:#e67e22,stroke-width:2px;
+
+
+
+
+    %% Monitoring
+    Monitor -.->|Metrics| Phis1
+    Monitor -.->|Metrics| Phis2
+    Monitor -.->|Metrics| OS1
+    Monitor -.->|Metrics| OS2
+    Monitor -.->|Metrics| Mongo
+    Monitor -.->|Metrics| Mongo1
+    Monitor -.->|Metrics| RDF1
+    Monitor -.->|Metrics| PhisRDF
+   
+    
+
+    %% Backup
+    
+    Mongo -.->|Backup| Backup1
+    %%Mongo1 -.->|Backup| Backup1
+    %%PhisRDF -.->|Backup| Backup1
+    RDF1 -.->|Backup| Backup1
+    
+    linkStyle 22 stroke:#229954,stroke-width:2px;   
+    linkStyle 23 stroke:#229954,stroke-width:2px;
+
+
+    %% Styles
+    classDef frontend fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    classDef app fill:#9b59b6,stroke:#8e44ad,stroke-width:3px,color:#fff
+    classDef data fill:#27ae60,stroke:#229954,stroke-width:3px,color:#fff
+    classDef support fill:#f39c12,stroke:#e67e22,stroke-width:3px,color:#fff
+    classDef backup fill:#34495e,stroke:#2c3e50,stroke-width:3px,color:#fff
+    classDef monitoring fill:#16a085,stroke:#138d75,stroke-width:3px,color:#fff
+    
+    class Bastion,Proxy frontend
+    class Phis1,Phis2,OS1,OS2 app
+    class Mongo,Mongo1,RDF1,PhisRDF data
+    class GraphQL,Test support
+    class Monitor monitoring
+    class Backup1,Backup2,BackupTest backup
+        </pre>
+      </div>
+    </div>
+
+
+    <div class="legend">
+      <h2>Légende des couleurs</h2>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-color" style="background: #e74c3c;"></div>
+          <span>Frontend (Bastion, Proxy)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #9b59b6;"></div>
+          <span>Serveurs Application</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #27ae60;"></div>
+          <span>Bases de données</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #f39c12;"></div>
+          <span>Support (API, Test)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #16a085;"></div>
+          <span>Monitoring</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #34495e;"></div>
+          <span>Backup</span>
+        </div>
+    </div><br>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-line">
+                <span contenteditable="true">Version 1.0</span> | <span contenteditable="true">17 Décembre 2025</span>
+            </div>            
+        </div>
+    </div>
+
+ 
+
+      
+    </div>
+
+    
+
+
+ 
+</body>
+</html>

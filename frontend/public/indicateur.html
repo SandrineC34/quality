@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrice des indicateurs — ISO 9001</title>
+<style>
+  :root {
+    --blue-50: #E6F1FB; --blue-200: #85B7EB; --blue-700: #185FA5; --blue-900: #042C53;
+    --amber-50: #FAEEDA; --amber-200: #EF9F27; --amber-700: #854F0B; --amber-900: #412402;
+    --teal-50: #E1F5EE; --teal-200: #5DCAA5; --teal-700: #0F6E56; --teal-900: #04342C;
+    --gray-50: #F1EFE8; --gray-200: #B4B2A9; --gray-600: #5F5E5A; --gray-800: #444441;
+    --ink: #1a1a18;
+    --muted: #5F5E5A;
+    --border: #D3D1C7;
+    --bg: #ffffff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --blue-50: #0c2e52; --blue-200: #378ADD; --blue-700: #85B7EB; --blue-900: #E6F1FB;
+      --amber-50: #2e1e04; --amber-200: #BA7517; --amber-700: #EF9F27; --amber-900: #FAEEDA;
+      --teal-50: #042c1c; --teal-200: #1D9E75; --teal-700: #5DCAA5; --teal-900: #E1F5EE;
+      --gray-50: #2a2a28; --gray-200: #5F5E5A; --gray-600: #B4B2A9; --gray-800: #D3D1C7;
+      --ink: #e8e6de;
+      --muted: #B4B2A9;
+      --border: #3d3d3a;
+      --bg: #1a1a18;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
+    padding: 2.5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* ── Header ── */
+  header {
+    margin-bottom: 2.5rem;
+    border-left: 3px solid var(--blue-200);
+    padding-left: 1.25rem;
+  }
+  header p.eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+  header h1 {
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  header p.sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ── Matrice principale ── */
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .matrix th, .matrix td {
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid var(--border);
+  }
+
+  /* Colonne critère */
+  .matrix td.crit {
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: var(--gray-50);
+    white-space: nowrap;
+    width: 130px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* En-têtes */
+  .matrix thead th {
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.75rem;
+  }
+  .matrix thead th:first-child {
+    background: var(--gray-50);
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .th-kpi  { background: var(--blue-50);  color: var(--blue-900); }
+  .th-kri  { background: var(--amber-50); color: var(--amber-900); }
+  .th-kio  { background: var(--teal-50);  color: var(--teal-900); }
+  .th-fonc { background: var(--gray-50);  color: var(--gray-800); }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+  }
+  .badge-kpi  { background: var(--blue-200);  color: var(--blue-900); }
+  .badge-kri  { background: var(--amber-200); color: var(--amber-900); }
+  .badge-kio  { background: var(--teal-200);  color: var(--teal-900); }
+  .badge-fonc { background: var(--gray-200);  color: var(--gray-800); }
+
+  .matrix td.kpi  { background: color-mix(in srgb, var(--blue-50) 40%, var(--bg)); }
+  .matrix td.kri  { background: color-mix(in srgb, var(--amber-50) 40%, var(--bg)); }
+  .matrix td.kio  { background: color-mix(in srgb, var(--teal-50) 40%, var(--bg)); }
+  .matrix td.fonc { background: var(--bg); }
+
+  .matrix tr:hover td { filter: brightness(0.97); }
+
+  .val { color: var(--ink); }
+  .note { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Règle de décision ── */
+  .decision-box {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .decision-box h2 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.85rem;
+  }
+  .rules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+  .rule {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    font-size: 0.82rem;
+  }
+  .rule-arrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .rule-text { color: var(--ink); }
+  .rule-text em { color: var(--muted); font-style: normal; }
+
+  /* ── Exemples ── */
+  .examples-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.85rem;
+  }
+  .examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .example-card {
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+  }
+  .example-card.kpi  { border-left: 3px solid var(--blue-200); }
+  .example-card.kri  { border-left: 3px solid var(--amber-200); }
+  .example-card.kio  { border-left: 3px solid var(--teal-200); }
+  .example-card.fonc { border-left: 3px solid var(--gray-200); }
+  .example-card .sp-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .example-card .indicator {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    line-height: 1.35;
+  }
+  .example-card .target {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  /* ── Footer ── */
+  footer {
+    font-size: 0.72rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+
+  @media (max-width: 680px) {
+    body { padding: 1.25rem 1rem; }
+    .matrix { font-size: 0.75rem; }
+    .matrix td, .matrix th { padding: 0.5rem 0.6rem; }
+    .matrix td.crit { width: 90px; font-size: 0.7rem; }
+  }
+
+  @media print {
+    body { padding: 1rem; }
+    .matrix tr:hover td { filter: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">ISO 9001 · Système de management de la qualité</p>
+  <h1>Matrice de distinction des indicateurs</h1>
+  <p class="sub">KPI · KRI · KIO · Indicateur de fonctionnement — Critères de classification et règle de décision</p>
+</header>
+
+<!-- ── Matrice ── -->
+<table class="matrix">
+  <thead>
+    <tr>
+      <th></th>
+      <th class="th-kpi">
+        <span class="badge badge-kpi">KPI</span><br>
+        Indicateur de performance
+      </th>
+      <th class="th-kri">
+        <span class="badge badge-kri">KRI</span><br>
+        Indicateur de risque
+      </th>
+      <th class="th-kio">
+        <span class="badge badge-kio">KIO</span><br>
+        Indicateur d'opportunité
+      </th>
+      <th class="th-fonc">
+        <span class="badge badge-fonc">IF</span><br>
+        Indicateur de fonctionnement
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td class="crit">Question clé</td>
+      <td class="kpi"><span class="val">L'objectif est-il atteint ?</span></td>
+      <td class="kri"><span class="val">Un risque se matérialise-t-il ?</span></td>
+      <td class="kio"><span class="val">L'opportunité est-elle saisie ?</span></td>
+      <td class="fonc"><span class="val">Que s'est-il passé ?</span></td>
+    </tr>
+
+    <tr>
+      <td class="crit">Temporalité</td>
+      <td class="kpi">
+        <span class="val">Rétrospectif</span>
+        <p class="note">Constate un résultat passé</p>
+      </td>
+      <td class="kri">
+        <span class="val">Prospectif</span>
+        <p class="note">Anticipe une dérive à venir</p>
+      </td>
+      <td class="kio">
+        <span class="val">Prospectif</span>
+        <p class="note">Mesure la concrétisation d'une opportunité identifiée</p>
+      </td>
+      <td class="fonc">
+        <span class="val">Descriptif</span>
+        <p class="note">Neutre, sans jugement de valeur</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="crit">Référence ISO 9001</td>
+      <td class="kpi">
+        <span class="val">§6.2 Objectifs qualité</span>
+        <p class="note">§9.1 Surveillance et mesure</p>
+      </td>
+      <td class="kri">
+        <span class="val">§6.1 Risques et opportunités</span>
+        <p class="note">§9.1 Indicateurs de dérive</p>
+      </td>
+      <td class="kio">
+        <span class="val">§6.1 Opportunités</span>
+        <p class="note">§9.1 Suivi des actions engagées sur opportunité</p>
+      </td>
+      <td class="fonc">
+        <span class="val">§9.1 Mesure</span>
+        <p class="note">Suivi de l'activité courante</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="crit">Cible chiffrée</td>
+      <td class="kpi">
+        <span class="val">Oui — seuil de réussite</span>
+        <p class="note">Objectif SMART associé obligatoire</p>
+      </td>
+      <td class="kri">
+        <span class="val">Oui — seuil de tolérance</span>
+        <p class="note">Franchissement = alerte, pas échec</p>
+      </td>
+      <td class="kio">
+        <span class="val">Oui — résultat attendu de l'opportunité</span>
+        <p class="note">Ex. : gain de partenaires, revenus additionnels, label obtenu</p>
+      </td>
+      <td class="fonc">
+        <span class="val">Non — volume ou décompte</span>
+        <p class="note">Aucune cible stratégique</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="crit">Ce qu'il déclenche</td>
+      <td class="kpi">
+        <span class="val">Revue de performance</span>
+        <p class="note">Revue de direction, arbitrage</p>
+      </td>
+      <td class="kri">
+        <span class="val">Action corrective immédiate</span>
+        <p class="note">Avant que le KPI se dégrade</p>
+      </td>
+      <td class="kio">
+        <span class="val">Décision de saisir ou abandonner l'opportunité</span>
+        <p class="note">Arbitrage stratégique en revue de direction</p>
+      </td>
+      <td class="fonc">
+        <span class="val">Rien — usage informatif seul</span>
+        <p class="note">Alimente les statistiques d'activité</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="crit">Durée de vie</td>
+      <td class="kpi"><span class="val">Récurrent · permanent</span></td>
+      <td class="kri">
+        <span class="val">Récurrent</span>
+        <p class="note">Tant que le risque est actif</p>
+      </td>
+      <td class="kio">
+        <span class="val">Temporaire</span>
+        <p class="note">S'éteint une fois l'opportunité saisie ou abandonnée</p>
+      </td>
+      <td class="fonc"><span class="val">Récurrent · permanent</span></td>
+    </tr>
+
+    <tr>
+      <td class="crit">Place dans le pilotage</td>
+      <td class="kpi">
+        <span class="val">Tableau de bord stratégique ✓</span>
+        <p class="note">Revue de direction obligatoire</p>
+      </td>
+      <td class="kri">
+        <span class="val">Tableau de bord risques ✓</span>
+        <p class="note">Suivi entre deux revues</p>
+      </td>
+      <td class="kio">
+        <span class="val">Revue de direction / PAQ ✓</span>
+        <p class="note">Suivi dédié aux opportunités §6.1</p>
+      </td>
+      <td class="fonc">
+        <span class="val">Section information ✗</span>
+        <p class="note">Hors tableau de pilotage</p>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<!-- ── Règle de décision ── -->
+<div class="decision-box">
+  <h2>Règle de décision rapide</h2>
+  <div class="rules">
+    <div class="rule">
+      <span class="badge badge-kpi rule-arrow">KPI</span>
+      <span class="rule-text">Le résultat mesure l'<strong>atteinte d'un objectif</strong> en fin de période <em>→ KPI</em></span>
+    </div>
+    <div class="rule">
+      <span class="badge badge-kri rule-arrow">KRI</span>
+      <span class="rule-text">Le franchissement du seuil déclenche une <strong>alerte immédiate</strong> avant dégradation <em>→ KRI</em></span>
+    </div>
+    <div class="rule">
+      <span class="badge badge-kio rule-arrow">KIO</span>
+      <span class="rule-text">L'indicateur mesure la <strong>concrétisation d'une opportunité</strong> identifiée (§6.1), avec résultat attendu et échéance <em>→ KIO</em></span>
+    </div>
+    <div class="rule">
+      <span class="badge badge-fonc rule-arrow">IF</span>
+      <span class="rule-text"><strong>Aucune cible stratégique</strong>, mesure de volume ou d'activité courante <em>→ Ind. fonctionnement</em></span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Exemples processus Management ── -->
+<p class="examples-title">Exemples — Processus Management (P1-O1)</p>
+<div class="examples">
+
+  <div class="example-card kpi">
+    <p class="sp-label">SP1 · Pilotage stratégique</p>
+    <p class="indicator">Taux de succès des demandes de financement</p>
+    <p class="target">≥ 40 % · Trimestriel</p>
+  </div>
+
+  <div class="example-card kri">
+    <p class="sp-label">SP1 · Pilotage stratégique</p>
+    <p class="indicator">Écart moyen devis / coût réel sur projets clôturés</p>
+    <p class="target">≤ 10 % · Trimestriel</p>
+  </div>
+
+  <div class="example-card kpi">
+    <p class="sp-label">SP2 · SMQ</p>
+    <p class="indicator">Taux de clôture des actions d'amélioration dans les délais</p>
+    <p class="target">≥ 90 % · Trimestriel</p>
+  </div>
+
+  <div class="example-card kri">
+    <p class="sp-label">SP2 · SMQ</p>
+    <p class="indicator">Taux de collecte des KPI processus dans les délais</p>
+    <p class="target">≥ 95 % · Mensuel</p>
+  </div>
+
+  <div class="example-card kpi">
+    <p class="sp-label">SP3 · Communication</p>
+    <p class="indicator">Taux de réalisation du plan de communication annuel</p>
+    <p class="target">≥ 85 % · Semestriel</p>
+  </div>
+
+  <div class="example-card kri">
+    <p class="sp-label">SP3 · Communication</p>
+    <p class="indicator">Taux de diffusion des décisions COPIL dans les délais</p>
+    <p class="target">≥ 95 % · Mensuel</p>
+  </div>
+
+  <div class="example-card fonc">
+    <p class="sp-label">SP1 · Fonctionnement</p>
+    <p class="indicator">Taux de demandes avec avis stratégique renseigné</p>
+    <p class="target">Sans cible · Mensuel</p>
+  </div>
+
+  <div class="example-card fonc">
+    <p class="sp-label">SP2 · Fonctionnement</p>
+    <p class="indicator">Nombre de non-conformités ouvertes en fin de période</p>
+    <p class="target">Décompte · Trimestriel</p>
+  </div>
+
+</div>
+
+<footer>
+  Matrice ISO 9001 · Processus Management P1-O1 · Version 1.0 · Octobre 2026
+</footer>
+
+</body>
+</html>

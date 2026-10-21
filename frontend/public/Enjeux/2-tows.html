@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyse TOWS - OpenSILEX</title>
+  <!-- Charte existante (même ordre que Management.html ; twos.css en dernier pour surcharger) -->
+  <link rel="stylesheet" href="../../css/charte.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/processus/processus.css">
+  <link rel="stylesheet" href="../../css/swot/twos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="modern-layout">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/images/Logo.svg" target="_blank">
+        <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+      </a>
+    </div>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+    <nav id="navMenuWrap"></nav>
+
+    <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="proc-hero">
+  <div class="proc-hero-inner">
+    <div>
+      <span class="proc-id-tag">OpenSILEX · Analyse stratégique</span>
+      <h1>Matrice TOWS</h1>
+      <div class="proc-hero-sub">
+        <span class="h-sp1">Stratégies OpenSILEX : croiser forces, faiblesses, opportunités et risques</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTENU ══ -->
+<main class="modern-content tows-content">
+
+  <section class="section" id="matrice">
+    <h2>Matrice TOWS</h2>
+
+    <div class="tows-grid">
+
+      <div class="corner" aria-hidden="true"></div>
+
+      <div class="factor-card f-o">
+        <h3 class="box-title">Opportunités <span class="box-tag">Externe</span></h3>
+        <ul>
+            <li><span class="swot-id">O1</span><span>Croissance de la demande en gestion de données FAIR</span></li>
+            <li><span class="swot-id">O2</span><span>Nouveaux financements européens et nationaux</span></li>
+            <li><span class="swot-id">O3</span><span>Évolution des technologies cloud, IA et inférence</span></li>
+            <li><span class="swot-id">O4</span><span>Reconnaissance pour notre compétence au niveau de l’institut</span></li>
+            <li><span class="swot-id">O5</span><span>Réseau de partenaires important</span></li>
+            <li><span class="swot-id">O6</span><span>Ouverture vers d’autres domaines d’applications</span></li>
+        </ul>
+      </div>
+
+      <div class="factor-card f-t">
+        <h3 class="box-title">Risques <span class="box-tag">Externe</span></h3>
+        <ul>
+            <li><span class="swot-id">T1</span><span>Concurrence de solutions alternatives possibles avec IA</span></li>
+            <li><span class="swot-id">T2</span><span>Évolution rapide des technologies nécessitant une adaptation continue</span></li>
+            <li><span class="swot-id">T3</span><span>Réduction potentielle des budgets de recherche</span></li>
+            <li><span class="swot-id">T4</span><span>Maintenance évolutive : technos rapides et longs à intégrer (cf. Vue3.js)</span></li>
+            <li><span class="swot-id">T5</span><span>Les utilisateurs ne saisissent pas suffisamment leurs données</span></li>
+            <li><span class="swot-id">T6</span><span>Infrastructure de stockage étendue, forte complexité de mise en place</span></li>
+            <li><span class="swot-id">T7</span><span>Risques de sécurité et cybermenaces</span></li>
+        </ul>
+      </div>
+
+      <div class="factor-card f-s">
+        <h3 class="box-title">Forces <span class="box-tag">Interne</span></h3>
+        <ul>
+            <li><span class="swot-id">S1</span><span>Équipe multidisciplinaire compétente et expérimentée</span></li>
+            <li><span class="swot-id">S2</span><span>Infrastructure cloud robuste et évolutive</span></li>
+            <li><span class="swot-id">S3</span><span>Forte collaboration avec la communauté scientifique</span></li>
+            <li><span class="swot-id">S4</span><span>Plateforme open-source favorisant l’adoption et la contribution</span></li>
+            <li><span class="swot-id">S5</span><span>Innovation (architecture logicielle, lien avec la recherche en informatique)</span></li>
+        </ul>
+      </div>
+
+      <!-- SO : Stratégies offensives (Forces + Opportunités) -->
+      <div class="strategy-box strategy-offensive">
+        <h3>Stratégies Offensives <span class="strat-code">S/O</span></h3>
+        <div class="tag">Utiliser les forces pour saisir les opportunités</div>
+        <ul>
+            <li>S01 Capitaliser sur l'expertise de l'équipe (S1) et l'architecture Open Source (S4) pour répondre à la demande croissante en données FAIR (O1) et conquérir de nouveaux domaines (O6).</li>
+            <li>S02 Exploiter l'infrastructure cloud robuste (S2) et l'innovation logicielle (S5) pour intégrer les technologies IA/cloud émergentes (O3) et proposer de nouveaux services.</li>
+            <li>S03 Renforcer le réseau de partenaires (O5) grâce à la collaboration scientifique existante (S3) pour accéder à de nouveaux financements (O2) et projets.</li>
+            <li>S04 Valoriser la reconnaissance institutionnelle (O4) en communiquant sur les succès de la plateforme pour accélérer l'adoption.</li>
+        </ul>
+      </div>
+
+      <!-- ST : Stratégies de veille (Forces + Risques) -->
+      <div class="strategy-box strategy-veille">
+        <h3>Stratégies de Veille <span class="strat-code">S/T</span></h3>
+        <div class="tag">Utiliser les forces pour atténuer les risques</div>
+        <ul>
+            <li>Mettre en avant la différenciation technologique (S5) et l'Open Source (S4) face à la concurrence (T1) en communiquant sur la valeur ajoutée d'OpenSILEX.</li>
+            <li>Mobiliser l'équipe expérimentée (S1) pour anticiper et intégrer rapidement les évolutions technologiques (T2, T4) via une veille active.</li>
+            <li>S'appuyer sur l'infrastructure cloud évolutive (S2) pour renforcer la sécurité et faire face aux cybermenaces (T7).</li>
+            <li>Développer des mécanismes d'accompagnement utilisateurs (S3) pour encourager la saisie des données (T5) et augmenter la valeur perçue.</li>
+        </ul>
+      </div>
+
+      <div class="factor-card f-w">
+        <h3 class="box-title">Faiblesses <span class="box-tag">Interne</span></h3>
+        <ul>
+            <li><span class="swot-id">W1</span><span>Dépendance aux financements externes et projets</span></li>
+            <li><span class="swot-id">W2</span><span>Nombre important de CDD impactant la continuité / pérennité des compétences</span></li>
+            <li><span class="swot-id">W3</span><span>Communication externe à renforcer</span></li>
+            <li><span class="swot-id">W4</span><span>Manque de visibilité sur les coûts pour évaluer nos demandes (projet, accompagnement, prestation)</span></li>
+            <li><span class="swot-id">W5</span><span>iRODS : Lourdeur technologique et maintenance complexe</span></li>
+            <li><span class="swot-id">W6</span><span>Faiblesse RH en DevOps</span></li>
+        </ul>
+      </div>
+
+      <!-- WO : Stratégies MI/LT (Faiblesses + Opportunités) -->
+      <div class="strategy-box strategy-milt">
+        <h3>Stratégies MI/LT <span class="strat-code">W/O</span></h3>
+        <div class="tag">Réduire les faiblesses grâce aux opportunités</div>
+        <ul>
+            <li>MILT01 Profiter des nouveaux financements européens et nationaux (O2) pour sécuriser des postes permanents et réduire la dépendance aux CDD (W1, W2).</li>
+            <li>Développer une stratégie de communication externe structurée (W3) pour valoriser la reconnaissance institutionnelle (O4) et attirer de nouveaux partenaires (O5).</li>
+            <li>Mettre en place un référentiel de coûts et de services (W4) pour faciliter les réponses aux appels à projets (O2) et l'ouverture vers de nouveaux domaines (O6).</li>
+            <li>Exploiter la croissance de la demande FAIR (O1) pour justifier des investissements pérennisant les compétences clés.</li>
+        </ul>
+      </div>
+
+      <!-- WT : Stratégies défensives (Faiblesses + Risques) -->
+      <div class="strategy-box strategy-defensive">
+        <h3>Stratégies Défensives <span class="strat-code">W/T</span></h3>
+        <div class="tag">Minimiser faiblesses et risques simultanément</div>
+        <ul>
+            <li>Mettre en place une gestion des connaissances (knowledge management) pour pallier le turnover des CDD (W2) et limiter l'impact de la réduction des budgets (T3).</li>
+            <li>Définir une grille tarifaire claire (W4) pour mieux résister à la concurrence (T1) et sécuriser les engagements financiers malgré les baisses budgétaires (T3).</li>
+            <li>Structurer la communication externe (W3) pour contrer l'image des solutions concurrentes (T1) et fidéliser les utilisateurs existants (T5).</li>
+            <li>Réduire la dépendance aux financements ponctuels (W1) en diversifiant les sources de revenus (prestations, formations) pour absorber les aléas budgétaires (T3).</li>
+            <li>Renforcer et sécuriser les ressources humaines DevOps (W6) pour gérer l’infrastructure iRODS (W5) et l’extension de l’infrastructure de stockage (T6)</li>
+            <li>Étudier les solutions alternatives à iRODS (W5) dans la nouvelle infrastructure (T6)</li>
+            <li>S’appuyer sur des conseils / expertises externes (prestation, DSI, partenaires) pour la sécurité (T7) et le déploiement de l’infrastructure (T6)</li>
+            <li>Suivre les recommandations du guide de Sécurité des Systèmes d’Information pour la sécurité (T7)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE DOC : version et date -->
+  <section class="section">
+    <div class="doc-footer">
+      <span>OpenSILEX-TOWS</span> |
+      <span contenteditable="true">Version 1.0</span> |
+      <span contenteditable="true">Mise à jour : 21/04/2026 - Anne Tireau</span>
+      <!-- <span contenteditable="true">Mise à jour : 08/04/2026 - Anne Tireau</span> -->
+      <!-- <span contenteditable="true">Mise à jour : 17/02/2026 - Sandrine Collavizza</span> -->
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+  <div class="container">
+    <div class="footer-links"></div>
+    <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../js/navigation.js"></script>
+
+</body>
+</html>

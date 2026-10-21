@@ -1,0 +1,45 @@
+
+
+  /* ── Polices & tailles ── */
+  .logi-svg text          { font-family: inherit; }
+  .logi-svg .lbl-title    { font-size: 13px; font-weight: 600; fill: #1e3a5f; }
+  .logi-svg .lbl-sub      { font-size: 11px; font-weight: 400; fill: #3d6b9e; }
+  .logi-svg .lbl-aside    { font-size: 10px; font-weight: 400; fill: #64748b; }
+  .logi-svg .lbl-sp       { font-size: 11px; font-weight: 700; }
+  .logi-svg .lbl-arrow    { font-size: 10px; font-weight: 600; }
+
+  /* ── Noeuds activités SP1 (bleu) ── */
+  .logi-svg .node-sp1     { fill: #dbeafe; stroke: #93c5fd; stroke-width: 1; }
+  /* ── Noeuds activités SP2 (vert) ── */
+  .logi-svg .node-sp2     { fill: #d1fae5; stroke: #6ee7b7; stroke-width: 1; }
+  /* ── Noeuds activités SP3 (violet) ── */
+  .logi-svg .node-sp3     { fill: #ede9fe; stroke: #c4b5fd; stroke-width: 1; }
+  /* ── Décisions (losange, ambre) ── */
+  .logi-svg .node-dec     { fill: #fef3c7; stroke: #fbbf24; stroke-width: 1; }
+  /* ── Refus / sorties erreur (corail) ── */
+  .logi-svg .node-refus   { fill: #fee2e2; stroke: #fca5a5; stroke-width: 1; }
+  /* ── Correction / boucle (orange) ── */
+  .logi-svg .node-loop    { fill: #ffedd5; stroke: #fdba74; stroke-width: 1; }
+  /* ── Début / Fin (gris neutre) ── */
+  .logi-svg .node-term    { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1; }
+  /* ── Sorties documentées (gris foncé) ── */
+  .logi-svg .node-out     { fill: #e2e8f0; stroke: #94a3b8; stroke-width: 1; }
+
+  /* ── Conteneurs SP (tirets) ── */
+  .logi-svg .frame-sp1    { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1; stroke-dasharray: 5 3; }
+  .logi-svg .frame-sp2    { fill: #f0fdf4; stroke: #6ee7b7; stroke-width: 1; stroke-dasharray: 5 3; }
+  .logi-svg .frame-sp3    { fill: #f5f3ff; stroke: #c4b5fd; stroke-width: 1; stroke-dasharray: 5 3; }
+
+  /* ── Flèches ── */
+  .logi-svg .arr          { fill: none; stroke: #475569; stroke-width: 1.2; marker-end: url(#arr-head); }
+  .logi-svg .arr-loop     { fill: none; stroke: #94a3b8; stroke-width: 1; stroke-dasharray: 4 3; marker-end: url(#arr-head-gray); }
+
+  /* ── Étiquettes Oui / Non ── */
+  .logi-svg .yes          { fill: #15803d; font-size: 10px; font-weight: 700; }
+  .logi-svg .no           { fill: #b91c1c; font-size: 10px; font-weight: 700; }
+
+  /* Réactivité impression */
+  @media print {
+      .logi-svg { break-inside: avoid; }
+  }
+

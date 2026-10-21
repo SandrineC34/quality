@@ -1,0 +1,345 @@
+/* =====================================================
+   PRINT.CSS - Styles d'impression pour Cartographie
+   ===================================================== */
+
+
+   
+@media print {
+    /* Réinitialisation générale */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+  
+    }
+
+    /* Configuration de la page EN PAYSAGE - UNE SEULE PAGE */
+    @page {
+        size: A4 landscape;
+        margin: 2mm;
+    }
+
+    /* Body */
+    body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Masquer les éléments inutiles */
+    .print-button,
+    .menu-toggle,
+    nav,
+    .main-header,
+    .main-footer,
+    .nav-footer {
+        display: none !important;
+    }
+
+    /* Conteneur global pour tout mettre sur une page */
+    html, body {
+        overflow: hidden !important;
+    }
+
+    /* Header de la cartographie - Étendu de la colonne 1 à la colonne 4 (sans colonne 5) */
+    .header {
+        max-width: calc(200px + 40px + 480px + 40px) !important;
+        width: calc(200px + 40px + 480px + 40px) !important;
+        margin: 0 auto 0.5rem auto !important;
+        position: relative;       
+        padding: 0.5rem !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        background: linear-gradient(135deg, #5ebc7e 0%, #4a9d63 100%) !important;
+        border-radius: 6px !important;
+    }
+
+    .header h1 {
+        color: #e8f8f0 !important;
+        font-size: 1.2rem !important;
+        margin-bottom: 0.1rem !important;
+    }
+
+    .header p {
+        color: #e8f8f0 !important;
+        font-size: 0.8rem !important;
+        font-weight: bold !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Container principal - FORCER LA GRILLE FIXE - PAS DE RESPONSIVE */
+    .main-container {
+        display: grid !important;
+        grid-template-columns: 200px 40px 480px 40px 200px !important;
+        gap: 0 !important;
+        max-width: 960px !important;
+        width: 960px !important;
+        margin: 0 auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        align-items: stretch !important;
+        page-break-inside: avoid !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        transform: scale(0.88);
+        transform-origin: top center;
+    }
+
+    /* Flèches de connexion - FORCER L'AFFICHAGE HORIZONTAL */
+    .arrow-connector {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+        transform: none !important;
+        margin: 0 !important;
+    }
+
+    .arrow-horizontal {
+        width: 0 !important;
+        height: 0 !important;
+        border-top: 15px solid transparent !important;
+        border-bottom: 15px solid transparent !important;
+    }
+
+    .arrow-green {
+        border-left: 25px solid #5ebc7e !important;
+    }
+
+    .arrow-orange {
+        border-left: 25px solid #f39c12 !important;
+    }
+
+    /* Colonnes */
+    .left-column,
+    .right-column,
+    .center-column {
+        page-break-inside: avoid !important;
+    }
+
+    .left-column,
+    .right-column {
+        padding: 0.6rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .center-column {
+        gap: 0.6rem !important;
+    }
+
+    /* Sections de processus */
+    .process-section {
+        padding: 0.6rem !important;
+        margin: 0 !important;
+        page-break-inside: avoid !important;
+    }
+
+    .process-header {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.4rem !important;
+        padding-bottom: 0.2rem !important;
+        border-bottom-width: 2px !important;
+    }
+
+    /* Boxes */
+    .stakeholder-box,
+    .output-box,
+    .management-box,
+    .support-box,
+    .core-box,
+    .core-box-full {
+        padding: 0.4rem 0.6rem !important;
+        margin-bottom: 0.3rem !important;
+        page-break-inside: avoid !important;
+    }
+
+    .stakeholder-box h3,
+    .output-box h3 {
+        font-size: 0.65rem !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+
+    .stakeholder-title,
+    .output-title {
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    /* Core flow - FORCER L'AFFICHAGE HORIZONTAL */
+    .core-flow {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.4rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .core-box {
+        min-height: 45px !important;
+        padding: 0.4rem 0.5rem !important;
+    }
+
+    .flow-arrow {
+        font-size: 1.1rem !important;
+        transform: none !important;
+    }
+
+    /* Arrow containers */
+    .arrow-container {
+        margin: 0.3rem 0 !important;
+    }
+
+    .arrow {
+        border-left: 22px solid transparent !important;
+        border-right: 22px solid transparent !important;
+    }
+
+    .arrow-down {
+        border-top: 22px solid #5ebc7e !important;
+    }
+
+    .arrow-up {
+        border-bottom: 22px solid #5ebc7e !important;
+        margin-top: 0.3rem !important;
+    }
+
+    .bidirectional-arrow {
+        font-size: 1.1rem !important;
+    }
+
+    /* Labels */
+    .process-label {
+        font-size: 0.65rem !important;
+        margin: 0 !important;
+    }
+
+    .process-label2 {
+        font-size: 0.55rem !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+
+    /* Footer version */
+    /*.version-footer {
+        margin-top: 0.4rem !important;
+        font-size: 0.6rem !important;
+        page-break-before: avoid !important;
+        page-break-inside: avoid !important;
+        text-align: center;
+    }*/
+    .footer {
+    margin-top: 0.4px !important;
+    padding: 0.4px var(--spacing-md) !important;
+    font-size: 0.6rem !important;
+    page-break-before: avoid !important;
+    page-break-inside: avoid !important;
+    text-align: center !important;
+    border-top: 1px solid #5ebc7e !important;
+}
+
+    /* Désactiver les transitions et transformations hover */
+    .stakeholder-box:hover,
+    .output-box:hover,
+    .management-box:hover,
+    .support-box:hover,
+    .core-box:hover,
+    .core-box-full:hover {
+        transform: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Forcer les couleurs de fond */
+    .management-section {
+        background: linear-gradient(135deg, #d4e6f1 0%, #aed6f1 100%) !important;
+    }
+
+    .core-section {
+        background: linear-gradient(135deg, #d5f4e6 0%, #a9dfbf 100%) !important;
+    }
+
+    .support-section {
+        background: linear-gradient(135deg, #d6eaf8 0%, #aed6f1 100%) !important;
+    }
+
+    .stakeholder-box {
+        background: #f8f9fa !important;
+    }
+
+    .output-box {
+        background: #fff9f0 !important;
+    }
+
+    .stakeholder-title {
+        background: #5ebc7e !important;
+        color: white !important;
+    }
+
+    .output-title {
+        background: #f39c12 !important;
+        color: white !important;
+    }
+
+    /* Forcer les bordures */
+    .left-column {
+        border-left: 4px solid #5ebc7e !important;
+        border-radius: 10px !important;
+    }
+
+    .right-column {
+        border-left: 4px solid #f39c12 !important;
+        border-radius: 10px !important;
+    }
+
+    .management-section {
+        border-left: 4px solid #5499c7 !important;
+        border-radius: 10px !important;
+    }
+
+    .core-section {
+        border-left: 4px solid #5ebc7e !important;
+        border-radius: 10px !important;
+    }
+
+    .support-section {
+        border-left: 4px solid #3498db !important;
+        border-radius: 10px !important;
+    }
+
+    /* Bordures des boxes plus fines */
+    .stakeholder-box,
+    .output-box,
+    .management-box,
+    .support-box,
+    .core-box,
+    .core-box-full {
+        border-left-width: 3px !important;
+    }
+
+    /* DÉSACTIVER TOUT RESPONSIVE EN IMPRESSION */
+    @media (max-width: 1400px) {
+        .main-container {
+            grid-template-columns: 200px 40px 480px 40px 200px !important;
+        }
+
+        .arrow-connector {
+            transform: none !important;
+            height: 100% !important;
+            margin: 0 !important;
+        }
+
+        .core-flow {
+            flex-direction: row !important;
+        }
+
+        .flow-arrow {
+            transform: none !important;
+        }
+        
+        .header {
+            max-width: calc(200px + 40px + 480px) !important;
+        }
+    }
+}

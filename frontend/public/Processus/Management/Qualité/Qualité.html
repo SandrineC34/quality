@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de Management de la Qualité - OpenSILEX - OpenSILEX</title>
+    <!-- Charte existante -->
+    <link rel="stylesheet" href="../../../../css/charte.css">
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/table.css">
+    <link rel="stylesheet" href="../../../../css/logigramme/processus.css">
+    <link rel="stylesheet" href="../../../../css/processus/processus-modern.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Police Inter pour la mise en page moderne uniquement */
+      body.modern-layout { font-family: 'Inter', 'Segoe UI', sans-serif; }
+    </style>
+</head>
+
+<body class="modern-layout" data-process-id="SMQ">
+
+<!-- ══ NAVIGATION PRINCIPALE ══ -->
+<header class="main-header" id="header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/images/Logo.svg" target="_blank">
+                <img src="/images/Logo.svg" alt="Logo OpenSILEX">
+            </a>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">☰</button>
+
+        <nav id="navMenuWrap"></nav>
+
+        <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+</header>
+
+<!-- ══ HERO DU PROCESSUS ══ -->
+<div class="proc-hero">
+    <div class="proc-hero-inner">
+        <div>
+            <span class="proc-id-tag">SMQ — Cadre qualité OpenSILEX</span>
+            <h1>Système de Management de la Qualité</h1>
+            <div class="proc-hero-sub">
+                <span class="h-sp1">SP1 – Politique qualité</span>
+                <span class="h-sp2">SP2 – Gestion documentaire</span>
+                <span class="h-sp3">SP3 – Amélioration continue</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LAYOUT SIDEBAR + CONTENU ══ -->
+<div class="modern-page-layout">
+
+    <!-- ─ SIDEBAR (remplie par js/sidebar.js) ─ -->
+    <aside class="modern-sidebar"></aside>
+
+    <!-- ─ CONTENU ─ -->
+    <main class="modern-content">
+
+        <!-- INFORMATIONS GÉNÉRALES -->
+        <section class="section" id="general">
+            <h2>Informations générales</h2>
+            <div class="info-grid-modern">
+                <div class="info-card-modern">
+                    <span class="ic-label">Pilotage</span>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Pilote :</strong>&nbsp;Anne Tireau</div>
+                    <div class="sp-line-modern"><strong style="color:#0A423C;font-size:.82rem;flex-shrink:0">Participants :</strong>&nbsp;Pilotes de processus, Comité de Pilotage (COPIL)</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Périmètre</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Politique qualité : définition, diffusion et révision annuelle de la politique qualité et des orientations stratégiques</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp2">SP2</span>Gestion documentaire : cartographie des processus, PGD, PGL, PRA/MCO, registre des non-conformités, versionnement des fiches</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp3">SP3</span>Amélioration continue : revue de direction, traitement des non-conformités, plan d'actions qualité (PAQ)</div>
+                </div>
+                <div class="info-card-modern">
+                    <span class="ic-label">Mode de pilotage</span>
+                    <div class="sp-line-modern"><span class="sp-tag sp1">SP1</span>Revue de direction annuelle (P1-01 / A5b)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp2">SP2</span>Système de gestion documentaire — versionnement et archivage des fiches processus</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp3">SP3</span>Registre des non-conformités et suivi du Plan d'Actions Qualité (PAQ)</div>
+                    <div class="sp-line-modern"><span class="sp-tag sp3">SP3</span>Collecte trimestrielle des KPI/KRI par les pilotes de processus</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINALITÉ -->
+        <section class="section" id="finalite">
+            <h2>Finalité du processus</h2>
+            <div class="finalite-box">
+                Définir et maintenir le cadre transverse dans lequel s'inscrivent tous les processus de la cellule OpenSILEX. Le SMQ n'est pas un processus opérationnel : il constitue le système lui-même (ISO 9001 §4–10). Il fixe la politique qualité, les règles de gestion documentaire et le cycle d'amélioration continue (PDCA). Ses activités opérationnelles — revue de direction, traitement des non-conformités, mise à jour documentaire — sont portées par le processus P1-01 Management (activités A5a/A5b/A5c), déclenchées par le calendrier SMQ ou par une alerte KRI.
+            </div>
+        </section>
+
+        <!-- PARTIES PRENANTES -->
+        <section class="section" id="parties">
+            <h2>Parties prenantes</h2>
+            <div class="stakeholder-pills">
+                <span class="s-pill">Pilote SMQ (Anne Tireau)</span>
+                <span class="s-pill">Pilotes de processus (P1-01, P2-01, P2-02, P2-03, P2-04, P3-01)</span>
+                <span class="s-pill">Comité de Pilotage (COPIL)</span>
+                <span class="s-pill">Tutelles (INRAE, unité)</span>
+                <span class="s-pill">Auditeurs externes</span>
+            </div>
+        </section>
+
+        <!-- INTERACTIONS IO -->
+        <section class="section" id="io">
+            <h2>Interactions — Données d'entrée et de sortie</h2>
+            <div style="overflow-x:auto">
+            <table class="io-table">
+                <thead>
+                    <tr><th style="width:18%">Interlocuteur</th><th style="width:10%">Rôle</th><th style="width:36%">Entrées</th><th style="width:36%">Sorties</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Management (P1-01)</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp3">SP3</span>KPI et KRI collectés par les pilotes de processus</li><li><span class="sp-tag sp3">SP3</span>Non-conformités détectées dans les processus opérationnels</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Politique qualité validée et diffusée</li><li><span class="sp-tag sp2">SP2</span>Cartographie des processus à jour — PGD, PGL, PRA/MCO</li><li><span class="sp-tag sp3">SP3</span>Plan d'Actions Qualité (PAQ) et suivi des actions correctives</li><li><span class="sp-tag sp3">SP3</span>Tableaux de bord qualité (indicateurs transverses)</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Processus opérationnels (tous)</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp3">SP3</span>Remontées de non-conformités, retours d'expérience</li><li><span class="sp-tag sp3">SP3</span>KPI/KRI de chaque processus (collecte périodique)</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp2">SP2</span>Fiches processus et procédures mises à jour</li><li><span class="sp-tag sp3">SP3</span>Actions correctives et préventives assignées aux pilotes</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>Tutelles &amp; Auditeurs externes</td>
+                        <td><span class="role-badge">Amont &amp; aval</span></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Exigences réglementaires, référentiels qualité (ISO 9001, AAP)</li></ul></td>
+                        <td><ul><li><span class="sp-tag sp1">SP1</span>Politique qualité, cartographie et documentation SMQ</li><li><span class="sp-tag sp3">SP3</span>Bilan de la revue de direction, résultats d'indicateurs</li></ul></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- DOCUMENTATIONS -->
+        <section class="section" id="docs">
+            <h2>Documentations associées</h2>
+            <div class="doc-grid-modern">
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Politique qualité (présent document, §1)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp1">SP1</span> Plan de communication annuel (diffusion de la politique)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Cartographie des processus (fichier HTML)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Fiches processus : P1-01 · P2-01 · P2-02 · P2-03 · P2-04 · P3-01</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Plan de Gestion des Documents (PGD)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Plan de Gestion des Logiciels (PGL)</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Plan de Reprise d'Activité (PRA/MCO) — produit par P2-03</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp2">SP2</span> Dossier de labellisation ISC</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp3">SP3</span> Registre des non-conformités</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp3">SP3</span> Modèle de fiche NC</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp3">SP3</span> Plan d'Actions Qualité (PAQ) en cours</div></div>
+                <div class="doc-item-modern"><div><span class="sp-tag sp3">SP3</span> Comptes rendus de revue de direction (archivés)</div></div>
+            </div>
+        </section>
+
+        <!-- RESSOURCES -->
+        <section class="section" id="ressources">
+            <h2>Ressources</h2>
+            <div class="resource-grid-modern">
+                <div class="resource-card-modern"><strong>Humaines</strong>Pilote SMQ (Anne Tireau), pilotes de processus, membres du COPIL</div>
+                <div class="resource-card-modern"><strong>Outils</strong>Système de gestion documentaire, outil de suivi des NC et du PAQ, tableaux de bord qualité</div>
+                <div class="resource-card-modern"><strong>Environnements</strong>Espaces collaboratifs virtuels (Teams/Nextcloud), salles de réunion COPIL</div>
+            </div>
+        </section>
+
+        <!-- ACTIVITÉS -->
+        <section class="section flow-section" id="activites">
+            <h2>Activités principales</h2>
+
+            <hr class="phase-sep" data-label="SP1 – Politique qualité">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp1">A1</div>
+                <div>
+                    <div class="flow-title-modern">Définition et diffusion de la politique qualité</div>
+                    <p class="flow-desc-modern">Élaboration ou révision de la politique qualité : engagements, orientations et axes prioritaires de la cellule OpenSILEX. Validation en COPIL. Diffusion à l'ensemble des parties prenantes (équipe, tutelles, partenaires) via le plan de communication annuel. La politique est révisée systématiquement lors de la revue de direction (SP3/A5b) et en cas de changement stratégique majeur.</p>
+                </div>
+            </div>
+            <hr class="phase-sep" data-label="SP2 – Gestion documentaire" style="margin-top:18px">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp2">A2</div>
+                <div>
+                    <div class="flow-title-modern">Gestion de la cartographie et des documents qualité</div>
+                    <p class="flow-desc-modern">Maintien à jour de la cartographie des processus (structure, interfaces, pilotes). Gestion du cycle de vie des fiches processus : versionnement, validation par le pilote, archivage des versions obsolètes. Production et mise à jour du PGD, PGL et PRA/MCO en lien avec les processus concernés (P2-02, P2-03). Toute modification structurelle (changement de SP, d'objectifs, de KPI) est soumise à validation du pilote et consignée dans l'historique de la fiche. La cartographie est mise à jour dans les 30 jours suivant toute restructuration validée en COPIL.</p>
+                </div>
+            </div>
+            <hr class="phase-sep" data-label="SP3 – Amélioration continue" style="margin-top:18px">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp3">A3</div>
+                <div>
+                    <div class="flow-title-modern">Collecte et analyse des indicateurs qualité</div>
+                    <p class="flow-desc-modern">Collecte périodique des KPI et KRI auprès des pilotes de processus. Consolidation dans les tableaux de bord qualité. Détection des dérives et déclenchement des alertes KRI. Analyse transversale avant la revue de direction.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp3">A4</div>
+                <div>
+                    <div class="flow-title-modern">Traitement des non-conformités</div>
+                    <p class="flow-desc-modern">Une non-conformité (NC) est tout écart constaté entre une exigence définie (procédure, KPI, standard qualité) et la réalité observée. Ouverture de la fiche NC : description, date, processus concerné, pilote responsable. Analyse de la cause racine (méthode libre : 5 pourquoi, Ishikawa). Définition de l'action corrective, du responsable et du délai. Vérification de l'efficacité et clôture documentée. Les actions préventives (issues des KRI en alerte) suivent le même circuit sans attendre la survenance d'une NC.</p>
+                </div>
+            </div>
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp3">A5</div>
+                <div>
+                    <div class="flow-title-modern">Revue de direction annuelle</div>
+                    <p class="flow-desc-modern">Bilan annuel du SMQ animé par le pilote P1-01 avec l'ensemble des pilotes de processus. Ordre du jour type : résultats KPI/KRI par processus — état des NC et du PAQ — analyse des risques et opportunités — orientations et PAQ de l'exercice suivant — révision de la politique qualité si nécessaire. Le compte rendu est archivé et diffusé à l'ensemble de l'équipe dans un délai de 15 jours.</p>
+                </div>
+            </div>
+            <hr class="phase-sep" data-label="SP2 – Gestion documentaire" style="margin-top:18px">
+
+            <div class="flow-step-modern">
+                <div class="flow-circle fc-sp2">A6</div>
+                <div>
+                    <div class="flow-title-modern">Mise à jour de la documentation qualité</div>
+                    <p class="flow-desc-modern">Suite à la revue de direction ou à toute action corrective clôturée : mise à jour des fiches processus, procédures, cartographie, PGD, PGL, PRA/MCO. Archivage des versions précédentes avec mention explicite du statut « archivé ».</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERFORMANCE -->
+        <section class="section" id="perf">
+            <h2>Performance</h2>
+
+            <h3>Objectifs</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>N°</th><th>Description de l'objectif</th><th>Lien avec la politique</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="sp-tag sp1">SP1</span></td>
+                        <td><span class="badge-obj1">Obj1</span></td>
+                        <td>Définir et maintenir une politique qualité cohérente avec les orientations stratégiques et diffusée à l'ensemble des parties prenantes.</td>
+                        <td><span class="politique confiance"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp2">SP2</span></td>
+                        <td><span class="badge-obj2">Obj2</span></td>
+                        <td>Garantir la complétude, la cohérence et la mise à jour de la documentation qualité (fiches processus, PGD, PGL, PRA/MCO, cartographie).</td>
+                        <td><span class="politique amelioration"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp3">SP3</span></td>
+                        <td><span class="badge-obj3">Obj3</span></td>
+                        <td>Piloter l'amélioration continue via l'identification, le traitement et le suivi des non-conformités, en cohérence avec la politique qualité.</td>
+                        <td><span class="politique amelioration"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sp-tag sp3">SP3</span></td>
+                        <td><span class="badge-obj4">Obj4</span></td>
+                        <td>Assurer la collecte régulière et complète des indicateurs qualité auprès des pilotes de processus pour alimenter la revue de direction.</td>
+                        <td><span class="politique confiance"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KPI)</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'atteinte d'un résultat attendu. Ils répondent à la question : « Est-ce qu'on atteint nos objectifs ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Objectif</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de revues de direction réalisées avec révision de la politique qualité</strong></td><td class="kpi-target">100 %</td><td>Annuel</td><td>(Revues de direction avec évaluation et révision de la politique documentée / Total revues planifiées) × 100</td><td><span class="badge-obj1">Obj1</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Taux de fiches processus à jour (dernière révision &lt; 12 mois)</strong></td><td class="kpi-target">100 %</td><td>Annuel</td><td>(Fiches processus révisées dans les 12 derniers mois / Total fiches processus actives) × 100</td><td><span class="badge-obj2">Obj2</span></td></tr>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td><strong>Taux de clôture des actions d'amélioration dans les délais</strong></td><td class="kpi-target">≥ 90 %</td><td>Trimestriel</td><td>(Actions clôturées dans le délai défini / Total actions planifiées dans le PAQ) × 100</td><td><span class="badge-obj3">Obj3</span></td></tr>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td><strong>Taux de collecte des KPI processus dans les délais</strong></td><td class="kpi-target">≥ 95 %</td><td>Mensuel</td><td>(KPI collectés dans les délais / Total KPI attendus sur la période) × 100 — un taux bas signale une défaillance du SMQ avant toute revue</td><td><span class="badge-obj4">Obj4</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs de fonctionnement</h3>
+            <span class="desc-note">Ces indicateurs mesurent l'activité courante. Ils répondent à la question : « Que s'est-il passé ? Combien ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Définition / mode de calcul</th><th>Fréquence</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td>Nombre de non-conformités ouvertes en fin de période</td><td>Stock de NC enregistrées non encore clôturées à la date de relevé. Source : registre NC.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td>Nombre de NC clôturées dans la période</td><td>Décompte des NC passées au statut « clôturée » sur la période. Source : registre NC.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td>Nombre de fiches processus révisées dans l'année</td><td>Décompte des fiches ayant fait l'objet d'une révision formelle (numéro de version incrémenté). Source : système documentaire.</td><td>Annuel</td></tr>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td>Nombre d'actions PAQ réalisées dans la période</td><td>Décompte des actions du Plan d'Actions Qualité passées au statut « réalisée ». Source : PAQ.</td><td>Trimestriel</td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td>Nombre de revues de direction réalisées dans l'année</td><td>Décompte des revues de direction tenues avec compte rendu archivé. Source : système documentaire.</td><td>Annuel</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <!-- RISQUES -->
+        <section class="section" id="risques">
+            <h2>Analyse des Risques</h2>
+            <h3>Risques</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Risque</th><th>Description</th><th>Actions de maîtrise / Mesures préventives</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-3">R1</span></td><td><strong>SMQ inadapté ou indicateurs non suivis</strong></td><td>Le SMQ ne reflète pas les besoins réels ou les indicateurs ne sont pas collectés, rendant l'amélioration continue inopérante.</td><td>Sensibilisation des pilotes de processus, point à chaque revue de fin de sprint, alerte KRI sur le taux de collecte</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-2">R2</span></td><td><strong>Documentation incomplète ou obsolète</strong></td><td>Des fiches processus non mises à jour entraînent des pratiques divergentes, compliquent les audits et fragilisent la conformité ISO 9001.</td><td>Versionnement obligatoire, revue annuelle des fiches, contrôle lors de la revue de direction</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-3">R3</span></td><td><strong>Non-conformités non détectées ou non traitées</strong></td><td>Des écarts persistent sans action corrective, dégradant progressivement la qualité des services et la confiance des parties prenantes.</td><td>Registre NC accessible à tous les pilotes, suivi mensuel des NC ouvertes, alerte si délai de traitement dépassé</td></tr>
+                    <tr class="risque-row"><td><span class="risk-id sub-process-1">R4</span></td><td><strong>Politique qualité non diffusée ou non comprise</strong></td><td>La politique qualité reste un document formel sans appropriation par l'équipe, vidant le SMQ de son sens.</td><td>Diffusion systématique après chaque révision, présentation en réunion d'équipe, intégration dans le parcours d'intégration des nouveaux collaborateurs</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KRI)</h3>
+            <span class="desc-note">Ces indicateurs sont un signal d'alerte. Ils répondent à la question : « Y a-t-il un signal qui annonce un problème à venir ? »</span>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Risque</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td><strong>Taux de collecte des KPI processus dans les délais</strong></td><td class="kpi-target">≥ 95 %</td><td>Mensuel</td><td>(KPI collectés dans les délais / Total KPI attendus sur la période) × 100 — alerte sur une défaillance du SMQ avant toute revue</td><td><span class="risk-id sub-process-3">R1</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Nombre de fiches processus sans révision depuis plus de 12 mois</strong></td><td class="kpi-target">0</td><td>Annuel</td><td>Décompte des fiches processus actives dont la date de dernière révision dépasse 12 mois. Source : système documentaire.</td><td><span class="risk-id sub-process-2">R2</span></td></tr>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td><strong>Nombre de non-conformités ouvertes en fin de période sans action corrective définie</strong></td><td class="kpi-target">0</td><td>Trimestriel</td><td>Décompte des NC enregistrées sans action corrective assignée dans les 30 jours suivant l'ouverture. Source : registre NC.</td><td><span class="risk-id sub-process-3">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td><strong>Nombre de NC ouvertes depuis plus de 90 jours</strong></td><td class="kpi-target">≤ 1</td><td>Trimestriel</td><td>Décompte des NC dont la date d'ouverture dépasse 90 jours sans clôture. Source : registre NC.</td><td><span class="risk-id sub-process-3">R3</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Taux de diffusion de la politique qualité après révision</strong></td><td class="kpi-target">100 %</td><td>Annuel</td><td>(Parties prenantes ayant reçu la politique révisée / Total parties prenantes identifiées) × 100. Source : plan de communication.</td><td><span class="risk-id sub-process-1">R4</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- OPPORTUNITÉS -->
+        <section class="section" id="opport">
+            <h2>Analyses des Opportunités</h2>
+            <h3>Opportunités</h3>
+            <div style="overflow-x:auto">
+            <table class="risk-table">
+                <thead>
+                    <tr><th>N°</th><th>Opportunité</th><th>Description</th><th>Mesure de surveillance</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-3">O1</span></td><td><strong>Maturité du SMQ comme levier de confiance</strong></td><td>Un SMQ bien rodé renforce la confiance des partenaires et tutelles, et peut être valorisé comme argument de qualité dans les réponses à des AAP.</td><td></td></tr>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-1">O2</span></td><td><strong>Labellisation ISC</strong></td><td>L'obtention d'une labellisation (ex. ISC) s'appuie directement sur la maturité du SMQ et renforce la crédibilité institutionnelle de la cellule.</td><td></td></tr>
+                    <tr class="opport-row"><td><span class="risk-id sub-process-2">O3</span></td><td><strong>Capitalisation documentaire</strong></td><td>Une documentation qualité complète et à jour facilite l'intégration des nouveaux collaborateurs, réduit la dépendance aux expertises individuelles et améliore la résilience de la cellule.</td><td></td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Indicateurs (KIO)</h3>
+            <div style="overflow-x:auto">
+            <table class="kpi-table">
+                <thead>
+                    <tr><th>SP</th><th>Indicateur</th><th>Cible</th><th>Fréquence</th><th>Mode de calcul</th><th>Opportunité</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="sp-tag sp3">SP3</span></td><td><strong>Taux de revues de direction réalisées avec évaluation SMQ documentée</strong></td><td class="kpi-target">100 %</td><td>Annuel</td><td>(Revues de direction avec évaluation SMQ documentée / Total revues planifiées) × 100</td><td><span class="risk-id sub-process-3">O1</span></td></tr>
+                    <tr><td><span class="sp-tag sp1">SP1</span></td><td><strong>Avancement du dossier de labellisation ISC</strong></td><td class="kpi-target">Dépôt dossier avant fin d'année</td><td>Trimestriel</td><td>Jalons atteints / Jalons prévus dans le plan de labellisation × 100</td><td><span class="risk-id sub-process-1">O2</span></td></tr>
+                    <tr><td><span class="sp-tag sp2">SP2</span></td><td><strong>Taux de nouveaux collaborateurs ayant reçu une présentation du SMQ lors de l'intégration</strong></td><td class="kpi-target">≥ 90 %</td><td>Annuel</td><td>(Nouveaux collaborateurs avec présentation SMQ documentée / Total arrivées) × 100. Source : compte rendu d'intégration.</td><td><span class="risk-id sub-process-2">O3</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <!-- LOGIGRAMMES -->
+        <svg width="0" height="0" style="position:absolute"><defs>
+            <marker id="arr-head-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6b7280"/></marker>
+            <marker id="arr-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f2937"/></marker>
+        </defs></svg>
+
+        <section class="section logigramme-section" id="logi-sp3">
+            <h2>Logigramme — SP3 · Amélioration continue</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 746" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP3 — Amélioration continue</title>
+                <rect class="frame-sp3" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#5b21b6;">SP3 — Amélioration continue</text>
+                <rect class="node-term" x="112" y="36" width="476" height="44" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Détection d'un écart (KRI en alerte · signalement pilote · audit ·</text>
+                <text class="lbl-title" x="350" y="70" text-anchor="middle">retour utilisateur)</text>
+                <line class="arr" x1="350" y1="80" x2="350" y2="106" marker-end="url(#arr-head)"/>
+                <rect class="node-sp3" x="110" y="106" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="125" text-anchor="middle">A1 — Enregistrement NC</text>
+                <text class="lbl-sub" x="350" y="142" text-anchor="middle">Description · date · processus concerné · pilote responsable · ouverture fiche</text>
+                <text class="lbl-sub" x="350" y="156" text-anchor="middle">NC</text>
+                <line class="arr" x1="350" y1="172" x2="350" y2="198" marker-end="url(#arr-head)"/>
+                <rect class="node-sp3" x="110" y="198" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="217" text-anchor="middle">A2 — Analyse de cause racine</text>
+                <text class="lbl-sub" x="350" y="234" text-anchor="middle">5 pourquoi ou Ishikawa · documentation dans la fiche NC</text>
+                <line class="arr" x1="350" y1="250" x2="350" y2="276" marker-end="url(#arr-head)"/>
+                <rect class="node-sp3" x="110" y="276" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="295" text-anchor="middle">A3 — Définition de l'action corrective</text>
+                <text class="lbl-sub" x="350" y="312" text-anchor="middle">Action · responsable · délai · intégration dans le PAQ</text>
+                <line class="arr" x1="350" y1="328" x2="350" y2="354" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,354 438,380 350,406 262,380"/>
+                <text class="lbl-aside" x="350" y="377" text-anchor="middle">Action réalisée</text>
+                <text class="lbl-aside" x="350" y="391" text-anchor="middle">dans le délai ?</text>
+                <line class="arr" x1="438" y1="380" x2="490" y2="380" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="374">Non</text>
+                <rect class="node-loop" x="490" y="351" width="180" height="58" rx="6"/>
+                <text class="lbl-title" x="580" y="368" text-anchor="middle">Relance</text>
+                <text class="lbl-sub" x="580" y="384" text-anchor="middle">Point de suivi · escalade</text>
+                <text class="lbl-sub" x="580" y="398" text-anchor="middle">pilote SMQ</text>
+                <text class="yes" x="355" y="422">Oui</text>
+                <line class="arr" x1="350" y1="406" x2="350" y2="432" marker-end="url(#arr-head)"/>
+                <rect class="node-sp3" x="110" y="432" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="451" text-anchor="middle">A4 — Vérification de l'efficacité</text>
+                <text class="lbl-sub" x="350" y="468" text-anchor="middle">Contrôle de la résolution · nouvelle mesure KPI/KRI concerné</text>
+                <line class="arr" x1="350" y1="484" x2="350" y2="510" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,510 438,536 350,562 262,536"/>
+                <text class="lbl-aside" x="350" y="540" text-anchor="middle">Action efficace ?</text>
+                <line class="arr" x1="438" y1="536" x2="490" y2="536" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="530">Non</text>
+                <rect class="node-loop" x="490" y="514" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="531" text-anchor="middle">Nouvelle analyse</text>
+                <text class="lbl-sub" x="580" y="547" text-anchor="middle">Retour en cause racine</text>
+                <text class="yes" x="355" y="578">Oui</text>
+                <line class="arr" x1="350" y1="562" x2="350" y2="588" marker-end="url(#arr-head)"/>
+                <rect class="node-sp3" x="110" y="588" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="607" text-anchor="middle">A5 — Clôture et capitalisation</text>
+                <text class="lbl-sub" x="350" y="624" text-anchor="middle">Clôture fiche NC · leçon apprise documentée · mise à jour procédure si</text>
+                <text class="lbl-sub" x="350" y="638" text-anchor="middle">nécessaire</text>
+                <line class="arr" x1="350" y1="654" x2="350" y2="680" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="139" y="680" width="423" height="46" rx="16"/>
+                <text class="lbl-title" x="350" y="701" text-anchor="middle">Fiche NC clôturée · PAQ mis à jour · documentation qualité</text>
+                <text class="lbl-title" x="350" y="715" text-anchor="middle">révisée si nécessaire</text>
+                <path class="arr-loop" d="M670 380 L680 380 L680 302 L590 302" marker-end="url(#arr-head-gray)"/>
+                <path class="arr-loop" d="M670 536 L687 536 L687 224 L590 224" marker-end="url(#arr-head-gray)"/>
+            </svg>
+            </div>
+        </section>
+
+        <section class="section logigramme-section" id="logi-sp2">
+            <h2>Logigramme — SP2 · Gestion documentaire</h2>
+            <div style="overflow-x:auto">
+            <svg class="logi-svg" width="100%" viewBox="0 0 700 604" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;margin-bottom:8px">
+                <title>SP2 — Gestion documentaire</title>
+                <rect class="frame-sp2" x="0" y="0" width="700" height="24" rx="0" style="stroke-dasharray:none;"/>
+                <text class="lbl-sp" x="350" y="16" text-anchor="middle" style="fill:#065f46;">SP2 — Gestion documentaire</text>
+                <rect class="node-term" x="125" y="36" width="449" height="44" rx="15"/>
+                <text class="lbl-title" x="350" y="56" text-anchor="middle">Modification structurelle validée en COPIL · action corrective</text>
+                <text class="lbl-title" x="350" y="70" text-anchor="middle">clôturée · échéance annuelle</text>
+                <line class="arr" x1="350" y1="80" x2="350" y2="106" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="106" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="125" text-anchor="middle">B1 — Identification des documents à mettre à jour</text>
+                <text class="lbl-sub" x="350" y="142" text-anchor="middle">Fiches processus · cartographie · PGD · PGL · PRA/MCO concernés</text>
+                <line class="arr" x1="350" y1="158" x2="350" y2="184" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="184" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="203" text-anchor="middle">B2 — Mise à jour et versionnement</text>
+                <text class="lbl-sub" x="350" y="220" text-anchor="middle">Rédaction des modifications · incrémentation du numéro de version · date de</text>
+                <text class="lbl-sub" x="350" y="234" text-anchor="middle">révision</text>
+                <line class="arr" x1="350" y1="250" x2="350" y2="276" marker-end="url(#arr-head)"/>
+                <polygon class="node-dec" points="350,276 438,309 350,342 262,309"/>
+                <text class="lbl-aside" x="350" y="299" text-anchor="middle">Validation par le</text>
+                <text class="lbl-aside" x="350" y="313" text-anchor="middle">pilote de</text>
+                <text class="lbl-aside" x="350" y="327" text-anchor="middle">processus</text>
+                <line class="arr" x1="438" y1="309" x2="490" y2="309" marker-end="url(#arr-head)"/>
+                <text class="no" x="448" y="303">Non</text>
+                <rect class="node-loop" x="490" y="287" width="180" height="44" rx="6"/>
+                <text class="lbl-title" x="580" y="304" text-anchor="middle">Révision</text>
+                <text class="lbl-sub" x="580" y="320" text-anchor="middle">Retour en rédaction</text>
+                <text class="yes" x="355" y="358">Oui</text>
+                <line class="arr" x1="350" y1="342" x2="350" y2="368" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="368" width="480" height="66" rx="6"/>
+                <text class="lbl-title" x="350" y="387" text-anchor="middle">B3 — Publication et archivage</text>
+                <text class="lbl-sub" x="350" y="404" text-anchor="middle">Publication dans le système documentaire · archivage de la version précédente</text>
+                <text class="lbl-sub" x="350" y="418" text-anchor="middle">avec statut « archivé »</text>
+                <line class="arr" x1="350" y1="434" x2="350" y2="460" marker-end="url(#arr-head)"/>
+                <rect class="node-sp2" x="110" y="460" width="480" height="52" rx="6"/>
+                <text class="lbl-title" x="350" y="479" text-anchor="middle">B4 — Notification des pilotes</text>
+                <text class="lbl-sub" x="350" y="496" text-anchor="middle">Diffusion de la mise à jour aux pilotes de processus concernés</text>
+                <line class="arr" x1="350" y1="512" x2="350" y2="538" marker-end="url(#arr-head)"/>
+                <rect class="node-out" x="162" y="538" width="377" height="46" rx="16"/>
+                <text class="lbl-title" x="350" y="559" text-anchor="middle">Documentation qualité à jour · versions précédentes</text>
+                <text class="lbl-title" x="350" y="573" text-anchor="middle">archivées · pilotes notifiés</text>
+                <path class="arr-loop" d="M670 309 L680 309 L680 217 L590 217" marker-end="url(#arr-head-gray)"/>
+            </svg>
+            </div>
+        </section>
+
+        <!-- PIED DE PAGE DOC -->
+        <section class="section">
+            <div class="footer" style="text-align:right;font-size:.75rem;color:#547068;border-top:1px solid #D0E8DF;padding-top:10px">
+                <span contenteditable="true">Version 1.0</span> |
+                <span contenteditable="true">Mise à jour : /10/2026</span>
+            </div>
+        </section>
+
+    </main><!-- /modern-content -->
+</div><!-- /modern-page-layout -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="nav-footer" id="footer">
+    <div class="container">
+        <div class="footer-links"></div>
+        <p>&copy; 2025 Cellule OpenSILEX. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/sidebar.js"></script>
+
+</body>
+</html>
