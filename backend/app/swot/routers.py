@@ -6,6 +6,8 @@ from app.database.connection import swot_collection, get_next_sequence
 
 router = APIRouter()
 
+TYPE_PREFIX = {"strength": "F", "weakness": "W", "opportunity": "O", "threat": "R"}
+
 # --- CRUD for SWOT items -------------------------------------------------
 
 @router.get("/api/swot")
@@ -24,7 +26,10 @@ async def create_swot_item(item: dict = Body(...)):
     if "type" not in item or "text" not in item:
         raise HTTPException(status_code=422, detail="Missing 'type' or 'text' fields")
     new_id = await get_next_sequence("swot_id")
-    doc = {"id": new_id, "type": item["type"], "text": item["text"]}
+    count = await swot_collection.count_documents({"type": item["type"]}) + 1
+    prefix = TYPE_PREFIX.get(item["type"], "")
+    ref = f"{prefix}{count}"
+    doc = {"id": new_id, "type": item["type"], "text": item["text"], "ref": ref}
     await swot_collection.insert_one(doc)
     return doc
 

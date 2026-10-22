@@ -1,16 +1,61 @@
 <template>
-  <div class="swot-editor">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <SwotColumn
-        v-for="type in types"
-        :key="type.key"
-        :title="type.title"
-        :items="swotItems.filter(i => i.type === type.key)"
-        @add="addItem(type.key)"
-        @edit="editItem"
-        @delete="deleteItem"
-      />
-    </div>
+
+  <!-- ══ HERO ══ -->
+      <div class="proc-banner">
+        <div class="proc-info">
+          <div>
+            <span class="proc-id-tag">OpenSILEX · Analyse stratégique</span>
+            <h1>Analyse SWOT</h1>
+            <div class="proc-hero-sub">
+              <span class="h-sp1">Forces, Faiblesses, Opportunités &amp; Risques</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <h1 class="titre"> MATRICE SWOT</h1>
+  <div class="swot-editor">   
+      
+        <div class="swot-grid">
+          <!-- En-têtes -->
+          <div class="grid-corner"></div>
+          <div class="grid-header header-positive">✓ Positif</div>
+          <div class="grid-header header-negative">✗ Négatif</div>
+
+          <!-- Ligne interne -->
+          <div class="grid-label label-interne">Interne</div>
+
+              <SwotColumn title="Forces"
+                :items="swotItems.filter(i => i.type === 'strength')"
+                @add="addItem('strength')" @edit="editItem" @delete="deleteItem" />
+
+              <SwotColumn title="Faiblesses"
+                :items="swotItems.filter(i => i.type === 'weakness')"
+                @add="addItem('weakness')" @edit="editItem" @delete="deleteItem" />
+
+              <!-- Ligne externe -->
+              <div class="grid-label label-externe">Externe</div>
+
+              <SwotColumn title="Opportunités"
+                :items="swotItems.filter(i => i.type === 'opportunity')"
+                @add="addItem('opportunity')" @edit="editItem" @delete="deleteItem" />
+                
+              <SwotColumn title="Menaces"
+                :items="swotItems.filter(i => i.type === 'threat')"
+                @add="addItem('threat')" @edit="editItem" @delete="deleteItem" />
+        </div> 
+        
+       <!-- PIED DE PAGE DOC : version et date -->
+          <section class="section">
+            <div class="doc-footer">
+              <span>OpenSILEX-SWOT</span> |
+              <span contenteditable="true">Version 1.0</span> |
+              <span contenteditable="true">Mise à jour : 21/04/2026 - Isabelle Alic</span>
+              <!-- <span contenteditable="true">Mise à jour : 08/04/2026 - Anne Tireau</span> -->
+              <!-- <span contenteditable="true">Mise à jour : 17/02/2026 - Sandrine Collavizza</span> -->
+            </div>
+          </section>
+
     <button @click="exportSwot" class="bg-gray-500 text-white px-3 py-1 rounded mt-4">Imprimer / Exporter</button>
   </div>
 </template>
@@ -28,14 +73,25 @@ const types = [
 
 const swotItems = ref([]);
 
+
+
 async function fetchSwot() {
   try {
     const res = await fetch('/api/swot');
     if (!res.ok) throw new Error('Fetch failed');
     swotItems.value = await res.json();
+    // Persist successful fetch in localStorage for offline fallback
+    localStorage.setItem('swotData', JSON.stringify(swotItems.value));
   } catch (e) {
-    console.warn('API unavailable – could not fetch SWOT data');
-    swotItems.value = [];
+    // Try to load from localStorage before falling back to defaults
+    const stored = localStorage.getItem('swotData');
+    if (stored) {
+      swotItems.value = JSON.parse(stored);
+      console.warn('API unavailable – loaded SWOT data from localStorage');
+    } else {
+      console.warn('API not available – loading default SWOT data');
+      swotItems.value = defaultSwot;
+    }
   }
 }
 
@@ -51,7 +107,11 @@ async function addItem(type) {
     if (!res.ok) throw new Error('Add failed');
     await fetchSwot();
   } catch (e) {
-    console.warn('API unavailable – could not add item');
+    // Fallback local update and persist to localStorage
+    const newId = Math.max(...swotItems.value.map(i => i.id)) + 1;
+    swotItems.value.push({ id: newId, type, text });
+    localStorage.setItem('swotData', JSON.stringify(swotItems.value));
+    console.warn('API unavailable – added item locally');
   }
 }
 
@@ -69,6 +129,8 @@ async function editItem(item) {
     const idx = swotItems.value.findIndex(i => i.id === item.id);
     if (idx !== -1) {
       swotItems.value[idx].text = newText;
+      // Persist changes to localStorage for offline support
+      localStorage.setItem('swotData', JSON.stringify(swotItems.value));
     }
   } catch (e) {
     // Do not modify locally if backend unavailable; just warn
@@ -84,7 +146,11 @@ async function deleteItem(item) {
     if (!res.ok) throw new Error('Delete failed');
     await fetchSwot();
   } catch (e) {
-    console.warn('API unavailable – could not delete item');
+    // Fallback local deletion
+      swotItems.value = swotItems.value.filter(i => i.id !== item.id);
+      // Persist deletion to localStorage
+      localStorage.setItem('swotData', JSON.stringify(swotItems.value));
+      console.warn('API unavailable – deleted item locally');
   }
 }
 
@@ -98,21 +164,22 @@ function exportSwot() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Analyse SWOT - Export</title>
-  <link rel="stylesheet" href="../../css/charte.css">
-  <link rel="stylesheet" href="../../css/common.css">
-  <link rel="stylesheet" href="../../css/processus/processus.css">
-  <link rel="stylesheet" href="../../css/swot/swot.css">
+  <link rel="stylesheet" href="css/charte.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/processus/processus.css">
+  <link rel="stylesheet" href="css/swot/swot.css">
 </head>
 <body class="modern-layout">
 <header class="main-header" id="header"><div class="nav-container"><button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button></div></header>
 <main class="modern-content swot-content">
   <section class="section" id="matrice">
-    <h2>Matrice SWOT</h2>
+    <h2>Matrice SWOThgfhgf</h2>
     <div class="swot-layout">
-`
-
-
-
+      <div class="spacer"></div>
+      <div class="header-positive">✓ Positif</div>
+      <div class="header-negative">✗ Négatif</div>
+      <div class="label-box label-interne">Interne</div>
+      <div class="label-box label-externe">Externe</div>`;
 
 
 
@@ -122,7 +189,7 @@ function exportSwot() {
 
   const renderBox = (typeKey, title, tag) => {
     const items = groupItems(typeKey);
-    const lis = items.map(i => `<li><span class="swot-id">${i.id}</span><span>${i.text}</span></li>`).join('');
+    const lis = items.map(i => `<li><span class="swot-id">${i.ref}</span><span>${i.text}</span></li>`).join('');
     return `<div class="swot-box ${typeKey}s">
       <h3 class="box-title">${title} <span class="box-tag">${tag}</span></h3>
       <ul>${lis}</ul>
@@ -145,64 +212,49 @@ function exportSwot() {
     win.onload = () => { win.print(); };
   } else {
     console.warn('Popup blocked – cannot open export window');
+    }
   }
-
-  // ---- Generate TOWS HTML and save to backend ----
-  const towsHeader = `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analyse TOWS - Export</title>
-  <link rel="stylesheet" href="../../css/charte.css">
-  <link rel="stylesheet" href="../../css/common.css">
-  <link rel="stylesheet" href="../../css/processus/processus.css">
-  <link rel="stylesheet" href="../../css/swot/twos.css">
-</head>
-<body class="modern-layout">
-<header class="main-header" id="header"><div class="nav-container"><button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button></div></header>
-<main class="modern-content tows-content">
-  <section class="section" id="matrice">
-    <h2>Matrice TOWS</h2>
-    <div class="tows-grid">
-      <div class="spacer" aria-hidden="true"></div>
-`; // Simplified grid start
-
-  const towsFooter = `</div></section></main></body></html>`;
-
-  // Reuse same groups for TOWS sections
-  const renderTowsBox = (typeKey, title, tag, extraClass) => {
-    const items = swotItems.value.filter(i => i.type === typeKey);
-    const lis = items.map(i => `<li><span class="swot-id">${i.id}</span><span>${i.text}</span></li>`).join('');
-    return `<div class="factor-card f-${extraClass}">
-      <h3 class="box-title">${title} <span class="box-tag">${tag}</span></h3>
-      <ul>${lis}</ul>
-    </div>`;
-  };
-
-  const towsBody = [
-    renderTowsBox('opportunity', 'Opportunités', 'Externe', 'o'),
-    renderTowsBox('threat', 'Risques', 'Externe', 't'),
-    renderTowsBox('strength', 'Forces', 'Interne', 's'),
-    renderTowsBox('weakness', 'Faiblesses', 'Interne', 'w'),
-  ].join('');
-
-  const towsHtml = towsHeader + towsBody + towsFooter;
-
-  // Send to backend for writing
-  fetch('/api/swot/tows', {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: towsHtml,
-  }).then(res => {
-    if (!res.ok) throw new Error('Failed to save TOWS');
-    // Open the saved file for printing
-    const winT = window.open('/Enjeux/2-tows.html', '_blank');
-    if (winT) { winT.onload = () => { winT.print(); }; }
-  }).catch(e => console.error('TOWS export error:', e));
-}
 </script>
 
 <style scoped>
 .swot-editor { padding: 1rem; }
+
+.swot-grid {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.grid-header,
+.grid-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.grid-header {
+  background: #f3f4f6;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.grid-label {
+  /* étiquette verticale Interne/Externe */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.header-positive { background: #dcfce7; color: #166534; }
+.header-negative { background: #fee2e2; color: #991b1b; }
+
+.titre { font-size: 1.25rem; color: red; }
+
+.proc-banner { padding: 10px 0 12px; }
+.proc-info h1 { font-size: 1.3rem; margin-bottom: 2px; }
+.proc-id-tag { margin-bottom: 2px; }
 </style>

@@ -19,7 +19,7 @@ async def populate_swot_defaults():
     # Verify collection is empty
     count = await swot_collection.count_documents({})
     if count == 0:
-        # Insert default items
+        # Insert default items (already contain refs)
         await swot_collection.insert_many(default_swot)
         # Initialise counter for future ids (max existing + 1)
         max_id = max(item["id"] for item in default_swot)
@@ -28,6 +28,33 @@ async def populate_swot_defaults():
             {"$set": {"seq": max_id}},
             upsert=True,
         )
+    else:
+        # Collection already has data – ensure every document has a "ref"
+        TYPE_PREFIX = {"strength": "F", "weakness": "W", "opportunity": "O", "threat": "R"}
+        # Group docs by type preserving order by id
+        cursor = swot_collection.find().sort("id", 1)
+        docs_by_type = {t: [] for t in TYPE_PREFIX}
+        async for doc in cursor:
+            docs_by_type.setdefault(doc.get("type"), []).append(doc)
+        for type_key, docs in docs_by_type.items():
+            # Determine current max number from existing refs
+            max_num = 0
+            for d in docs:
+                ref = d.get("ref")
+                if ref and ref.startswith(TYPE_PREFIX.get(type_key, "")):
+                    try:
+                        num = int(ref[len(TYPE_PREFIX[type_key]):])
+                        if num > max_num:
+                            max_num = num
+                    except ValueError:
+                        pass
+            # Assign missing refs sequentially
+            next_num = max_num + 1
+            for d in docs:
+                if "ref" not in d:
+                    new_ref = f"{TYPE_PREFIX[type_key]}{next_num}"
+                    await swot_collection.update_one({"_id": d["_id"]}, {"$set": {"ref": new_ref}})
+                    next_num += 1
 
 
 cors_origins = os.environ.get("CORS_ORIGINS", "*")

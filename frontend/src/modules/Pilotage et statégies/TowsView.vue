@@ -1,10 +1,11 @@
 <template>
-  <iframe src="/Enjeux/2-tows.html" class="w-full h-screen border-0"></iframe>
+  <SwotEditor />
 </template>
 
 <script setup>
+import SwotEditor from '../../components/TowsEditor.vue';
 </script>
 
 <style scoped>
-iframe { min-height: 80vh; }
+/* aucun style spécifique nécessaire */
 </style>
