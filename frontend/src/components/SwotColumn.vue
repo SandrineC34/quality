@@ -8,7 +8,7 @@
     <ul>
       <li v-for="item in items" :key="item.id">
         <span class="swot-id">{{ item.ref }}</span>
-        <span v-html="item.text"></span>
+        <span class="item-text" v-html="item.text"></span>
         <span class="item-actions">
           <ActionButtons showEdit showDelete
             @edit="$emit('edit', item)"
@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <button class="btn-add" @click="$emit('add')" title="Ajouter un élément">＋ Ajouter</button>
+    <button class="btn-add" @click="$emit('add')">＋ Ajouter</button>
   </div>
 </template>
 
@@ -26,9 +26,9 @@ import ActionButtons from './ActionButtons.vue';
 
 const props = defineProps({
   title: String,
-  tag:   String,   // « Interne » ou « Externe »
+  tag:   String,
   items: Array,
-  type:  String,   // 'strength' | 'weakness' | 'opportunity' | 'threat'
+  type:  String,
 });
 
 const boxClassMap = {
@@ -48,13 +48,14 @@ const boxClass = boxClassMap[props.type] ?? '';
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
-/* Couleurs calquées sur swot.css */
-.strengths     { background: #d1fae5; border: 2px solid #6ee7b7; }
-.weaknesses    { background: #fee2e2; border: 2px solid #fca5a5; }
-.opportunities { background: #dbeafe; border: 2px solid #93c5fd; }
-.threats       { background: #fef9c3; border: 2px solid #fde047; }
+.strengths     { background: #d1fae5 !important; border: 2px solid #6ee7b7; }
+.weaknesses    { background: #fee2e2 !important; border: 2px solid #fca5a5; }
+.opportunities { background: #dbeafe !important; border: 2px solid #93c5fd; }
+.threats       { background: #fef9c3 !important; border: 2px solid #fde047; }
 
 /* ── Titre ── */
 .box-title {
@@ -71,10 +72,12 @@ const boxClass = boxClassMap[props.type] ?? '';
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.08) !important;
   color: inherit;
   text-transform: uppercase;
   letter-spacing: .04em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /* ── Liste ── */
@@ -84,16 +87,18 @@ li {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.55) !important;
   border-radius: 0.5rem;
   padding: 0.4rem 0.5rem;
   font-size: 0.88rem;
   line-height: 1.4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
-li > span:nth-child(2) { flex: 1; }
+.item-text { flex: 1; }
 
-/* ── Badge ref (S1, W2…) ── */
+/* ── Badge ref ── */
 .swot-id {
   flex-shrink: 0;
   display: inline-flex;
@@ -104,14 +109,16 @@ li > span:nth-child(2) { flex: 1; }
   border-radius: 4px;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #fff;
+  color: #fff !important;
   padding: 0 4px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
-.strengths     .swot-id { background: #059669; }
-.weaknesses    .swot-id { background: #dc2626; }
-.opportunities .swot-id { background: #2563eb; }
-.threats       .swot-id { background: #ca8a04; }
+.strengths     .swot-id { background: #059669 !important; }
+.weaknesses    .swot-id { background: #dc2626 !important; }
+.opportunities .swot-id { background: #2563eb !important; }
+.threats       .swot-id { background: #ca8a04 !important; }
 
 /* ── Actions ── */
 .item-actions {
@@ -134,4 +141,42 @@ li > span:nth-child(2) { flex: 1; }
   transition: background .15s;
 }
 .btn-add:hover { background: rgba(255,255,255,0.95); }
+
+/* ── PRINT ── */
+@media print {
+  .btn-add,
+  .item-actions { display: none !important; }
+
+  .swot-box {
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.75rem 0.5rem;
+    gap: 0.2rem;
+  }
+
+  .strengths     { background: #d1fae5 !important; border: 2px solid #6ee7b7 !important; }
+  .weaknesses    { background: #fee2e2 !important; border: 2px solid #fca5a5 !important; }
+  .opportunities { background: #dbeafe !important; border: 2px solid #93c5fd !important; }
+  .threats       { background: #fef9c3 !important; border: 2px solid #fde047 !important; }
+
+  .box-title { font-size: 0.78rem; margin-bottom: 0.3rem; }
+  .box-tag   { font-size: 0.58rem; padding: 1px 5px; }
+
+  li {
+    padding: 0.25rem 0.35rem;
+    font-size: 0.65rem;
+    gap: 0.35rem;
+    background: rgba(255,255,255,0.55) !important;
+  }
+
+  .swot-id {
+    font-size: 0.58rem;
+    min-width: 1.6rem;
+    height: 1.1rem;
+  }
+
+  .strengths     .swot-id { background: #059669 !important; color: #fff !important; }
+  .weaknesses    .swot-id { background: #dc2626 !important; color: #fff !important; }
+  .opportunities .swot-id { background: #2563eb !important; color: #fff !important; }
+  .threats       .swot-id { background: #ca8a04 !important; color: #fff !important; }
+}
 </style>

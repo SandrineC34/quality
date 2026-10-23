@@ -14,43 +14,34 @@
   </div>
 
   <!-- ══ MATRICE ══ -->
-  <section class="section" id="matrice">
-    <h2>Matrice SWOT</h2>
+  <section class="swot-section" id="matrice">
+    <h2 class="swot-h2">Matrice SWOT</h2>
 
     <div class="swot-layout">
 
-      <!-- Coin vide -->
       <div class="spacer"></div>
-
-      <!-- En-têtes de colonnes -->
       <div class="header-positive">✓ Positif</div>
       <div class="header-negative">✗ Négatif</div>
 
-      <!-- Label Interne -->
       <div class="label-box label-interne">Interne</div>
 
-      <!-- Forces -->
       <SwotColumn
         title="Forces" tag="Interne" type="strength"
         :items="swotItems.filter(i => i.type === 'strength')"
         @add="addItem('strength')" @edit="editItem" @delete="deleteItem" />
 
-      <!-- Faiblesses -->
       <SwotColumn
         title="Faiblesses" tag="Interne" type="weakness"
         :items="swotItems.filter(i => i.type === 'weakness')"
         @add="addItem('weakness')" @edit="editItem" @delete="deleteItem" />
 
-      <!-- Label Externe -->
       <div class="label-box label-externe">Externe</div>
 
-      <!-- Opportunités -->
       <SwotColumn
         title="Opportunités" tag="Externe" type="opportunity"
         :items="swotItems.filter(i => i.type === 'opportunity')"
         @add="addItem('opportunity')" @edit="editItem" @delete="deleteItem" />
 
-      <!-- Menaces -->
       <SwotColumn
         title="Risques" tag="Externe" type="threat"
         :items="swotItems.filter(i => i.type === 'threat')"
@@ -60,7 +51,7 @@
   </section>
 
   <!-- ══ PIED DE PAGE DOC ══ -->
-  <section class="section">
+  <section class="swot-section">
     <div class="doc-footer">
       <span>OpenSILEX-SWOT</span> |
       <span contenteditable="true">Version 1.0</span> |
@@ -68,9 +59,9 @@
     </div>
   </section>
 
-  <!-- ══ EXPORT ══ -->
+  <!-- ══ EXPORT (masqué à l'impression) ══ -->
   <div class="export-bar">
-    <button class="print-btn" @click="exportSwot">🖨 Imprimer / Exporter</button>
+    <button class="print-btn" @click="triggerPrint">🖨 Imprimer / Exporter PDF</button>
   </div>
 
 </template>
@@ -93,7 +84,6 @@ async function fetchSwot() {
       swotItems.value = JSON.parse(stored);
       console.warn('API unavailable – loaded SWOT data from localStorage');
     } else {
-      console.warn('API not available – no data');
       swotItems.value = [];
     }
   }
@@ -114,12 +104,11 @@ async function addItem(type) {
     const newId = Math.max(0, ...swotItems.value.map(i => i.id)) + 1;
     swotItems.value.push({ id: newId, type, text });
     localStorage.setItem('swotData', JSON.stringify(swotItems.value));
-    console.warn('API unavailable – added item locally');
   }
 }
 
 async function editItem(item) {
-  const newText = window.prompt('Modifier l\'élément', item.text);
+  const newText = window.prompt("Modifier l'élément", item.text);
   if (newText === null) return;
   try {
     const res = await fetch(`/api/swot/${item.id}`, {
@@ -147,67 +136,77 @@ async function deleteItem(item) {
   } catch (e) {
     swotItems.value = swotItems.value.filter(i => i.id !== item.id);
     localStorage.setItem('swotData', JSON.stringify(swotItems.value));
-    console.warn('API unavailable – deleted item locally');
   }
 }
 
-onMounted(fetchSwot);
-
-function exportSwot() {
-  const groupItems = (typeKey) => swotItems.value.filter(i => i.type === typeKey);
-
-  const renderBox = (typeKey, title, tag) => {
-    const items = groupItems(typeKey);
-    const lis = items.map(i =>
-      `<li><span class="swot-id">${i.ref ?? ''}</span><span>${i.text}</span></li>`
-    ).join('');
-    return `<div class="swot-box ${typeKey}s">
-      <h3 class="box-title">${title} <span class="box-tag">${tag}</span></h3>
-      <ul>${lis}</ul>
-    </div>`;
-  };
-
-  const html = `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analyse SWOT - Export</title>
-  <link rel="stylesheet" href="css/charte.css">
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/processus/processus.css">
-  <link rel="stylesheet" href="css/swot/swot.css">
-</head>
-<body class="modern-layout">
-<header class="main-header"><div class="nav-container">
-  <button class="print-btn-nav" onclick="window.print()">🖨 Imprimer</button>
-</div></header>
-<main class="modern-content swot-content">
-  <section class="section" id="matrice">
-    <h2>Matrice SWOT</h2>
-    <div class="swot-layout">
-      <div class="spacer"></div>
-      <div class="header-positive">✓ Positif</div>
-      <div class="header-negative">✗ Négatif</div>
-      <div class="label-box label-interne">Interne</div>
-      <div class="label-box label-externe">Externe</div>
-      ${renderBox('strength',    'Forces',      'Interne')}
-      ${renderBox('weakness',    'Faiblesses',  'Interne')}
-      ${renderBox('opportunity', 'Opportunités','Externe')}
-      ${renderBox('threat',      'Risques',     'Externe')}
-    </div>
-  </section>
-</main>
-</body>
-</html>`;
-
-  const blob = new Blob([html], { type: 'text/html' });
-  const url  = URL.createObjectURL(blob);
-  const win  = window.open(url, '_blank');
-  if (win) win.onload = () => win.print();
-  else console.warn('Popup blocked');
+function triggerPrint() {
+  window.print();
 }
+
+onMounted(fetchSwot);
 </script>
+
+<!-- Style NON scoped : nécessaire pour que @media print atteigne
+     les éléments des composants enfants (SwotColumn, ActionButtons) -->
+<style>
+@media print {
+  @page { size: A4 portrait; margin: 8mm; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Masquer ce qui ne s'imprime pas */
+  .export-bar,
+  .main-header,
+  .nav-footer,
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* Hero compact */
+  .proc-banner {
+    padding: 0.6rem 1rem !important;
+  }
+  .proc-banner h1 {
+    font-size: 1.1rem !important;
+    margin: 0.1rem 0 0 !important;
+  }
+  .proc-id-tag { font-size: 0.6rem !important; }
+  .proc-hero-sub .h-sp1 { font-size: 0.7rem !important; }
+
+  /* Section */
+  .swot-section { padding: 0.4rem 0.6rem !important; margin-bottom: 0 !important; }
+  .swot-h2 { font-size: 0.8rem !important; margin-bottom: 0.4rem !important; padding-bottom: 0.2rem !important; }
+
+  /* Grille */
+  .swot-layout { gap: 5px !important; }
+
+  .header-positive,
+  .header-negative {
+    padding: 3px 6px !important;
+    font-size: 0.6rem !important;
+    background: inherit !important;
+  }
+  .header-positive { background: #dcfce7 !important; color: #166534 !important; }
+  .header-negative { background: #fee2e2 !important; color: #991b1b !important; }
+
+  .label-box {
+    padding: 4px 2px !important;
+    font-size: 0.58rem !important;
+  }
+  .label-interne { background: #d1fae5 !important; color: #065f46 !important; }
+  .label-externe { background: #dbeafe !important; color: #1e40af !important; }
+
+  /* Éviter les coupures de page dans la grille */
+  .swot-layout,
+  .swot-box { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Doc footer */
+  .doc-footer { font-size: 0.6rem !important; }
+}
+</style>
 
 <style scoped>
 /* ── Hero ── */
@@ -215,6 +214,8 @@ function exportSwot() {
   background: linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 100%);
   color: #fff;
   padding: 1.5rem 2rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 .proc-banner h1 { font-size: 1.6rem; margin: 0.25rem 0 0; }
 .proc-id-tag {
@@ -228,8 +229,8 @@ function exportSwot() {
 .proc-hero-sub .h-sp1 { font-size: 0.95rem; opacity: .85; }
 
 /* ── Section ── */
-.section { padding: 1.5rem 2rem; }
-.section h2 {
+.swot-section { padding: 1.5rem 2rem; }
+.swot-h2 {
   font-size: 1.2rem;
   font-weight: 700;
   color: #1e3a5f;
@@ -253,11 +254,13 @@ function exportSwot() {
 .label-interne   { grid-column: 1; grid-row: 2; }
 .label-externe   { grid-column: 1; grid-row: 3; }
 
+/* Placement des SwotColumn via :deep() */
 :deep(.strengths)     { grid-column: 2; grid-row: 2; }
 :deep(.weaknesses)    { grid-column: 3; grid-row: 2; }
 :deep(.opportunities) { grid-column: 2; grid-row: 3; }
 :deep(.threats)       { grid-column: 3; grid-row: 3; }
 
+/* En-têtes */
 .header-positive,
 .header-negative {
   text-align: center;
@@ -265,10 +268,13 @@ function exportSwot() {
   font-size: 0.9rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 .header-positive { background: #dcfce7; color: #166534; }
 .header-negative { background: #fee2e2; color: #991b1b; }
 
+/* Labels verticaux */
 .label-box {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -279,6 +285,8 @@ function exportSwot() {
   font-size: 0.8rem;
   border-radius: 0.5rem;
   padding: 0.5rem 0.25rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 .label-interne { background: #d1fae5; color: #065f46; }
 .label-externe { background: #dbeafe; color: #1e40af; }
